@@ -51,6 +51,7 @@ header span {
 	padding: 5px;
 	background: transparent;
 	width: 90%;
+	color: #fd7d68;
 }
 
 .main-input:focus {
@@ -337,23 +338,23 @@ span.lmKey, .leftMiddle {
 }
 
 span.liKey, .leftIndex {
-	background: #1F5EA8;
+	background: #7FD5F4;
 }
 
 span.riKey, .rightIndex {
-	background: #E98931;
+	background: rgb(231, 173, 230);
 }
 
 span.rmKey, .rightMiddle {
-	background: #6C2A6A;
+	background: #FFD6B4;
 }
 
 span.rrKey, .rightRing {
-	background: #2AB0C5;
+	background: rgb(46, 36, 187)
 }
 
 span.rpKey, .rightPinky {
-	background: #B32E37;
+	background: #77181E;
 }
 
 .ltKey, .rtKey, .thumb {
