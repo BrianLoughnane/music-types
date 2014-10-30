@@ -106,25 +106,33 @@ hands
 	margin-left: 31%;
 }
 
-.bottom .thumb, .thumbTop, .finger, .palm {
-	/*border: 1px solid black;*/
-	background: cadetblue;
+/*.rightHand .thumb {
+	text-align: right;
 }
 
-/*.finger, .thumbTop {
-	border-width: 1px 1px 0px 1px;
-}
-
-.bottom .thumb, .palm {
-	border-width: 0px 1px 1px 1px;
+.rightHand .thumbTop {
+	margin-right: 31%;
 }*/
 
-.bottom .thumb, .thumbTop {
+.bottom .thumb, .thumbTop, .finger, .palm {
+	background: #fd7d68;
+	/*background: aliceblue;*/
+}
+
+.leftHand .bottom .thumb, .leftHand .thumbTop {
 	-webkit-transform: skew(-20deg);
 	-moz-transform: skew(-20deg);
 	-o-transform: skew(-20deg);
 	-ms-transform: skew(-20deg);	
 	transform: skew(-20deg);
+}
+
+.rightHand .bottom .thumb, .rightHand .thumbTop {
+	-webkit-transform: skew(20deg);
+	-moz-transform: skew(20deg);
+	-o-transform: skew(20deg);
+	-ms-transform: skew(20deg);	
+	transform: skew(20deg);
 }
 
 .palmArea, .fingersArea {
@@ -182,6 +190,26 @@ hands
 	height: 85%;
 }
 
+.rightHand .one {
+	left: 5%;
+	height: 85%;
+	/*background: red;*/
+}
+
+.rightHand .two {
+	left: 30%;
+	height: 100%;
+}
+
+.rightHand .three {
+	left: 55%;
+	height: 90%
+}
+
+.rightHand .four {
+	left: 80%;
+	height: 70%;
+}
 
 /*===============================
 keyboard
