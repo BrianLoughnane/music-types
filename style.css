@@ -59,6 +59,8 @@ header span {
 
 input {
 	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
 }
 /*.hands {
 	height: 24%;
@@ -101,14 +103,14 @@ hands
 	height: 25%;
 }
 
-.thumb {
+.thumbArea {
 	width: 17%;
 	height: 100%;
 	position: relative;
 	text-align: left;
 }
 
-.thumbTop {
+.thumb {
 	position: absolute;
 	width: 100%;
 	height: 20%;
@@ -117,34 +119,26 @@ hands
 	margin-left: 31%;
 }
 
-.leftHand .thumbTop {
+.leftHand .thumb {
 	height: 60%;
 	bottom: -35%;
 	left: -15%;
 }
 
-.rightHand .thumbTop {
+.rightHand .thumb {
 	height: 60%;
 	bottom: -35%;
 	right: -4%;
 }
 
-/*.rightHand .thumb {
-	text-align: right;
-}
-
-.rightHand .thumbTop {
-	margin-right: 31%;
-}*/
-
-.bottom .thumb, .thumbTop, .finger, .palm {
+.bottom .thumbArea, .thumb, .finger, .palm {
 	/*background: #fd7d68;
 	opacity: 0.5;*/
 	background: rgba(253,125,104, 0.5);
 	/*background: aliceblue;*/
 }
 
-.leftHand .bottom .thumb, .leftHand .thumbTop {
+.leftHand .bottom .thumbArea, .leftHand .thumb {
 	-webkit-transform: skew(-20deg);
 	-moz-transform: skew(-20deg);
 	-o-transform: skew(-20deg);
@@ -152,7 +146,7 @@ hands
 	transform: skew(-20deg);
 }
 
-.rightHand .bottom .thumb, .rightHand .thumbTop {
+.rightHand .bottom .thumbArea, .rightHand .thumb {
 	-webkit-transform: skew(20deg);
 	-moz-transform: skew(20deg);
 	-o-transform: skew(20deg);
@@ -165,7 +159,7 @@ hands
 	height: 100%;
 }
 
-.palmArea, .fingersArea, .thumb {
+.palmArea, .fingersArea, .thumbArea {
 	float: left;
 }
 
@@ -199,44 +193,44 @@ hands
 	border-radius: 30px 30px 0px 0px;
 }
 
-.leftHand .one {
+.leftPinky {
 	left: 5%;
 	height: 70%;
 	/*background: red;*/
 }
 
-.leftHand .two {
+.leftRing {
 	left: 30%;
 	height: 90%;
 }
 
-.leftHand .three {
+.leftMiddle {
 	left: 55%;
 	height: 100%
 }
 
-.leftHand .four {
+.leftIndex {
 	left: 80%;
 	height: 85%;
 }
 
-.rightHand .one {
+.rightIndex {
 	left: 5%;
 	height: 85%;
 	/*background: red;*/
 }
 
-.rightHand .two {
+.rightMiddle {
 	left: 30%;
 	height: 100%;
 }
 
-.rightHand .three {
+.rightRing {
 	left: 55%;
 	height: 90%
 }
 
-.rightHand .four {
+.rightPinky {
 	left: 80%;
 	height: 70%;
 }
@@ -249,6 +243,7 @@ keyboard
 .keyboard {
 	height: 48%;
 	color: black;
+	background: rgba(0,0,0,0.3);
 }
 
 .keyboard div {
@@ -322,7 +317,7 @@ keyboard
 State
 ===============================*/
 
-.keyboard span:hover, .finger:hover {
+.keyboard span:hover, .finger:hover, .thumb:hover {
 	/*background: #fd7d68;*/
 	background: rgba(253,125,104, 1);
 	-webkit-animation: pulsate 1.5s linear alternate infinite;
