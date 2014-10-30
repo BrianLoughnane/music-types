@@ -317,7 +317,7 @@ keyboard
 State
 ===============================*/
 
-.keyboard span:hover, .finger:hover, .thumb:hover {
+.current {
 	/*background: #fd7d68;*/
 	background: rgba(253,125,104, 1);
 	-webkit-animation: pulsate 1.5s linear alternate infinite;
@@ -342,15 +342,18 @@ State
 	}
 }
 
-.keyboard span:active {
+.keyboard .active {
 	box-shadow: 1px 3px;
 	top: 2px;
 	left: 2px;
+	background: rgba(253,125,104, 1);
 /*	background: green if correct;
 	background: red if incorrect;*/
 }
 
-
+.finger .active {
+	background: rgba(253,125,104, 1);
+}
 
 
 
