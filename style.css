@@ -11,36 +11,20 @@ html {
 body {
 	height: 100%;
 	font-size: 2em;
-	background: brown;
-	color: antiquewhite;
+	background: #119ee0;
 	/*background: url of album art;*/
 }
 
 header {
 	height: 8%;
+	background: white;
 }
-
-
-/*
-.left, .right, .center {
-	display: inline-block;
-	height: 100%;
-	vertical-align: top;
-	text-align: center;
-	float: left;
-}
-
-.left, .right {
-	width: 30%;
-}
-
-.center {
-	width: 40%;
-}*/
 
 .main {
 	height: 44%;
 	text-align: center;
+	position: relative;
+	color: white;
 }
 
 .main-word {
@@ -62,15 +46,147 @@ header {
 	outline: none;
 }
 
-.hands {
-	height: 24%;
-	clear: both;
-	position: relative;
-}
-
 input {
 	text-align: center;
 }
+/*.hands {
+	height: 24%;
+	clear: both;
+	position: relative;
+}*/
+
+/*===============================
+hands
+===============================*/
+
+/*.leftHand *, .rightHand * {
+	outline: 1px solid darkblue;
+}*/
+
+.leftHand, .rightHand {
+	/*background: white;*/
+	position: absolute;
+	height: 100%;
+	width: 30%;
+}
+
+.leftHand {
+	left: 0;
+}
+
+.rightHand {
+	right: 0;
+}
+
+.leftHand>div div, .rightHand>div div {
+	display: inline-block;
+}
+
+.top {
+	height: 75%;
+}
+
+.bottom {
+	height: 25%;
+}
+
+.thumb {
+	width: 17%;
+	height: 100%;
+	position: relative;
+	text-align: left;
+}
+
+.thumbTop {
+	position: absolute;
+	width: 100%;
+	height: 20%;
+	bottom: 0;
+	border-radius: 40px 40px 0px 0px;
+	margin-left: 31%;
+}
+
+.bottom .thumb, .thumbTop, .finger, .palm {
+	/*border: 1px solid black;*/
+	background: cadetblue;
+}
+
+/*.finger, .thumbTop {
+	border-width: 1px 1px 0px 1px;
+}
+
+.bottom .thumb, .palm {
+	border-width: 0px 1px 1px 1px;
+}*/
+
+.bottom .thumb, .thumbTop {
+	-webkit-transform: skew(-20deg);
+	-moz-transform: skew(-20deg);
+	-o-transform: skew(-20deg);
+	-ms-transform: skew(-20deg);	
+	transform: skew(-20deg);
+}
+
+.palmArea, .fingersArea {
+	width: 75%;
+	height: 100%;
+}
+
+.palmArea, .fingersArea, .thumb {
+	float: left;
+}
+
+.palmArea {
+	position: relative;
+}
+
+.palm {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 5%;
+}
+
+.fingersArea {
+	position: relative;
+	text-align: left;
+}
+
+.finger {
+	position: absolute;
+	bottom: 0;
+	width: 20%;
+	height: 80%;
+	border-radius: 30px 30px 0px 0px;
+}
+
+.leftHand .one {
+	left: 5%;
+	height: 70%;
+	/*background: red;*/
+}
+
+.leftHand .two {
+	left: 30%;
+	height: 90%;
+}
+
+.leftHand .three {
+	left: 55%;
+	height: 100%
+}
+
+.leftHand .four {
+	left: 80%;
+	height: 85%;
+}
+
+
+/*===============================
+keyboard
+===============================*/
+
 
 .keyboard {
 	height: 48%;
