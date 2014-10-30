@@ -21,43 +21,43 @@ $(document).on('keydown', function(event) {
 
 	switch (event.which) {
 		case 192:
-			console.log('`');
+			console.log('tilde');
 			break;
 		case 49:
-			console.log('1');
+			console.log('one');
 			break;		
 		case 50:
-			console.log('2');
+			console.log('two');
 			break;
 		case 51:
-			console.log('3');
+			console.log('three');
 			break;
 		case 52:
-			console.log('4');
+			console.log('four');
 			break;
 		case 53:
-			console.log('5');
+			console.log('five');
 			break;
 		case 54:
-			console.log('6');
+			console.log('six');
 			break;
 		case 55:
-			console.log('7');
+			console.log('seven');
 			break;
 		case 56:
-			console.log('8');
+			console.log('eight');
 			break;
 		case 57:
-			console.log('9');
+			console.log('nine');
 			break;
 		case 48:
-			console.log('0');
+			console.log('zero');
 			break;
 		case 189:
-			console.log('-');
+			console.log('dash');
 			break;
 		case 187:
-			console.log('=');
+			console.log('equals');
 			break;
 		case 8:
 			console.log('delete');
@@ -96,10 +96,10 @@ $(document).on('keydown', function(event) {
 			console.log('p');
 			break;
 		case 219:
-			console.log('[');
+			console.log('leftBracket');
 			break;
 		case 221:
-			console.log(']');
+			console.log('rightBracket');
 			break;
 		case 220:
 			console.log('backslash');
@@ -135,16 +135,16 @@ $(document).on('keydown', function(event) {
 			console.log('l');
 			break;
 		case 186:
-			console.log(';');
+			console.log('semicolon');
 			break;
 		case 222:
-			console.log(" ' ");
+			console.log("quote");
 			break;
 		case 13:
 			console.log('enter');
 			break;
 		case 16:
-			console.log('leftShift');
+			console.log('shift');
 			break;
 		case 90:
 			console.log('z');
@@ -168,13 +168,13 @@ $(document).on('keydown', function(event) {
 			console.log('m');
 			break;
 		case 188:
-			console.log(',');
+			console.log('comma');
 			break;
 		case 190:
-			console.log('.');
+			console.log('period');
 			break;
 		case 191:
-			console.log('/');
+			console.log('slash');
 			break;
 		case 17:
 			console.log('ctrl');
