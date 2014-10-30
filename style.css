@@ -134,7 +134,7 @@ hands
 .bottom .thumbArea, .thumb, .finger, .palm {
 	/*background: #fd7d68;
 	opacity: 0.5;*/
-	background: rgba(253,125,104, 0.5);
+	/*background: rgba(253,125,104, 0.5);*/
 	/*background: aliceblue;*/
 }
 
@@ -264,7 +264,7 @@ keyboard
 	border-radius: 5px;
 	box-shadow: 3px 5px;
 	position: relative;
-	background: aliceblue;
+	/*background: aliceblue;*/
 }
 
 .keyboard span:first-child {
@@ -312,6 +312,54 @@ keyboard
 	visibility: hidden;
 }
 
+/*===============================
+Key Colors
+===============================*/
+
+.finger, .palm, .thumb, .keyboard span {
+	opacity: 0.5;
+}
+
+.palm {
+	background: rgb(253,125,104);
+}
+
+span.lpKey, .leftPinky {
+	background: rgb(251,183,53);
+}
+
+span.lrKey, .leftRing {
+	background: #EB403B;
+}
+
+span.lmKey, .leftMiddle {
+	background: #6C2A6A;
+}
+
+span.liKey, .leftIndex {
+	background: #1F5EA8;
+}
+
+span.riKey, .rightIndex {
+	background: #E98931;
+}
+
+span.rmKey, .rightMiddle {
+	background: #6C2A6A;
+}
+
+span.rrKey, .rightRing {
+	background: #2AB0C5;
+}
+
+span.rpKey, .rightPinky {
+	background: #B32E37;
+}
+
+.ltKey, .rtKey, .thumb {
+	background: #39C0B3;
+}
+
 
 /*===============================
 State
@@ -342,17 +390,19 @@ State
 	}
 }
 
-.keyboard .active {
+.keyboard span.active {
 	box-shadow: 1px 3px;
 	top: 2px;
 	left: 2px;
-	background: rgba(253,125,104, 1);
+	/*background: rgba(253,125,104, 1);*/
+	opacity: 1;
 /*	background: green if correct;
 	background: red if incorrect;*/
 }
 
-.finger .active {
-	background: rgba(253,125,104, 1);
+.finger.active, .thumb.active {
+	opacity: 1;
+	/*background: rgba(253,125,104, 1);*/
 }
 
 
