@@ -17,7 +17,7 @@
 <header>
 	<span>NOW PLAYING: {{ song }} by {{ artist }}</span> 
 	<span>Score: {{ score }}</span> 
-	<span>Progress: <input type='range' ng-model="progress"></span>
+	<span>Progress: <input type='range' ng-model="progress" min='0' max='100'></span>
 </header>
 <div class="main">
 	<div class="leftHand">

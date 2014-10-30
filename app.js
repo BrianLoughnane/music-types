@@ -2,6 +2,7 @@
 var myApp = angular.module('myApp', []);
 myApp.controller('myController', function($scope) {
 	$scope.lyrics = ['I','went','down','to','the','river','to', 'pray'];
+	// $scope.lyrics = ['I','a','b'];
 	$scope.lyricIndex = 0;
 	$scope.word = $scope.lyrics[$scope.lyricIndex];
 	$scope.userInput = "";
@@ -11,6 +12,14 @@ myApp.controller('myController', function($scope) {
 	$scope.score = 0; 
 	$scope.song = 'song';
 	$scope.artist = 'artist';	
+
+	function updateProgress() {
+		console.log('updateProgress');
+		var currentWord = $scope.lyricIndex;
+		var totalWords = $scope.lyrics.length;
+		var percentComplete = (currentWord/totalWords)*100;
+		$scope.progress = percentComplete;
+	}
 
 
 	$scope.$watch('userInput', function() {
@@ -25,8 +34,11 @@ myApp.controller('myController', function($scope) {
 			$scope.lyricIndex += 1;
 			$scope.word = $scope.lyrics[$scope.lyricIndex];
 			$scope.userInput = "";
+			updateProgress();			
 		}
-		$scope.currentLetter = $scope.word[$scope.userInput.length];
+		if(typeof $scope.word !== 'undefined') {
+			$scope.currentLetter = $scope.word[$scope.userInput.length];	
+		}
 	});
 
 
@@ -39,6 +51,7 @@ Keyboard
 
 $(document).on('ready', function() {
 
+$('.main-input').focus();
 
 $(document).on('keydown', function(event) {
 
