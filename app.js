@@ -1,10 +1,36 @@
+
 var myApp = angular.module('myApp', []);
 myApp.controller('myController', function($scope) {
+	$scope.lyrics = ['I','went','down','to','the','river','to', 'pray'];
+	$scope.lyricIndex = 0;
+	$scope.word = $scope.lyrics[$scope.lyricIndex];
+	$scope.userInput = "";
+	// $scope.lastLetterTyped = $scope.userInput[$scope.userInput.length-1];
+	$scope.currentLetter = $scope.word[$scope.userInput.length];
 	$scope.progress = 0;
-	$scope.score = 0;
-	$scope.word = 'ready';
+	$scope.score = 0; 
 	$scope.song = 'song';
-	$scope.artist = 'artist';
+	$scope.artist = 'artist';	
+
+
+	$scope.$watch('userInput', function() {
+		var input = $scope.userInput;
+		var lastLetterTyped = input[input.length-1];	
+		if((lastLetterTyped === $scope.currentLetter) && (input.length !== 0)) {
+			$scope.score++;
+		} else if ((lastLetterTyped !== $scope.currentLetter) && (input.length !== 0)) {
+			$scope.score--;
+		}
+		if(input === $scope.word) {
+			$scope.lyricIndex += 1;
+			$scope.word = $scope.lyrics[$scope.lyricIndex];
+			$scope.userInput = "";
+		}
+		$scope.currentLetter = $scope.word[$scope.userInput.length];
+	});
+
+
+
 });
 
 /*===============================
@@ -15,120 +41,95 @@ $(document).on('ready', function() {
 
 
 $(document).on('keydown', function(event) {
-	// if(event.which === 88) {
-	// 	console.log('hit x');
-	// }
 
 	switch (event.which) {
 		case 192:
 			$('.tilde').addClass('active');
 			$('.leftPinky').addClass('active');
-			console.log('tilde');
 			break;
 		case 49:
 			$('.one').addClass('active');
 			$('.leftPinky').addClass('active');
-			console.log('one');
 			break;		
 		case 50:
 			$('.two').addClass('active');
 			$('.leftRing').addClass('active');
-			console.log('two');
 			break;
 		case 51:
 			$('.three').addClass('active');
 			$('.leftMiddle').addClass('active');
-			console.log('three');
 			break;
 		case 52:
 			$('.four').addClass('active');
 			$('.leftIndex').addClass('active');
-			console.log('four');
 			break;
 		case 53:
 			$('.five').addClass('active');
 			$('.leftIndex').addClass('active');
-			console.log('five');
 			break;
 		case 54:
 			$('.six').addClass('active');
 			$('.rightIndex').addClass('active');
-			console.log('six');
 			break;
 		case 55:
 			$('.seven').addClass('active');
 			$('.rightIndex').addClass('active');
-			console.log('seven');
 			break;
 		case 56:
 			$('.eight').addClass('active');
 			$('.rightMiddle').addClass('active');
-			console.log('eight');
 			break;
 		case 57:
 			$('.nine').addClass('active');
 			$('.rightRing').addClass('active');
-			console.log('nine');
 			break;
 		case 48:
 			$('.zero').addClass('active');
 			$('.rightPinky').addClass('active');
-			console.log('zero');
 			break;
 		case 189:
 			$('.dash').addClass('active');
 			$('.rightPinky').addClass('active');
-			console.log('dash');
 			break;
 		case 187:
 			$('.equals').addClass('active');
 			$('.rightPinky').addClass('active');
-			console.log('equals');
 			break;
 		case 8:
 			$('.delete').addClass('active');
 			$('.rightPinky').addClass('active');
-			console.log('delete');
 			break;
 		case 9:
 			$('.tab').addClass('active');
 			$('.leftPinky').addClass('active');
-			console.log('tab');
 			break;
 		case 81:
 			$('.q').addClass('active');
 			$('.leftPinky').addClass('active');
-			console.log('q');
 			break;
 		case 87:
 			$('.w').addClass('active');
 			$('.leftRing').addClass('active');
-			console.log('w');
 			break;
 		case 69:
 			$('.e').addClass('active');
 			$('.leftMiddle').addClass('active');
-			console.log('e');
 			break;
 		case 82:
 			$('.r').addClass('active');
 			$('.leftIndex').addClass('active');
-			console.log('r');
 			break;
 		case 84:
 			$('.t').addClass('active');
 			$('.leftIndex').addClass('active');
-			console.log('t');
 			break;
 		case 89:
 			$('.y').addClass('active');
 			$('.rightIndex').addClass('active');
-			console.log('y');
 			break;
 		case 85:
 			$('.u').addClass('active');
 			$('.rightIndex').addClass('active');
-			console.log('u');
 			break;
 		case 73:
 			$('.i').addClass('active');
@@ -279,112 +280,90 @@ $(document).on('keyup', function(event) {
 		case 192:
 			$('.tilde').removeClass('active');
 			$('.leftPinky').removeClass('active');
-			console.log('tilde');
 			break;
 		case 49:
 			$('.one').removeClass('active');
 			$('.leftPinky').removeClass('active');
-			console.log('one');
 			break;		
 		case 50:
 			$('.two').removeClass('active');
 			$('.leftRing').removeClass('active');
-			console.log('two');
 			break;
 		case 51:
 			$('.three').removeClass('active');
 			$('.leftMiddle').removeClass('active');
-			console.log('three');
 			break;
 		case 52:
 			$('.four').removeClass('active');
 			$('.leftIndex').removeClass('active');
-			console.log('four');
 			break;
 		case 53:
 			$('.five').removeClass('active');
 			$('.leftIndex').removeClass('active');
-			console.log('five');
 			break;
 		case 54:
 			$('.six').removeClass('active');
 			$('.rightIndex').removeClass('active');
-			console.log('six');
 			break;
 		case 55:
 			$('.seven').removeClass('active');
 			$('.rightIndex').removeClass('active');
-			console.log('seven');
 			break;
 		case 56:
 			$('.eight').removeClass('active');
 			$('.rightMiddle').removeClass('active');
-			console.log('eight');
 			break;
 		case 57:
 			$('.nine').removeClass('active');
 			$('.rightRing').removeClass('active');
-			console.log('nine');
 			break;
 		case 48:
 			$('.zero').removeClass('active');
 			$('.rightPinky').removeClass('active');
-			console.log('zero');
 			break;
 		case 189:
 			$('.dash').removeClass('active');
 			$('.rightPinky').removeClass('active');
-			console.log('dash');
 			break;
 		case 187:
 			$('.equals').removeClass('active');
 			$('.rightPinky').removeClass('active');
-			console.log('equals');
 			break;
 		case 8:
 			$('.delete').removeClass('active');
 			$('.rightPinky').removeClass('active');
-			console.log('delete');
 			break;
 		case 9:
 			$('.tab').removeClass('active');
 			$('.leftPinky').removeClass('active');
-			console.log('tab');
 			break;
 		case 81:
 			$('.q').removeClass('active');
 			$('.leftPinky').removeClass('active');
-			console.log('q');
 			break;
 		case 87:
 			$('.w').removeClass('active');
 			$('.leftRing').removeClass('active');
-			console.log('w');
 			break;
 		case 69:
 			$('.e').removeClass('active');
 			$('.leftMiddle').removeClass('active');
-			console.log('e');
 			break;
 		case 82:
 			$('.r').removeClass('active');
 			$('.leftIndex').removeClass('active');
-			console.log('r');
 			break;
 		case 84:
 			$('.t').removeClass('active');
 			$('.leftIndex').removeClass('active');
-			console.log('t');
 			break;
 		case 89:
 			$('.y').removeClass('active');
 			$('.rightIndex').removeClass('active');
-			console.log('y');
 			break;
 		case 85:
 			$('.u').removeClass('active');
 			$('.rightIndex').removeClass('active');
-			console.log('u');
 			break;
 		case 73:
 			$('.i').removeClass('active');

@@ -124,19 +124,14 @@ hands
 	height: 60%;
 	bottom: -35%;
 	left: -15%;
+	border-radius: 40px 40px 0px 70px;
 }
 
 .rightHand .thumb {
 	height: 60%;
 	bottom: -35%;
 	right: -4%;
-}
-
-.bottom .thumbArea, .thumb, .finger, .palm {
-	/*background: #fd7d68;
-	opacity: 0.5;*/
-	/*background: rgba(253,125,104, 0.5);*/
-	/*background: aliceblue;*/
+	border-radius: 40px 40px 70px 0px;
 }
 
 .leftHand .bottom .thumbArea, .leftHand .thumb {
@@ -179,6 +174,9 @@ hands
 	bottom: 0;
 	right: 0;
 	left: 5%;
+	height: 220%;
+	z-index: -10;
+	border-radius: 0% 0% 55% 55%;
 }
 
 .fingersArea {
@@ -366,28 +364,26 @@ span.rpKey, .rightPinky {
 State
 ===============================*/
 
-.current {
-	/*background: #fd7d68;*/
-	background: rgba(253,125,104, 1);
+.finger.current, .keyboard span.current {
 	-webkit-animation: pulsate 1.5s linear alternate infinite;
 	animation: pulsate 1.5s linear alternate infinite;
 }
 
 @-webkit-keyframes pulsate {
 	from {
-		background: rgba(253,125,104, 1);
+		opacity: 0.5;
 	}
 	to {
-		background: rgba(253,125,104, 0.5);
+		opacity: 1;
 	}
 }
 
 @keyframes pulsate {
 	from {
-		background: rgba(253,125,104, 1);
+		opacity: 0.5;
 	}
 	to {
-		background: rgba(253,125,104, 0.5);
+		opacity: 1;
 	}
 }
 
