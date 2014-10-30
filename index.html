@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app="myApp">
 <head>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="normalize.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script> -->
@@ -13,7 +14,11 @@
 	<script src="app.js"></script>
 </head>
 <body ng-controller="myController">
-<header>NOW PLAYING: <span>Song</span> by <span>Artist</span> Score: <span>5</span> Progress: <input type='range' ng-model="progress"></header>
+<header>
+	<span>NOW PLAYING: {{ song }} by {{ artist }}</span> 
+	<span>Score: {{ score }}</span> 
+	<span>Progress: <input type='range' ng-model="progress"></span>
+</header>
 <div class="main">
 	<div class="leftHand">
 		<div class='top'>
@@ -31,7 +36,6 @@
 			<div class='palmArea'>
 				<div class='palm'></div>
 			</div>
-			<div class="thumb"></div>
 		</div>
 	</div>
 	<div class="rightHand">
@@ -47,13 +51,12 @@
 			</div>
 		</div>
 		<div class='bottom'>
-			<div class="thumb"></div>
 			<div class='palmArea'>
 				<div class='palm'></div>
 			</div>
 		</div>
 	</div>
-	<div class="main-word">ready</div>
+	<div class="main-word">{{ word }}</div>
 	<div><input class="main-input" type='text'></div>
 	<!-- <div class="left side"></div>
 	<div class="center main-word">ready
@@ -132,6 +135,7 @@
 		<span></span>
 		<span>cmd</span>
 		<span>alt</span>
+		<span></span>
 	</div>
 </div>
 </body>

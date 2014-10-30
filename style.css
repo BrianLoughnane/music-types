@@ -12,12 +12,22 @@ body {
 	height: 100%;
 	font-size: 2em;
 	background: #119ee0;
+	font-family: 'Lato', sans-serif;
 	/*background: url of album art;*/
 }
 
 header {
 	height: 8%;
 	background: white;
+	padding: 0.6% 10%;
+	text-align: right;
+}
+
+header span {
+	margin: 0% 4%;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0.6em;
 }
 
 .main {
@@ -40,6 +50,7 @@ header {
 	margin: auto;
 	padding: 5px;
 	background: transparent;
+	width: 90%;
 }
 
 .main-input:focus {
@@ -75,7 +86,7 @@ hands
 }
 
 .rightHand {
-	right: 0;
+	right: -1.4%;
 }
 
 .leftHand>div div, .rightHand>div div {
@@ -106,6 +117,18 @@ hands
 	margin-left: 31%;
 }
 
+.leftHand .thumbTop {
+	height: 60%;
+	bottom: -35%;
+	left: -15%;
+}
+
+.rightHand .thumbTop {
+	height: 60%;
+	bottom: -35%;
+	right: -4%;
+}
+
 /*.rightHand .thumb {
 	text-align: right;
 }
@@ -115,7 +138,9 @@ hands
 }*/
 
 .bottom .thumb, .thumbTop, .finger, .palm {
-	background: #fd7d68;
+	/*background: #fd7d68;
+	opacity: 0.5;*/
+	background: rgba(253,125,104, 0.5);
 	/*background: aliceblue;*/
 }
 
@@ -142,6 +167,11 @@ hands
 
 .palmArea, .fingersArea, .thumb {
 	float: left;
+}
+
+.rightHand .palmArea {
+	float: right;
+	margin-right: 8%;
 }
 
 .palmArea {
@@ -242,19 +272,6 @@ keyboard
 	background: aliceblue;
 }
 
-.keyboard span:hover {
-	background: gold;
-}
-
-.keyboard span:active {
-	box-shadow: 1px 3px;
-	top: 2px;
-	left: 2px;
-/*	background: green if correct;
-	background: red if incorrect;*/
-}
-
-
 .keyboard span:first-child {
 	text-align: left;
 }
@@ -287,15 +304,6 @@ keyboard
 	width: 14.3%;
 }
 
-.row5 span {
-	float: left;
-	margin: 0% 0.3%;
-}
-
-.row5 span:first-child {
-	margin-left: 0.8%;
-}
-
 .row5 span:nth-child(4), .row5 span:nth-child(6) {
 	width: 7.5%;
 }
@@ -304,11 +312,48 @@ keyboard
 	width: 34%;
 }
 
+.row5 span:last-child {
+	width: 19%;
+	visibility: hidden;
+}
 
 
+/*===============================
+State
+===============================*/
 
+.keyboard span:hover, .finger:hover {
+	/*background: #fd7d68;*/
+	background: rgba(253,125,104, 1);
+	-webkit-animation: pulsate 1.5s linear alternate infinite;
+	animation: pulsate 1.5s linear alternate infinite;
+}
 
+@-webkit-keyframes pulsate {
+	from {
+		background: rgba(253,125,104, 1);
+	}
+	to {
+		background: rgba(253,125,104, 0.5);
+	}
+}
 
+@keyframes pulsate {
+	from {
+		background: rgba(253,125,104, 1);
+	}
+	to {
+		background: rgba(253,125,104, 0.5);
+	}
+}
+
+.keyboard span:active {
+	box-shadow: 1px 3px;
+	top: 2px;
+	left: 2px;
+/*	background: green if correct;
+	background: red if incorrect;*/
+}
 
 
 
