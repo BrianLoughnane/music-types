@@ -365,8 +365,8 @@ State
 ===============================*/
 
 .finger.current, .keyboard span.current {
-	-webkit-animation: pulsate 1.5s linear alternate infinite;
-	animation: pulsate 1.5s linear alternate infinite;
+	-webkit-animation: pulsate 0.5s linear alternate infinite;
+	animation: pulsate 0.5s linear alternate infinite;
 }
 
 @-webkit-keyframes pulsate {

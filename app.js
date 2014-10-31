@@ -13,18 +13,13 @@ myApp.controller('myController', function($scope) {
 	$scope.song = 'song';
 	$scope.artist = 'artist';	
 
-	function updateProgress() {
-		console.log('updateProgress');
-		var currentWord = $scope.lyricIndex;
-		var totalWords = $scope.lyrics.length;
-		var percentComplete = (currentWord/totalWords)*100;
-		$scope.progress = percentComplete;
-	}
+
 
 
 	$scope.$watch('userInput', function() {
 		var input = $scope.userInput;
 		var lastLetterTyped = input[input.length-1];	
+		
 		if((lastLetterTyped === $scope.currentLetter) && (input.length !== 0)) {
 			$scope.score++;
 		} else if ((lastLetterTyped !== $scope.currentLetter) && (input.length !== 0)) {
@@ -39,9 +34,31 @@ myApp.controller('myController', function($scope) {
 		if(typeof $scope.word !== 'undefined') {
 			$scope.currentLetter = $scope.word[$scope.userInput.length];	
 		}
+		// setCurrent($scope.currentLetter);
 	});
 
+	function updateProgress() {
+		console.log('updateProgress');
+		var currentWord = $scope.lyricIndex;
+		var totalWords = $scope.lyrics.length;
+		var percentComplete = (currentWord/totalWords)*100;
+		$scope.progress = percentComplete;
+	}
 
+	// function setCurrent(letter) {
+	// 	// if ($scope.currentLetter == letter) {
+	// 		$("'."+ letter.toLowerCase() +"'").addClass('current');
+	// 	// }
+	// }
+
+// Should the lyrics come in as a block string...
+	// function blockToArrayWithSpace(blockString) {
+	// 	var arr = blockString.split(' ');
+	// 	for (var i =1; i< arr.length; i++) {
+	// 		arr.splice(i, 0, ' ');
+	// 	}
+	// 	$scope.lyrics = arr;
+	// }
 
 });
 

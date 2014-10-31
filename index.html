@@ -23,13 +23,13 @@
 	<div class="leftHand">
 		<div class='top'>
 			<div class='fingersArea'>
-				<div class="finger leftPinky"></div>
-				<div class="finger leftRing"></div>
-				<div class="finger leftMiddle"></div>
-				<div class="finger leftIndex"></div>
+				<div class="finger leftPinky" ng-class="{current: currentLetter == 'q' || currentLetter == 'a' || currentLetter == 'z' || currentLetter == 'Q' || currentLetter == 'A' || currentLetter == 'Z'}"></div>
+				<div class="finger leftRing" ng-class="{current: currentLetter == 'w' || currentLetter == 's' || currentLetter == 'x' || currentLetter == 'W' || currentLetter == 'S' || currentLetter == 'X'}"></div>
+				<div class="finger leftMiddle" ng-class="{current: currentLetter == 'e' || currentLetter == 'd' || currentLetter == 'c' || currentLetter == 'E' || currentLetter == 'D' || currentLetter == 'C'}"></div>
+				<div class="finger leftIndex" ng-class="{current: currentLetter == 'r' || currentLetter == 't' || currentLetter == 'f' || currentLetter == 'g' || currentLetter == 'v' || currentLetter == 'b' || currentLetter == 'R' || currentLetter == 'T' || currentLetter == 'F' || currentLetter == 'G' || currentLetter == 'V' || currentLetter == 'B'}"></div>
 			</div>
 			<div class="thumbArea">
-				<div class="thumb"></div>
+				<div class="thumb" ng-class="{current: currentLetter == ' '}"></div>
 			</div>
 		</div>
 		<div class='bottom'>
@@ -41,13 +41,13 @@
 	<div class="rightHand">
 		<div class='top'>
 			<div class="thumbArea">
-				<div class="thumb"></div>
+				<div class="thumb" ng-class="{current: currentLetter == ' '}"></div>
 			</div>
 			<div class='fingersArea'>
-				<div class="finger rightIndex"></div>
-				<div class="finger rightMiddle"></div>
-				<div class="finger rightRing"></div>
-				<div class="finger rightPinky"></div>
+				<div class="finger rightIndex" ng-class="{current: currentLetter == 'y' || currentLetter == 'u' || currentLetter == 'h' || currentLetter == 'j' || currentLetter == 'n' || currentLetter == 'm' || currentLetter == 'Y' || currentLetter == 'U' || currentLetter == 'H' || currentLetter == 'J' || currentLetter == 'N' || currentLetter == 'M'}"></div>
+				<div class="finger rightMiddle" ng-class="{current: currentLetter == 'i' || currentLetter == 'k' || currentLetter == 'I' || currentLetter == 'K'}"></div>
+				<div class="finger rightRing" ng-class="{current: currentLetter == 'o' || currentLetter == 'l' || currentLetter == 'O' || currentLetter == 'L'}"></div>
+				<div class="finger rightPinky" ng-class="{current: currentLetter == 'p' || currentLetter == 'P'}"></div>
 			</div>
 		</div>
 		<div class='bottom'>
@@ -67,74 +67,74 @@
 	
 <div class="keyboard">
 	<div class="row1">
-		<span class="tilde lpKey">~ `</span>
-		<span class="one lpKey">! 1</span>
-		<span class="two lrKey">@ 2</span>
-		<span class="three lmKey"># 3</span>
-		<span class="four liKey">$ 4</span>
-		<span class="five liKey">% 5</span>
-		<span class="six riKey">^ 6</span>
-		<span class="seven riKey">& 7</span>
-		<span class="eight rmKey">* 8</span>
-		<span class="nine rrKey">( 9</span>
-		<span class="zero rpKey">) 0</span>
-		<span class="dash rpKey">_ -</span>
-		<span class="equals rpKey">+ =</span>
-		<span class="delete rpKey">delete</span>
+		<span class="tilde lpKey" ng-class="{current: currentLetter == '`' || currentLetter == '~'}">~ `</span>
+		<span class="one lpKey" ng-class="{current: currentLetter == '1' || currentLetter == '!'}">! 1</span>
+		<span class="two lrKey" ng-class="{current: currentLetter == '2' || currentLetter == '@'}">@ 2</span>
+		<span class="three lmKey" ng-class="{current: currentLetter == '3' || currentLetter == '#'}"># 3</span>
+		<span class="four liKey" ng-class="{current: currentLetter == '4' || currentLetter == '$'}">$ 4</span>
+		<span class="five liKey" ng-class="{current: currentLetter == '5' || currentLetter == '%'}">% 5</span>
+		<span class="six riKey" ng-class="{current: currentLetter == '6' || currentLetter == '^'}">^ 6</span>
+		<span class="seven riKey" ng-class="{current: currentLetter == '7' || currentLetter == '&'}">& 7</span>
+		<span class="eight rmKey" ng-class="{current: currentLetter == '8' || currentLetter == '*'}">* 8</span>
+		<span class="nine rrKey" ng-class="{current: currentLetter == '9' || currentLetter == '('}">( 9</span>
+		<span class="zero rpKey" ng-class="{current: currentLetter == '0' || currentLetter == ')'}">) 0</span>
+		<span class="dash rpKey" ng-class="{current: currentLetter == '-' || currentLetter == '_'}">_ -</span>
+		<span class="equals rpKey" ng-class="{current: currentLetter == '=' || currentLetter == '+'}">+ =</span>
+		<span class="delete rpKey" ng-class="{current: false}">delete</span>
 	</div>
 	<div class="row2">
-		<span class="tab lpKey">tab</span>
-		<span class="q lpKey">q</span>
-		<span class="w lrKey">w</span>
-		<span class="e lmKey">e</span>
-		<span class="r liKey">r</span>
-		<span class="t liKey">t</span>
-		<span class="y riKey">y</span>
-		<span class="u riKey">u</span>
-		<span class="i rmKey">i</span>
-		<span class="o rrKey">o</span>
-		<span class="p rpKey">p</span>
-		<span class="leftBracket rpKey">{ [</span>
-		<span class="rightBracket rpKey">} ]</span>
-		<span class="backslash rpKey">| \</span>
+		<span class="tab lpKey" ng-class="{current: false}">tab</span>
+		<span class="q lpKey" ng-class="{current: currentLetter == 'q' || currentLetter == 'Q'}">q</span>
+		<span class="w lrKey" ng-class="{current: currentLetter == 'w' || currentLetter == 'W'}">w</span>
+		<span class="e lmKey" ng-class="{current: currentLetter == 'e' || currentLetter == 'E'}">e</span>
+		<span class="r liKey" ng-class="{current: currentLetter == 'r' || currentLetter == 'R'}">r</span>
+		<span class="t liKey" ng-class="{current: currentLetter == 't' || currentLetter == 'T'}">t</span>
+		<span class="y riKey" ng-class="{current: currentLetter == 'y' || currentLetter == 'Y'}">y</span>
+		<span class="u riKey" ng-class="{current: currentLetter == 'u' || currentLetter == 'U'}">u</span>
+		<span class="i rmKey" ng-class="{current: currentLetter == 'i' || currentLetter == 'I'}">i</span>
+		<span class="o rrKey" ng-class="{current: currentLetter == 'o' || currentLetter == 'O'}">o</span>
+		<span class="p rpKey" ng-class="{current: currentLetter == 'p' || currentLetter == 'P'}">P</span>
+		<span class="leftBracket rpKey" ng-class="{current: currentLetter == '[' || currentLetter == '{'}">{ [</span>
+		<span class="rightBracket rpKey" ng-class="{current: currentLetter == ']' || currentLetter == '}'}">} ]</span>
+		<span class="backslash rpKey" ng-class="{current: currentLetter == '\' || currentLetter == '|'}">| \</span>
 	</div>
 	<div class="row3">
-		<span class="caps lpKey">caps lock</span>
-		<span class="a lpKey">a</span>
-		<span class="s lrKey">s</span>
-		<span class="d lmKey">d</span>
-		<span class="f liKey">f</span>
-		<span class="g liKey">g</span>
-		<span class="h riKey">h</span>
-		<span class="j riKey">j</span>
-		<span class="k rmKey">k</span>
-		<span class="l rrKey">l</span>
-		<span class="semicolon rpKey">: ;</span>
-		<span class="quote rpKey">" '</span>
-		<span class="enter rpKey">enter</span>
+		<span class="caps lpKey" ng-class="{current: false}">caps lock</span>
+		<span class="a lpKey" ng-class="{current: currentLetter == 'a' || currentLetter == 'A'}">a</span>
+		<span class="s lrKey" ng-class="{current: currentLetter == 's' || currentLetter == 'S'}">s</span>
+		<span class="d lmKey" ng-class="{current: currentLetter == 'd' || currentLetter == 'D'}">d</span>
+		<span class="f liKey" ng-class="{current: currentLetter == 'f' || currentLetter == 'F'}">f</span>
+		<span class="g liKey" ng-class="{current: currentLetter == 'g' || currentLetter == 'G'}">g</span>
+		<span class="h riKey" ng-class="{current: currentLetter == 'h' || currentLetter == 'H'}">h</span>
+		<span class="j riKey" ng-class="{current: currentLetter == 'j' || currentLetter == 'J'}">j</span>
+		<span class="k rmKey" ng-class="{current: currentLetter == 'k' || currentLetter == 'K'}">k</span>
+		<span class="l rrKey" ng-class="{current: currentLetter == 'l' || currentLetter == 'L'}">l</span>
+		<span class="semicolon rpKey" ng-class="{current: currentLetter == ';' || currentLetter == ':'}">: ;</span>
+		<span class="quote rpKey" ng-class="{current: false}">" '</span>
+		<span class="enter rpKey" ng-class="{current: false">enter</span>
 	</div>
 	<div class="row4">
-		<span class="shift lpKey">shift</span>
-		<span class="z lpKey">z</span>
-		<span class="x lrKey">x</span>
-		<span class="c lmKey">c</span>
-		<span class="v liKey">v</span>
-		<span class="b liKey">b</span>
-		<span class="n riKey">n</span>
-		<span class="m riKey">m</span>
-		<span class="comma rmKey">< ,</span>
-		<span class="period rrKey">> .</span>
-		<span class="slash rpKey">? /</span>
-		<span class="shift rpKey">shift</span>
+		<span class="shift lpKey" ng-class="{current: false}">shift</span>
+		<span class="z lpKey" ng-class="{current: currentLetter == 'z' || currentLetter == 'Z'}">z</span>
+		<span class="x lrKey" ng-class="{current: currentLetter == 'x' || currentLetter == 'X'}">x</span>
+		<span class="c lmKey" ng-class="{current: currentLetter == 'c' || currentLetter == 'C'}">c</span>
+		<span class="v liKey" ng-class="{current: currentLetter == 'v' || currentLetter == 'V'}">v</span>
+		<span class="b liKey" ng-class="{current: currentLetter == 'b' || currentLetter == 'B'}">b</span>
+		<span class="n riKey" ng-class="{current: currentLetter == 'n' || currentLetter == 'N'}">n</span>
+		<span class="m riKey" ng-class="{current: currentLetter == 'm' || currentLetter == 'M'}">m</span>
+		<span class="comma rmKey" ng-class="{current: currentLetter == ',' || currentLetter == '<'}">< ,</span>
+		<span class="period rrKey" ng-class="{current: currentLetter == '.' || currentLetter == '>'}">> .</span>
+		<span class="slash rpKey" ng-class="{current: currentLetter == '/' || currentLetter == '?'}">? /</span>
+		<span class="shift rpKey" ng-class="{current: false}">shift</span>
 	</div>
 	<div class="row5">
-		<span class="fn lpKey">fn</span>
-		<span class="ctrl lpKey">ctrl</span>
-		<span class="alt lpKey">alt</span>
-		<span class="cmd ltKey">cmd</span>
-		<span class="space ltKey rtKey"></span>
-		<span class="cmd rtKey">cmd</span>
-		<span class="alt rrKey">alt</span>
+		<span class="fn lpKey" ng-class="{current: false}">fn</span>
+		<span class="ctrl lpKey" ng-class="{current: false}">ctrl</span>
+		<span class="alt lpKey" ng-class="{current: false}">alt</span>
+		<span class="cmd ltKey" ng-class="{current: false}">cmd</span>
+		<span class="space ltKey rtKey" ng-class="{current: currentLetter == ' '}"></span>
+		<span class="cmd rtKey" ng-class="{current: false}">cmd</span>
+		<span class="alt rrKey" ng-class="{current: false}">alt</span>
 		<span></span>
 	</div>
 </div>
