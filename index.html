@@ -18,13 +18,16 @@
 </head>
 <body ng-controller="myController">
 <header>
-	<span>NOW PLAYING: {{ song }} <span ng-if='artist.length !== 0 && artist !== undefined'>by</span> {{ artist }}</span> 
-	<span>Score: {{ score }}</span> 
-	<span>Progress: <input type='range' ng-model="progress" min='0' max='100' ng-trim='false'></span>
-	<span class='search' ng-click='querying = !querying'>Search Song</span>
+	<span class='statusBar' ng-if='statusBar'>
+		<span>NOW PLAYING: {{ song }} <span ng-if='artist.length !== 0 && artist !== undefined'>by</span> {{ artist }}</span> 
+		<span>Score: {{ score }}</span> 
+		<span>Progress: <input type='range' ng-model="progress" min='0' max='100' ng-trim='false'></span>
+	</span>
+	<span class='search' ng-click='querying = !querying; statusBar = !statusBar'>Search Song</span>
 </header>
 <div class='mainAndKeyboard'>
 	<div class='searchResults' ng-if='querying'>
+		<input type="text" ng-model='query' placeholder='Search for an artist or song' class='query'>
 		<div class='resultContainer'>
 			<div class='result' ng-repeat='result in searchResults'>
 				<span class='resultArtist'>{{ result.artist }},</span>

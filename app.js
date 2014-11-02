@@ -9,10 +9,12 @@ myApp.controller('myController', function($scope, $http) {
 	
 	// $scope.lastLetterTyped = $scope.userInput[$scope.userInput.length-1];
 	$scope.currentLetter = $scope.word[$scope.userInput.length];
+	$scope.statusBar = true;
 	$scope.progress = 0;
 	$scope.score = 0; 
 	$scope.song = 'songysong';
 	$scope.artist = 'artGarfunk';
+	$scope.query = '';
 	$scope.querying = false;
 	$scope.searchResults = [
 		{ 

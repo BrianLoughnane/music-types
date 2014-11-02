@@ -26,14 +26,27 @@ header {
 
 header span {
 	margin-left: 5%;
-	display: inline-block;
 	vertical-align: middle;
 	font-size: 0.6em;
 }
 
+header span span {
+	margin-left: 3%;
+}
+
+header span span span {
+	margin-left: 0%;
+}
+
+.statusBar {
+	width: 70%;
+	font-size: 1em;
+}
+
 .search {
+	display: inline-block;
 	border: 3px solid #fd7d68;
-	padding: 1% 4%;
+	padding: 0.95% 4%;
 	color: #fd7d68;
 	font-weight: bold;
 }
@@ -47,7 +60,8 @@ header span {
 .mainAndKeyboard {
 	position: relative;
 	height: 100%;
-	background: #119ee0;
+	/*background: #119ee0;*/
+	border-top: 2px solid #119ee0;
 }
 
 .main {
@@ -64,6 +78,7 @@ header span {
 	font-size: 3.2em;
 	min-width: 1425px;
 	min-height: 152px;
+	color: #119ee0;
 }
 
 .isSpace {
@@ -105,6 +120,21 @@ input {
 	z-index: 10;
 	padding-top: 2%;
 /*	overflow: scroll;*/
+}
+
+.query {
+	width: 75%;
+	padding: 1%;
+	text-align: center;
+	color: #fd7d68;
+	border: none;
+	border-bottom: 1px solid #fd7d68;
+	margin-bottom: 1%;
+	font-size: 2em;
+}
+
+.query:focus {
+	outline: none;
 }
 
 .result {
@@ -298,7 +328,7 @@ keyboard
 .keyboard {
 	height: 48%;
 	color: black;
-	background: rgba(0,0,0,0.3);
+	/*background: rgba(0,0,0,0.3);*/
 	min-width: 1425px;
 	min-height: 350px;
 }
