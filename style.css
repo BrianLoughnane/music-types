@@ -11,7 +11,7 @@ html {
 body {
 	height: 100%;
 	font-size: 2em;
-	background: #119ee0;
+/*	background: #119ee0;*/
 	font-family: 'Lato', sans-serif;
 	/*background: url of album art;*/
 }
@@ -19,15 +19,35 @@ body {
 header {
 	height: 8%;
 	background: white;
-	padding: 0.6% 10%;
 	text-align: right;
+	min-width: 1425px;
+	min-height: 56px;
 }
 
 header span {
-	margin: 0% 4%;
+	margin-left: 5%;
 	display: inline-block;
 	vertical-align: middle;
 	font-size: 0.6em;
+}
+
+.search {
+	border: 3px solid #fd7d68;
+	padding: 1% 4%;
+	color: #fd7d68;
+	font-weight: bold;
+}
+
+.search:hover {
+	cursor: pointer;
+	background: #fd7d68;
+	color: white;
+}
+
+.mainAndKeyboard {
+	position: relative;
+	height: 100%;
+	background: #119ee0;
 }
 
 .main {
@@ -35,11 +55,21 @@ header span {
 	text-align: center;
 	position: relative;
 	color: white;
+	min-width: 1425px;
+	min-height: 308px;
 }
 
 .main-word {
 	padding-top: 2%;
-	font-size: 3.2em
+	font-size: 3.2em;
+	min-width: 1425px;
+	min-height: 152px;
+}
+
+.isSpace {
+	font-size: 0.4em;
+	display: inherit;
+	color: #39C0B3;
 }
 
 .main-input {
@@ -63,11 +93,36 @@ input {
 	display: inline-block;
 	vertical-align: middle;
 }
-/*.hands {
-	height: 24%;
-	clear: both;
-	position: relative;
-}*/
+
+.searchResults {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: white;
+	text-align: center;
+	z-index: 10;
+	padding-top: 2%;
+/*	overflow: scroll;*/
+}
+
+.result {
+	margin: 2% 0%;
+}
+
+.result:hover {
+	cursor: pointer;
+	color: #fd7d68;
+}
+
+.resultArtist {
+	font-weight: bold;
+}
+
+.resultAlbum {
+	font-style: italic;
+}
 
 /*===============================
 hands
@@ -175,7 +230,8 @@ hands
 	right: 0;
 	left: 5%;
 	height: 220%;
-	z-index: -10;
+	/*z-index: -10;*/
+	opacity: 0.3;
 	border-radius: 0% 0% 55% 55%;
 }
 
@@ -243,6 +299,8 @@ keyboard
 	height: 48%;
 	color: black;
 	background: rgba(0,0,0,0.3);
+	min-width: 1425px;
+	min-height: 350px;
 }
 
 .keyboard div {
@@ -315,7 +373,7 @@ keyboard
 Key Colors
 ===============================*/
 
-.finger, .palm, .thumb, .keyboard span {
+.finger, .thumb, .keyboard span {
 	opacity: 0.5;
 }
 
@@ -364,7 +422,7 @@ span.rpKey, .rightPinky {
 State
 ===============================*/
 
-.finger.current, .keyboard span.current {
+.finger.current, .keyboard span.current, .thumb.current, .isSpace {
 	-webkit-animation: pulsate 0.5s linear alternate infinite;
 	animation: pulsate 0.5s linear alternate infinite;
 }

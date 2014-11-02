@@ -1,20 +1,177 @@
 
 var myApp = angular.module('myApp', []);
-myApp.controller('myController', function($scope) {
-	$scope.lyrics = ['I','went','down','to','the','river','to', 'pray'];
+myApp.controller('myController', function($scope, $http) {
+	$scope.lyrics = ['I', ' ', 'went', ' ', 'down','to','the','river','to', 'pray'];
 	// $scope.lyrics = ['I','a','b'];
 	$scope.lyricIndex = 0;
 	$scope.word = $scope.lyrics[$scope.lyricIndex];
 	$scope.userInput = "";
+	
 	// $scope.lastLetterTyped = $scope.userInput[$scope.userInput.length-1];
 	$scope.currentLetter = $scope.word[$scope.userInput.length];
 	$scope.progress = 0;
 	$scope.score = 0; 
-	$scope.song = 'song';
-	$scope.artist = 'artist';	
-
-
-
+	$scope.song = 'songysong';
+	$scope.artist = 'artGarfunk';
+	$scope.querying = false;
+	$scope.searchResults = [
+		{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},
+		{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},{ 
+			artist: 'beatles',
+			song: 'Hold your hand',
+			album: 'The White Album',
+			id: '423455'
+		},
+		{
+			artist: 'beach boys',
+			song: 'surfin USA',
+			album: 'Californee',
+			id: '324234'
+		},
+	]
 
 	$scope.$watch('userInput', function() {
 		var input = $scope.userInput;
@@ -29,13 +186,28 @@ myApp.controller('myController', function($scope) {
 			$scope.lyricIndex += 1;
 			$scope.word = $scope.lyrics[$scope.lyricIndex];
 			$scope.userInput = "";
-			updateProgress();			
+			updateProgress();
+				
+			// $http({
+			// 	url: 'http://tts-api.com/tts.mp3?q=hi',
+			// 	method: 'GET'
+			// 	// params: {
+			// 	// 	q: 'hello'
+			// 	// }
+			// }).then(function(r){
+			// 	console.log(r);
+			// });    // text to speech API
+
 		}
 		if(typeof $scope.word !== 'undefined') {
 			$scope.currentLetter = $scope.word[$scope.userInput.length];	
 		}
-		// setCurrent($scope.currentLetter);
-	});
+		if($scope.currentLetter === ' ') {
+			$scope.isSpace = true;
+		} else {
+			$scope.isSpace = false;
+		}
+	}); // end $watch userInput
 
 	function updateProgress() {
 		console.log('updateProgress');
@@ -43,30 +215,63 @@ myApp.controller('myController', function($scope) {
 		var totalWords = $scope.lyrics.length;
 		var percentComplete = (currentWord/totalWords)*100;
 		$scope.progress = percentComplete;
-	}
+	} //end updateProgress()
 
-	// function setCurrent(letter) {
-	// 	// if ($scope.currentLetter == letter) {
-	// 		$("'."+ letter.toLowerCase() +"'").addClass('current');
-	// 	// }
-	// }
+/*===============================
+Search Spotify
+===============================*/
 
-// Should the lyrics come in as a block string...
-	// function blockToArrayWithSpace(blockString) {
-	// 	var arr = blockString.split(' ');
-	// 	for (var i =1; i< arr.length; i++) {
-	// 		arr.splice(i, 0, ' ');
-	// 	}
-	// 	$scope.lyrics = arr;
-	// }
+	$('.search').on('click', function() {
+		console.log('search');
 
-});
+		// $http({
+		// 	url: 'https://api.spotify.com/v1/search',
+		// 	method: 'GET',
+		// 	params: {
+		// 		q: 'beatles',
+		// 		type: 'artist,track'
+		// 	}
+
+	// 	$http({
+	// 		url: 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=15953433',
+	// 		method: 'JSONP',
+	// 		// method: 'GET',
+	// 		params: {
+	// 			apikey: '83c1f43d33f5abacda9ae5f1f1106dca',
+	// 			callback: 'JSON_CALLBACK',
+	// 			q: 'beatles'
+	// 		}
+		
+	// 	}).success(function(response) {
+	// 		console.log(response);
+	// 		// $('.mmTracking').attr('src', 'http:\/\/tracking.musixmatch.com\/t1.0\/m42By\/J7rv9z');
+	// 	});
+
+		$http({
+			url: 'http://api.musixmatch.com/ws/1.1/track.search',
+			method: 'JSONP',
+			params: {
+				apikey: '83c1f43d33f5abacda9ae5f1f1106dca',
+				callback: 'JSON_CALLBACK',
+				q_track: 'beatles',
+				q_artist: 'beatles'
+			}
+		}).success(function(response) {
+			console.log(response.message.body.track_list[0].track.track_id);
+			// $('.mmTracking').attr('src', 'http:\/\/tracking.musixmatch.com\/t1.0\/m42By\/J7rv9z');
+		});
+	});  // end search click handler
+});  //end myController
+
+
+
+$(document).on('ready', function() {
+
 
 /*===============================
 Keyboard
 ===============================*/
 
-$(document).on('ready', function() {
 
 $('.main-input').focus();
 
