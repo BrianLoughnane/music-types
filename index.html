@@ -148,7 +148,8 @@
 						ng-class="{current: 
 							currentLetter == 'p' && !mistype || 
 							currentLetter == 'P' && !mistype ||
-							currentLetter == '0' && !mistype ||
+							currentLetter == '0' && !mistype
+						,incorrect:	
 							mistype
 						}">
 					</div>
@@ -165,75 +166,75 @@
 				ng-class="{current: currentLetter == letter && !mistype
 		 			,incorrect: mistype && mistypedLetters.indexOf($index) > -1 
 					,lpLetter:
-						letter == 'q' && $index == userInput.length && !mistype || 
-						letter == 'a' && $index == userInput.length && !mistype || 
-						letter == 'z' && $index == userInput.length && !mistype || 
-						letter == 'Q' && $index == userInput.length && !mistype || 
-						letter == 'A' && $index == userInput.length && !mistype || 
-						letter == 'Z' && $index == userInput.length && !mistype ||
-						letter == '1' && $index == userInput.length && !mistype
+						letter == 'q' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'a' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'z' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'Q' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'A' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'Z' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == '1' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
 					,lrLetter:
-						letter == 'w' && $index == userInput.length && !mistype || 
-						letter == 's' && $index == userInput.length && !mistype || 
-						letter == 'x' && $index == userInput.length && !mistype || 
-						letter == 'W' && $index == userInput.length && !mistype || 
-						letter == 'S' && $index == userInput.length && !mistype || 
-						letter == 'X' && $index == userInput.length && !mistype ||
-						letter == '2' && $index == userInput.length && !mistype
+						letter == 'w' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 's' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'x' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'W' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'S' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'X' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == '2' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
 					,lmLetter:
-						letter == 'e' && $index == userInput.length && !mistype || 
-						letter == 'd' && $index == userInput.length && !mistype || 
-						letter == 'c' && $index == userInput.length && !mistype || 
-						letter == 'E' && $index == userInput.length && !mistype || 
-						letter == 'D' && $index == userInput.length && !mistype || 
-						letter == 'C' && $index == userInput.length && !mistype ||
-						letter == '3' && $index == userInput.length && !mistype
+						letter == 'e' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'd' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'c' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'E' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'D' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'C' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == '3' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
 					,liLetter:
-						letter == 'r' && $index == userInput.length && !mistype || 
-						letter == 't' && $index == userInput.length && !mistype || 
-						letter == 'f' && $index == userInput.length && !mistype || 
-						letter == 'g' && $index == userInput.length && !mistype || 
-						letter == 'v' && $index == userInput.length && !mistype || 
-						letter == 'b' && $index == userInput.length && !mistype || 
-						letter == 'R' && $index == userInput.length && !mistype || 
-						letter == 'T' && $index == userInput.length && !mistype || 
-						letter == 'F' && $index == userInput.length && !mistype || 
-						letter == 'G' && $index == userInput.length && !mistype || 
-						letter == 'V' && $index == userInput.length && !mistype || 
-						letter == 'B' && $index == userInput.length && !mistype ||
-						letter == '4' && $index == userInput.length && !mistype ||
-						letter == '5' && $index == userInput.length && !mistype
+						letter == 'r' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 't' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'f' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'g' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'v' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'b' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'R' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'T' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'F' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'G' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'V' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'B' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == '4' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == '5' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
 					,riLetter:
-						letter == 'y' && $index == userInput.length && !mistype || 
-						letter == 'u' && $index == userInput.length && !mistype || 
-						letter == 'h' && $index == userInput.length && !mistype || 
-						letter == 'j' && $index == userInput.length && !mistype || 
-						letter == 'n' && $index == userInput.length && !mistype || 
-						letter == 'm' && $index == userInput.length && !mistype || 
-						letter == 'Y' && $index == userInput.length && !mistype || 
-						letter == 'U' && $index == userInput.length && !mistype || 
-						letter == 'H' && $index == userInput.length && !mistype || 
-						letter == 'J' && $index == userInput.length && !mistype || 
-						letter == 'N' && $index == userInput.length && !mistype || 
-						letter == 'M' && $index == userInput.length && !mistype ||
-						letter == '6' && $index == userInput.length && !mistype ||
-						letter == '7' && $index == userInput.length && !mistype
+						letter == 'y' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'u' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'h' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'j' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'n' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'm' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'Y' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'U' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'H' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'J' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'N' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'M' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == '6' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == '7' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
 					,rmLetter:
-						letter == 'i' && $index == userInput.length && !mistype || 
-						letter == 'k' && $index == userInput.length && !mistype || 
-						letter == 'I' && $index == userInput.length && !mistype || 
-						letter == 'K' && $index == userInput.length && !mistype ||
-						letter == '8' && $index == userInput.length && !mistype
+						letter == 'i' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'k' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'I' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'K' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == '8' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
 					,rrLetter:
-						letter == 'o' && $index == userInput.length && !mistype ||
-						letter == 'l' && $index == userInput.length && !mistype ||
-						letter == 'O' && $index == userInput.length && !mistype || 
-						letter == 'L' && $index == userInput.length && !mistype ||
-						letter == '9' && $index == userInput.length && !mistype
+						letter == 'o' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == 'l' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == 'O' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'L' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == '9' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
 					,rpLetter:
-						letter == 'p' && $index == userInput.length && !mistype || 
-						letter == 'P' && $index == userInput.length && !mistype ||
-						letter == '0' && $index == userInput.length && !mistype
+						letter == 'p' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
+						letter == 'P' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
+						letter == '0' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
 				}"
 			>{{ letter }}</span> 
 			<span ng-if='isSpace' class='isSpace'>(space)</span>
@@ -258,7 +259,7 @@
 			<span class="zero rpKey" 	ng-class="{current: currentLetter == '0' && !mistype || currentLetter == ')' && !mistype }">) 0</span>
 			<span class="dash rpKey" 	ng-class="{current: currentLetter == '-' && !mistype || currentLetter == '_' && !mistype }">_ -</span>
 			<span class="equals rpKey" 	ng-class="{current: currentLetter == '=' && !mistype || currentLetter == '+' && !mistype }">+ =</span>
-			<span class="delete rpKey" 	ng-class="{current: mistype}">delete</span>
+			<span class="delete rpKey" 	ng-class="{incorrect: mistype}">delete</span>
 		</div>
 		<div class="row2">
 			<span class="tab lpKey" ng-class="{current: false}">tab</span>

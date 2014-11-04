@@ -489,8 +489,14 @@ State
 	animation: pulsate 0.5s linear alternate infinite;
 }
 
-span.incorrect {
+.main-word .incorrect {
 	color: red;
+	-webkit-animation: pulsate 0.5s linear alternate infinite;
+	animation: pulsate 0.5s linear alternate infinite;	
+}
+
+.keyboard .incorrect, .rightHand .incorrect {
+	background: red;
 	-webkit-animation: pulsate 0.5s linear alternate infinite;
 	animation: pulsate 0.5s linear alternate infinite;	
 }

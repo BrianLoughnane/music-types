@@ -1,7 +1,7 @@
 
 var myApp = angular.module('myApp', []);
 myApp.controller('myController', function($scope, $http) {
-	$scope.lyrics = ['I', ' ', 'went', ' ', 'down','to','the','asdf','to', 'pray'];
+	$scope.lyrics = ['rtfgvb', ' ', 'I', ' ', 'went', ' ', 'down','to','the','asdf','to', 'pray'];
 	$scope.lyricIndex = 0;
 	$scope.word = $scope.lyrics[$scope.lyricIndex];
 
