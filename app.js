@@ -179,6 +179,7 @@ myApp.controller('myController', function($scope, $http) {
 		var input = $scope.userInput;
 		var lastLetterTyped = input[input.length-1];
 		var word = $scope.word;
+		var mistypedLetters = [];
 
 		$scope.lastLetterTyped = lastLetterTyped;
 
@@ -191,10 +192,13 @@ myApp.controller('myController', function($scope, $http) {
 		for(var i = 0; i < input.length; i++) {
 			if(input[i] != word[i]) {
 				$scope.mistype = true;
+				mistypedLetters.push(i);
 			} else {
 				$scope.mistype = false;
 			}
 		}
+
+		$scope.mistypedLetters = mistypedLetters;
 
 		if(input === $scope.word) {
 			$scope.lyricIndex += 1;

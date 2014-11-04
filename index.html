@@ -162,7 +162,7 @@
 		<div class="main-word">
 			<span ng-repeat='letter in word' 
 				ng-class="{current: currentLetter == letter
-					,incorrect: mistype 
+		 			,incorrect: mistype && mistypedLetters.indexOf($index) > -1 
 					,lpLetter:
 						letter == 'q' && $index == userInput.length || 
 						letter == 'a' && $index == userInput.length || 
