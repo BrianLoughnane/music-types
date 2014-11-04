@@ -160,80 +160,80 @@
 			</div>
 		</div>
 		<div class="main-word">
-			<span ng-repeat='letterZ in word' 
-				ng-class="{current: currentLetter == letterZ 
+			<span ng-repeat='letter in word' 
+				ng-class="{current: currentLetter == letter 
 					,lpLetter:
-						letterZ == 'q' && $index == userInput.length || 
-						letterZ == 'a' && $index == userInput.length || 
-						letterZ == 'z' && $index == userInput.length || 
-						letterZ == 'Q' && $index == userInput.length || 
-						letterZ == 'A' && $index == userInput.length || 
-						letterZ == 'Z' && $index == userInput.length ||
-						letterZ == '1' && $index == userInput.length
+						letter == 'q' && $index == userInput.length || 
+						letter == 'a' && $index == userInput.length || 
+						letter == 'z' && $index == userInput.length || 
+						letter == 'Q' && $index == userInput.length || 
+						letter == 'A' && $index == userInput.length || 
+						letter == 'Z' && $index == userInput.length ||
+						letter == '1' && $index == userInput.length
 					,lrLetter:
-						letterZ == 'w' && $index == userInput.length || 
-						letterZ == 's' && $index == userInput.length || 
-						letterZ == 'x' && $index == userInput.length || 
-						letterZ == 'W' && $index == userInput.length || 
-						letterZ == 'S' && $index == userInput.length || 
-						letterZ == 'X' && $index == userInput.length ||
-						letterZ == '2' && $index == userInput.length
+						letter == 'w' && $index == userInput.length || 
+						letter == 's' && $index == userInput.length || 
+						letter == 'x' && $index == userInput.length || 
+						letter == 'W' && $index == userInput.length || 
+						letter == 'S' && $index == userInput.length || 
+						letter == 'X' && $index == userInput.length ||
+						letter == '2' && $index == userInput.length
 					,lmLetter:
-						letterZ == 'e' && $index == userInput.length || 
-						letterZ == 'd' && $index == userInput.length || 
-						letterZ == 'c' && $index == userInput.length || 
-						letterZ == 'E' && $index == userInput.length || 
-						letterZ == 'D' && $index == userInput.length || 
-						letterZ == 'C' && $index == userInput.length ||
-						letterZ == '3' && $index == userInput.length
+						letter == 'e' && $index == userInput.length || 
+						letter == 'd' && $index == userInput.length || 
+						letter == 'c' && $index == userInput.length || 
+						letter == 'E' && $index == userInput.length || 
+						letter == 'D' && $index == userInput.length || 
+						letter == 'C' && $index == userInput.length ||
+						letter == '3' && $index == userInput.length
 					,liLetter:
-						letterZ == 'r' && $index == userInput.length || 
-						letterZ == 't' && $index == userInput.length || 
-						letterZ == 'f' && $index == userInput.length || 
-						letterZ == 'g' && $index == userInput.length || 
-						letterZ == 'v' && $index == userInput.length || 
-						letterZ == 'b' && $index == userInput.length || 
-						letterZ == 'R' && $index == userInput.length || 
-						letterZ == 'T' && $index == userInput.length || 
-						letterZ == 'F' && $index == userInput.length || 
-						letterZ == 'G' && $index == userInput.length || 
-						letterZ == 'V' && $index == userInput.length || 
-						letterZ == 'B' && $index == userInput.length ||
-						letterZ == '4' && $index == userInput.length ||
-						letterZ == '5' && $index == userInput.length
+						letter == 'r' && $index == userInput.length || 
+						letter == 't' && $index == userInput.length || 
+						letter == 'f' && $index == userInput.length || 
+						letter == 'g' && $index == userInput.length || 
+						letter == 'v' && $index == userInput.length || 
+						letter == 'b' && $index == userInput.length || 
+						letter == 'R' && $index == userInput.length || 
+						letter == 'T' && $index == userInput.length || 
+						letter == 'F' && $index == userInput.length || 
+						letter == 'G' && $index == userInput.length || 
+						letter == 'V' && $index == userInput.length || 
+						letter == 'B' && $index == userInput.length ||
+						letter == '4' && $index == userInput.length ||
+						letter == '5' && $index == userInput.length
 					,riLetter:
-						letterZ == 'y' && $index == userInput.length || 
-						letterZ == 'u' && $index == userInput.length || 
-						letterZ == 'h' && $index == userInput.length || 
-						letterZ == 'j' && $index == userInput.length || 
-						letterZ == 'n' && $index == userInput.length || 
-						letterZ == 'm' && $index == userInput.length || 
-						letterZ == 'Y' && $index == userInput.length || 
-						letterZ == 'U' && $index == userInput.length || 
-						letterZ == 'H' && $index == userInput.length || 
-						letterZ == 'J' && $index == userInput.length || 
-						letterZ == 'N' && $index == userInput.length || 
-						letterZ == 'M' && $index == userInput.length ||
-						letterZ == '6' && $index == userInput.length ||
-						letterZ == '7' && $index == userInput.length
+						letter == 'y' && $index == userInput.length || 
+						letter == 'u' && $index == userInput.length || 
+						letter == 'h' && $index == userInput.length || 
+						letter == 'j' && $index == userInput.length || 
+						letter == 'n' && $index == userInput.length || 
+						letter == 'm' && $index == userInput.length || 
+						letter == 'Y' && $index == userInput.length || 
+						letter == 'U' && $index == userInput.length || 
+						letter == 'H' && $index == userInput.length || 
+						letter == 'J' && $index == userInput.length || 
+						letter == 'N' && $index == userInput.length || 
+						letter == 'M' && $index == userInput.length ||
+						letter == '6' && $index == userInput.length ||
+						letter == '7' && $index == userInput.length
 					,rmLetter:
-						letterZ == 'i' && $index == userInput.length || 
-						letterZ == 'k' && $index == userInput.length || 
-						letterZ == 'I' && $index == userInput.length || 
-						letterZ == 'K' && $index == userInput.length ||
-						letterZ == '8' && $index == userInput.length
+						letter == 'i' && $index == userInput.length || 
+						letter == 'k' && $index == userInput.length || 
+						letter == 'I' && $index == userInput.length || 
+						letter == 'K' && $index == userInput.length ||
+						letter == '8' && $index == userInput.length
 					,rrLetter:
-						letterZ == 'o' && $index == userInput.length ||
-						letterZ == 'l' && $index == userInput.length ||
-						letterZ == 'O' && $index == userInput.length || 
-						letterZ == 'L' && $index == userInput.length ||
-						letterZ == '9' && $index == userInput.length
+						letter == 'o' && $index == userInput.length ||
+						letter == 'l' && $index == userInput.length ||
+						letter == 'O' && $index == userInput.length || 
+						letter == 'L' && $index == userInput.length ||
+						letter == '9' && $index == userInput.length
 					,rpLetter:
-						letterZ == 'p' && $index == userInput.length || 
-						letterZ == 'P' && $index == userInput.length ||
-						letterZ == '0' && $index == userInput.length
+						letter == 'p' && $index == userInput.length || 
+						letter == 'P' && $index == userInput.length ||
+						letter == '0' && $index == userInput.length
 				}"
-			>{{ word[$index] }}</span> 
+			>{{ letter }}</span> 
 			<span ng-if='isSpace' class='isSpace'>(space)</span>
 		</div> 
 		<div>
