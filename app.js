@@ -2,18 +2,18 @@
 var myApp = angular.module('myApp', []);
 myApp.controller('myController', function($scope, $http) {
 	$scope.lyrics = ['I', ' ', 'went', ' ', 'down','to','the','river','to', 'pray'];
-	// $scope.lyrics = ['I','a','b'];
 	$scope.lyricIndex = 0;
 	$scope.word = $scope.lyrics[$scope.lyricIndex];
+
 	$scope.userInput = "";
-	
-	// $scope.lastLetterTyped = $scope.userInput[$scope.userInput.length-1];
 	$scope.currentLetter = $scope.word[$scope.userInput.length];
+	
 	$scope.statusBar = true;
 	$scope.progress = 0;
 	$scope.score = 0; 
 	$scope.song = 'songysong';
 	$scope.artist = 'artGarfunk';
+	
 	$scope.query = '';
 	$scope.querying = false;
 	$scope.searchResults = [
@@ -187,6 +187,8 @@ myApp.controller('myController', function($scope, $http) {
 		if(input === $scope.word) {
 			$scope.lyricIndex += 1;
 			$scope.word = $scope.lyrics[$scope.lyricIndex];
+
+
 			$scope.userInput = "";
 			updateProgress();
 				
@@ -219,6 +221,20 @@ myApp.controller('myController', function($scope, $http) {
 		$scope.progress = percentComplete;
 	} //end updateProgress()
 
+
+	// function wordParse() {
+	// 	var word = $scope.word;
+	// 	var wordParse = '';
+
+	// 	for (var i = 0; i < word.length; i++) {
+	// 		var letter = word[i];
+	// 		var letterParse = '<span>' + letter + '</span>';
+
+	// 		wordParse += letterParse;
+	// 	}
+		
+	// 	return wordParse;
+	// } //end wordParse()
 /*===============================
 Search Spotify
 ===============================*/

@@ -452,7 +452,7 @@ span.rpKey, .rightPinky {
 State
 ===============================*/
 
-.finger.current, .keyboard span.current, .thumb.current, .isSpace {
+.finger.current, .keyboard span.current, span.current, .thumb.current, .isSpace {
 	-webkit-animation: pulsate 0.5s linear alternate infinite;
 	animation: pulsate 0.5s linear alternate infinite;
 }

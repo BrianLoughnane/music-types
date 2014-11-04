@@ -73,7 +73,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="main-word">{{ word }}<span ng-if='isSpace' class='isSpace'>(space)</span></div> 
+		<div class="main-word">
+			<span ng-repeat='letter in word' ng-class='{current: currentLetter == word[$index]}'>{{ word[$index] }}</span> 
+			<span ng-if='isSpace' class='isSpace'>(space)</span>
+		</div> 
 		<div><input class="main-input" ng-model="userInput" type='text' ng-trim='false'></div>
 	</div>
 		
