@@ -42,53 +42,53 @@
 				<div class='fingersArea'>
 					<div class="finger leftPinky" 
 						ng-class="{current: 
-							currentLetter == 'q' || 
-							currentLetter == 'a' || 
-							currentLetter == 'z' || 
-							currentLetter == 'Q' || 
-							currentLetter == 'A' || 
-							currentLetter == 'Z' ||
-							currentLetter == '1'
+							currentLetter == 'q' && !mistype || 
+							currentLetter == 'a' && !mistype || 
+							currentLetter == 'z' && !mistype || 
+							currentLetter == 'Q' && !mistype || 
+							currentLetter == 'A' && !mistype || 
+							currentLetter == 'Z' && !mistype ||
+							currentLetter == '1' && !mistype
 						}">
 					</div>
 					<div class="finger leftRing" 
 						ng-class="{current: 
-							currentLetter == 'w' || 
-							currentLetter == 's' || 
-							currentLetter == 'x' || 
-							currentLetter == 'W' || 
-							currentLetter == 'S' || 
-							currentLetter == 'X' ||
-							currentLetter == '2'
+							currentLetter == 'w' && !mistype || 
+							currentLetter == 's' && !mistype || 
+							currentLetter == 'x' && !mistype || 
+							currentLetter == 'W' && !mistype || 
+							currentLetter == 'S' && !mistype || 
+							currentLetter == 'X' && !mistype ||
+							currentLetter == '2' && !mistype
 						}">
 					</div>
 					<div class="finger leftMiddle" 
-						ng-class="{current: 
-							currentLetter == 'e' || 
-							currentLetter == 'd' || 
-							currentLetter == 'c' || 
-							currentLetter == 'E' || 
-							currentLetter == 'D' || 
-							currentLetter == 'C' ||
-							currentLetter == '3'
+						ng-class="{current:
+							currentLetter == 'e' && !mistype || 
+							currentLetter == 'd' && !mistype || 
+							currentLetter == 'c' && !mistype || 
+							currentLetter == 'E' && !mistype || 
+							currentLetter == 'D' && !mistype || 
+							currentLetter == 'C' && !mistype ||
+							currentLetter == '3' && !mistype
 						}">
 					</div>
 					<div class="finger leftIndex" 
-						ng-class="{current: 
-							currentLetter == 'r' || 
-							currentLetter == 't' || 
-							currentLetter == 'f' || 
-							currentLetter == 'g' || 
-							currentLetter == 'v' || 
-							currentLetter == 'b' || 
-							currentLetter == 'R' || 
-							currentLetter == 'T' || 
-							currentLetter == 'F' || 
-							currentLetter == 'G' || 
-							currentLetter == 'V' || 
-							currentLetter == 'B' ||
-							currentLetter == '4' ||
-							currentLetter == '5'
+						ng-class="{current:
+							currentLetter == 'r' && !mistype || 
+							currentLetter == 't' && !mistype || 
+							currentLetter == 'f' && !mistype || 
+							currentLetter == 'g' && !mistype || 
+							currentLetter == 'v' && !mistype || 
+							currentLetter == 'b' && !mistype || 
+							currentLetter == 'R' && !mistype || 
+							currentLetter == 'T' && !mistype || 
+							currentLetter == 'F' && !mistype || 
+							currentLetter == 'G' && !mistype || 
+							currentLetter == 'V' && !mistype || 
+							currentLetter == 'B' && !mistype ||
+							currentLetter == '4' && !mistype ||
+							currentLetter == '5' && !mistype
 						}">
 					</div>
 				</div>
@@ -109,46 +109,46 @@
 				</div>
 				<div class='fingersArea'>
 					<div class="finger rightIndex" 
-						ng-class="{current: 
-							currentLetter == 'y' || 
-							currentLetter == 'u' || 
-							currentLetter == 'h' || 
-							currentLetter == 'j' || 
-							currentLetter == 'n' || 
-							currentLetter == 'm' || 
-							currentLetter == 'Y' || 
-							currentLetter == 'U' || 
-							currentLetter == 'H' || 
-							currentLetter == 'J' || 
-							currentLetter == 'N' || 
-							currentLetter == 'M' ||
-							currentLetter == '6' ||
-							currentLetter == '7'
+						ng-class="{current:
+							currentLetter == 'y' && !mistype || 
+							currentLetter == 'u' && !mistype || 
+							currentLetter == 'h' && !mistype || 
+							currentLetter == 'j' && !mistype || 
+							currentLetter == 'n' && !mistype || 
+							currentLetter == 'm' && !mistype || 
+							currentLetter == 'Y' && !mistype || 
+							currentLetter == 'U' && !mistype || 
+							currentLetter == 'H' && !mistype || 
+							currentLetter == 'J' && !mistype || 
+							currentLetter == 'N' && !mistype || 
+							currentLetter == 'M' && !mistype ||
+							currentLetter == '6' && !mistype ||
+							currentLetter == '7' && !mistype
 						}">
 					</div>
 					<div class="finger rightMiddle" 
-						ng-class="{current: 
-							currentLetter == 'i' || 
-							currentLetter == 'k' || 
-							currentLetter == 'I' || 
-							currentLetter == 'K' ||
-							currentLetter == '8'
+						ng-class="{current:
+							currentLetter == 'i' && !mistype || 
+							currentLetter == 'k' && !mistype || 
+							currentLetter == 'I' && !mistype || 
+							currentLetter == 'K' && !mistype ||
+							currentLetter == '8' && !mistype
 						}">
 					</div>
 					<div class="finger rightRing" 
 						ng-class="{current: 
-							currentLetter == 'o' ||
-							currentLetter == 'l' ||
-							currentLetter == 'O' || 
-							currentLetter == 'L' ||
-							currentLetter == '9'
+							currentLetter == 'o' && !mistype ||
+							currentLetter == 'l' && !mistype ||
+							currentLetter == 'O' && !mistype || 
+							currentLetter == 'L' && !mistype ||
+							currentLetter == '9' && !mistype
 						}">
 					</div>
 					<div class="finger rightPinky" 
 						ng-class="{current: 
-							currentLetter == 'p' || 
-							currentLetter == 'P' ||
-							currentLetter == '0'
+							currentLetter == 'p' && !mistype || 
+							currentLetter == 'P' && !mistype ||
+							currentLetter == '0' && !mistype
 						}">
 					</div>
 				</div>

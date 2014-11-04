@@ -189,6 +189,10 @@ myApp.controller('myController', function($scope, $http) {
 			$scope.score--;
 		}
 
+		if(typeof input == 'undefined' || input == '') {
+			$scope.mistype = false;
+		}
+
 		for(var i = 0; i < input.length; i++) {
 			if(input[i] != word[i]) {
 				$scope.mistype = true;
