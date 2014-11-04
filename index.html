@@ -40,10 +40,57 @@
 		<div class="leftHand">
 			<div class='top'>
 				<div class='fingersArea'>
-					<div class="finger leftPinky" ng-class="{current: currentLetter == 'q' || currentLetter == 'a' || currentLetter == 'z' || currentLetter == 'Q' || currentLetter == 'A' || currentLetter == 'Z'}"></div>
-					<div class="finger leftRing" ng-class="{current: currentLetter == 'w' || currentLetter == 's' || currentLetter == 'x' || currentLetter == 'W' || currentLetter == 'S' || currentLetter == 'X'}"></div>
-					<div class="finger leftMiddle" ng-class="{current: currentLetter == 'e' || currentLetter == 'd' || currentLetter == 'c' || currentLetter == 'E' || currentLetter == 'D' || currentLetter == 'C'}"></div>
-					<div class="finger leftIndex" ng-class="{current: currentLetter == 'r' || currentLetter == 't' || currentLetter == 'f' || currentLetter == 'g' || currentLetter == 'v' || currentLetter == 'b' || currentLetter == 'R' || currentLetter == 'T' || currentLetter == 'F' || currentLetter == 'G' || currentLetter == 'V' || currentLetter == 'B'}"></div>
+					<div class="finger leftPinky" 
+						ng-class="{current: 
+							currentLetter == 'q' || 
+							currentLetter == 'a' || 
+							currentLetter == 'z' || 
+							currentLetter == 'Q' || 
+							currentLetter == 'A' || 
+							currentLetter == 'Z' ||
+							currentLetter == '1'
+						}">
+					</div>
+					<div class="finger leftRing" 
+						ng-class="{current: 
+							currentLetter == 'w' || 
+							currentLetter == 's' || 
+							currentLetter == 'x' || 
+							currentLetter == 'W' || 
+							currentLetter == 'S' || 
+							currentLetter == 'X' ||
+							currentLetter == '2'
+						}">
+					</div>
+					<div class="finger leftMiddle" 
+						ng-class="{current: 
+							currentLetter == 'e' || 
+							currentLetter == 'd' || 
+							currentLetter == 'c' || 
+							currentLetter == 'E' || 
+							currentLetter == 'D' || 
+							currentLetter == 'C' ||
+							currentLetter == '3'
+						}">
+					</div>
+					<div class="finger leftIndex" 
+						ng-class="{current: 
+							currentLetter == 'r' || 
+							currentLetter == 't' || 
+							currentLetter == 'f' || 
+							currentLetter == 'g' || 
+							currentLetter == 'v' || 
+							currentLetter == 'b' || 
+							currentLetter == 'R' || 
+							currentLetter == 'T' || 
+							currentLetter == 'F' || 
+							currentLetter == 'G' || 
+							currentLetter == 'V' || 
+							currentLetter == 'B' ||
+							currentLetter == '4' ||
+							currentLetter == '5'
+						}">
+					</div>
 				</div>
 				<div class="thumbArea">
 					<div class="thumb" ng-class="{current: currentLetter == ' '}"></div>
@@ -61,10 +108,49 @@
 					<div class="thumb" ng-class="{current: currentLetter == ' '}"></div>
 				</div>
 				<div class='fingersArea'>
-					<div class="finger rightIndex" ng-class="{current: currentLetter == 'y' || currentLetter == 'u' || currentLetter == 'h' || currentLetter == 'j' || currentLetter == 'n' || currentLetter == 'm' || currentLetter == 'Y' || currentLetter == 'U' || currentLetter == 'H' || currentLetter == 'J' || currentLetter == 'N' || currentLetter == 'M'}"></div>
-					<div class="finger rightMiddle" ng-class="{current: currentLetter == 'i' || currentLetter == 'k' || currentLetter == 'I' || currentLetter == 'K'}"></div>
-					<div class="finger rightRing" ng-class="{current: currentLetter == 'o' || currentLetter == 'l' || currentLetter == 'O' || currentLetter == 'L'}"></div>
-					<div class="finger rightPinky" ng-class="{current: currentLetter == 'p' || currentLetter == 'P'}"></div>
+					<div class="finger rightIndex" 
+						ng-class="{current: 
+							currentLetter == 'y' || 
+							currentLetter == 'u' || 
+							currentLetter == 'h' || 
+							currentLetter == 'j' || 
+							currentLetter == 'n' || 
+							currentLetter == 'm' || 
+							currentLetter == 'Y' || 
+							currentLetter == 'U' || 
+							currentLetter == 'H' || 
+							currentLetter == 'J' || 
+							currentLetter == 'N' || 
+							currentLetter == 'M' ||
+							currentLetter == '6' ||
+							currentLetter == '7'
+						}">
+					</div>
+					<div class="finger rightMiddle" 
+						ng-class="{current: 
+							currentLetter == 'i' || 
+							currentLetter == 'k' || 
+							currentLetter == 'I' || 
+							currentLetter == 'K' ||
+							currentLetter == '8'
+						}">
+					</div>
+					<div class="finger rightRing" 
+						ng-class="{current: 
+							currentLetter == 'o' ||
+							currentLetter == 'l' ||
+							currentLetter == 'O' || 
+							currentLetter == 'L' ||
+							currentLetter == '9'
+						}">
+					</div>
+					<div class="finger rightPinky" 
+						ng-class="{current: 
+							currentLetter == 'p' || 
+							currentLetter == 'P' ||
+							currentLetter == '0'
+						}">
+					</div>
 				</div>
 			</div>
 			<div class='bottom'>
@@ -74,10 +160,85 @@
 			</div>
 		</div>
 		<div class="main-word">
-			<span ng-repeat='letter in word' ng-class='{current: currentLetter == word[$index], lpLetter: false, lrLetter: word[$index] == "w", lmLetter: false, liLetter: false, riLetter: false, rmLetter: word[$index] == "I", rrLetter: false, rpLetter: false}'>{{ word[$index] }}</span> 
+			<span ng-repeat='letterZ in word' 
+				ng-class="{current: currentLetter == letterZ 
+					,lpLetter:
+						letterZ == 'q' && $index == userInput.length || 
+						letterZ == 'a' && $index == userInput.length || 
+						letterZ == 'z' && $index == userInput.length || 
+						letterZ == 'Q' && $index == userInput.length || 
+						letterZ == 'A' && $index == userInput.length || 
+						letterZ == 'Z' && $index == userInput.length ||
+						letterZ == '1' && $index == userInput.length
+					,lrLetter:
+						letterZ == 'w' && $index == userInput.length || 
+						letterZ == 's' && $index == userInput.length || 
+						letterZ == 'x' && $index == userInput.length || 
+						letterZ == 'W' && $index == userInput.length || 
+						letterZ == 'S' && $index == userInput.length || 
+						letterZ == 'X' && $index == userInput.length ||
+						letterZ == '2' && $index == userInput.length
+					,lmLetter:
+						letterZ == 'e' && $index == userInput.length || 
+						letterZ == 'd' && $index == userInput.length || 
+						letterZ == 'c' && $index == userInput.length || 
+						letterZ == 'E' && $index == userInput.length || 
+						letterZ == 'D' && $index == userInput.length || 
+						letterZ == 'C' && $index == userInput.length ||
+						letterZ == '3' && $index == userInput.length
+					,liLetter:
+						letterZ == 'r' && $index == userInput.length || 
+						letterZ == 't' && $index == userInput.length || 
+						letterZ == 'f' && $index == userInput.length || 
+						letterZ == 'g' && $index == userInput.length || 
+						letterZ == 'v' && $index == userInput.length || 
+						letterZ == 'b' && $index == userInput.length || 
+						letterZ == 'R' && $index == userInput.length || 
+						letterZ == 'T' && $index == userInput.length || 
+						letterZ == 'F' && $index == userInput.length || 
+						letterZ == 'G' && $index == userInput.length || 
+						letterZ == 'V' && $index == userInput.length || 
+						letterZ == 'B' && $index == userInput.length ||
+						letterZ == '4' && $index == userInput.length ||
+						letterZ == '5' && $index == userInput.length
+					,riLetter:
+						letterZ == 'y' && $index == userInput.length || 
+						letterZ == 'u' && $index == userInput.length || 
+						letterZ == 'h' && $index == userInput.length || 
+						letterZ == 'j' && $index == userInput.length || 
+						letterZ == 'n' && $index == userInput.length || 
+						letterZ == 'm' && $index == userInput.length || 
+						letterZ == 'Y' && $index == userInput.length || 
+						letterZ == 'U' && $index == userInput.length || 
+						letterZ == 'H' && $index == userInput.length || 
+						letterZ == 'J' && $index == userInput.length || 
+						letterZ == 'N' && $index == userInput.length || 
+						letterZ == 'M' && $index == userInput.length ||
+						letterZ == '6' && $index == userInput.length ||
+						letterZ == '7' && $index == userInput.length
+					,rmLetter:
+						letterZ == 'i' && $index == userInput.length || 
+						letterZ == 'k' && $index == userInput.length || 
+						letterZ == 'I' && $index == userInput.length || 
+						letterZ == 'K' && $index == userInput.length ||
+						letterZ == '8' && $index == userInput.length
+					,rrLetter:
+						letterZ == 'o' && $index == userInput.length ||
+						letterZ == 'l' && $index == userInput.length ||
+						letterZ == 'O' && $index == userInput.length || 
+						letterZ == 'L' && $index == userInput.length ||
+						letterZ == '9' && $index == userInput.length
+					,rpLetter:
+						letterZ == 'p' && $index == userInput.length || 
+						letterZ == 'P' && $index == userInput.length ||
+						letterZ == '0' && $index == userInput.length
+				}"
+			>{{ word[$index] }}</span> 
 			<span ng-if='isSpace' class='isSpace'>(space)</span>
 		</div> 
-		<div><input class="main-input" ng-model="userInput" type='text' ng-trim='false'></div>
+		<div>
+			<input class="main-input" ng-model="userInput" type='text' ng-trim='false'>
+		</div>
 	</div>
 		
 	<div class="keyboard">
