@@ -447,6 +447,38 @@ span.rpKey, .rightPinky {
 	background: #39C0B3;
 }
 
+span.lpLetter {
+	color: rgb(251,183,53);
+}
+
+span.lrLetter {
+	color: #EB403B;
+}
+
+span.lmLetter {
+	color: #6C2A6A;
+}
+
+span.liLetter {
+	color: #7FD5F4;
+}
+
+span.riLetter {
+	color: rgb(231, 173, 230);
+}
+
+span.rmLetter {
+	color: #FFD6B4;
+}
+
+span.rrLetter {
+	color: rgb(46, 36, 187)
+}
+
+span.rpLetter {
+	color: #77181E;
+}
+
 
 /*===============================
 State
