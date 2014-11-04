@@ -177,13 +177,25 @@ myApp.controller('myController', function($scope, $http) {
 
 	$scope.$watch('userInput', function() {
 		var input = $scope.userInput;
-		var lastLetterTyped = input[input.length-1];	
-		
+		var lastLetterTyped = input[input.length-1];
+		var word = $scope.word;
+
+		$scope.lastLetterTyped = lastLetterTyped;
+
 		if((lastLetterTyped === $scope.currentLetter) && (input.length !== 0)) {
 			$scope.score++;
 		} else if ((lastLetterTyped !== $scope.currentLetter) && (input.length !== 0)) {
 			$scope.score--;
 		}
+
+		for(var i = 0; i < input.length; i++) {
+			if(input[i] != word[i]) {
+				$scope.mistype = true;
+			} else {
+				$scope.mistype = false;
+			}
+		}
+
 		if(input === $scope.word) {
 			$scope.lyricIndex += 1;
 			$scope.word = $scope.lyrics[$scope.lyricIndex];

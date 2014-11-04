@@ -161,7 +161,8 @@
 		</div>
 		<div class="main-word">
 			<span ng-repeat='letter in word' 
-				ng-class="{current: currentLetter == letter 
+				ng-class="{current: currentLetter == letter
+					,incorrect: mistype 
 					,lpLetter:
 						letter == 'q' && $index == userInput.length || 
 						letter == 'a' && $index == userInput.length || 

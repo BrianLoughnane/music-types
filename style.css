@@ -489,6 +489,12 @@ State
 	animation: pulsate 0.5s linear alternate infinite;
 }
 
+span.incorrect {
+	color: red;
+	-webkit-animation: pulsate 0.5s linear alternate infinite;
+	animation: pulsate 0.5s linear alternate infinite;	
+}
+
 @-webkit-keyframes pulsate {
 	from {
 		opacity: 0.5;
