@@ -183,7 +183,7 @@ myApp.controller('myController', function($scope, $http) {
 
 		$scope.lastLetterTyped = lastLetterTyped;
 
-		if((lastLetterTyped === $scope.currentLetter) && (input.length !== 0)) {
+		if((lastLetterTyped === $scope.currentLetter) && (input.length !== 0) && !$scope.mistype) {
 			$scope.score++;
 		} else if ((lastLetterTyped !== $scope.currentLetter) && (input.length !== 0)) {
 			$scope.score--;
@@ -197,7 +197,7 @@ myApp.controller('myController', function($scope, $http) {
 			if(input[i] != word[i]) {
 				$scope.mistype = true;
 				mistypedLetters.push(i);
-			} else {
+			} else if (!mistypedLetters.length){
 				$scope.mistype = false;
 			}
 		}
