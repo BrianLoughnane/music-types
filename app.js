@@ -270,37 +270,59 @@ Search Spotify
 		// 		type: 'artist,track'
 		// 	}
 
-	// 	$http({
-	// 		url: 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=15953433',
-	// 		method: 'JSONP',
-	// 		// method: 'GET',
-	// 		params: {
-	// 			apikey: '83c1f43d33f5abacda9ae5f1f1106dca',
-	// 			callback: 'JSON_CALLBACK',
-	// 			q: 'beatles'
-	// 		}
+		// $http({
+		// 	url: 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=15953433',
+		// 	method: 'JSONP',
+		// 	// method: 'GET',
+		// 	data: '',
+		//     headers: {
+		//         "Content-Type": "application/json"
+		//     },
+		// 	params: {
+		// 		apikey: '83c1f43d33f5abacda9ae5f1f1106dca',
+		// 		callback: 'JSON_CALLBACK',
+		// 		q: 'beatles'
+		// 	}
 		
-	// 	}).success(function(response) {
-	// 		console.log(response);
-	// 		// $('.mmTracking').attr('src', 'http:\/\/tracking.musixmatch.com\/t1.0\/m42By\/J7rv9z');
-	// 	});
+		// }).success(function(response) {
+		// 	console.log(response);
+		// 	// $('.mmTracking').attr('src', 'http:\/\/tracking.musixmatch.com\/t1.0\/m42By\/J7rv9z');
+		// }).error(function(error) {
+		// 	console.log(error);
+		// }) // end lyrics.get http request
 
 		$http({
 			url: 'http://api.musixmatch.com/ws/1.1/track.search',
-			method: 'JSONP',
+			// method: 'JSONP',
+			method: 'GET',
+			// dataType: 'jsonp',
 			params: {
 				apikey: '83c1f43d33f5abacda9ae5f1f1106dca',
-				callback: 'JSON_CALLBACK',
-				q_track: 'beatles',
-				q_artist: 'beatles'
+				// callback: 'JSON_CALLBACK',
+				// q_track: 'beatles',
+				// q_artist: 'beatles'
+				q: 'beatles'
 			}
 		}).success(function(response) {
-			console.log(response.message.body.track_list[0].track.track_id);
+			console.log(response);
+			// console.log(response.message.body.track_list[0].track.track_id);
 			// $('.mmTracking').attr('src', 'http:\/\/tracking.musixmatch.com\/t1.0\/m42By\/J7rv9z');
-		});
+		}).error(function(error) {
+			console.log(error);
+		});  // end track.search http request
+
+
+
 	});  // end search click handler
+
+
+
 });  //end myController
 
+myApp.config(function($httpProvider) {
+	$httpProvider.defaults.useXDomain = true;
+	delete $httpProvider.defaults.headers.common['X-Requested-With'];
+});
 
 
 $(document).on('ready', function() {
@@ -543,7 +565,7 @@ $(document).on('keydown', function(event) {
 			$('.thumb').addClass('active');
 			break;
 		default:
-			console.log('switch default');
+			// console.log('switch default');
 	}
 
 }); //End On Keydown Handler
@@ -777,7 +799,7 @@ $(document).on('keyup', function(event) {
 			$('.thumb').removeClass('active');
 			break;
 		default:
-			console.log('switch default');
+			// console.log('switch default');
 	}
 
 }); //End On Keyup Handler
