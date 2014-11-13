@@ -1,0 +1,16 @@
+<header>
+	<a href="/#/"><span class='button'>Resume</span></a>
+</header>
+<div class='searchResults'>
+	<form>
+		<input type="text" ng-model='query' placeholder='Search for an artist or song' class='query'>
+		<span class='search button'><input type="submit" class="queryButton" value="search"></span>
+	</form>
+	<div class='resultContainer'>
+		<div class='result' ng-repeat='result in searchResults'>
+			<span class='resultArtist'>{{ result.track.artist_name }},</span>
+			<span class='resultSong'>{{ result.track.track_name }},</span>
+			<span class='resultAlbum'>{{  result.track.album_name }}</span>
+		</div>
+	</div>	
+</div>

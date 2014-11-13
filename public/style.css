@@ -1,0 +1,540 @@
+* {
+	/*outline: 1px solid darkblue;*/
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	font-size: 2em;
+/*	background: #119ee0;*/
+	font-family: 'Lato', sans-serif;
+	/*background: url of album art;*/
+}
+
+header {
+	height: 8%;
+	background: white;
+	text-align: right;
+	min-width: 1425px;
+	min-height: 56px;
+	border-bottom: 2px solid #119ee0;
+}
+
+header span {
+	margin-left: 5%;
+	vertical-align: middle;
+	font-size: 0.6em;
+}
+
+header span span {
+	margin-left: 3%;
+}
+
+header span span span {
+	margin-left: 0%;
+}
+
+.statusBar {
+	width: 70%;
+	font-size: 1em;
+}
+
+.button {
+	display: inline-block;
+	border: 3px solid #fd7d68;
+	padding: 0.95% 4%;
+	color: #fd7d68;
+	font-weight: bold;
+}
+
+.button:hover {
+	cursor: pointer;
+	background: #fd7d68;
+	color: white;
+}
+
+.mainAndKeyboard {
+	position: relative;
+	height: 100%;
+	/*background: #119ee0;*/
+	/*border-top: 2px solid #119ee0;*/
+}
+
+.main {
+	height: 44%;
+	text-align: center;
+	position: relative;
+	color: white;
+	min-width: 1425px;
+	min-height: 308px;
+}
+
+.main-word {
+	padding-top: 2%;
+	font-size: 3.2em;
+	min-width: 1425px;
+	min-height: 152px;
+	color: #119ee0;
+}
+
+.isSpace {
+	font-size: 0.4em;
+	display: inherit;
+	color: #39C0B3;
+}
+
+.main-input {
+	font-size: 3em;
+	border: none;
+	border-bottom: 2px solid darkslategray; 
+	display: block;
+	margin: auto;
+	padding: 5px;
+	background: transparent;
+	width: 90%;
+	color: #fd7d68;
+}
+
+.main-input:focus {
+	outline: none;
+}
+
+input {
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.searchResults {
+	text-align: center;
+	width: 101%;
+}
+
+.query {
+	width: 75%;
+	padding: 1%;
+	text-align: center;
+	color: #fd7d68;
+	border: none;
+	border-bottom: 1px solid #fd7d68;
+	margin-bottom: 1%;
+	font-size: 2em;
+}
+
+.query:focus {
+	outline: none;
+}
+
+.queryButton {
+	background: inherit;
+	border: none;
+}
+
+.result {
+	margin: 2% 0%;
+}
+
+.result:hover {
+	cursor: pointer;
+	color: #fd7d68;
+}
+
+.resultArtist {
+	font-weight: bold;
+}
+
+.resultAlbum {
+	font-style: italic;
+}
+
+/*===============================
+hands
+===============================*/
+
+/*.leftHand *, .rightHand * {
+	outline: 1px solid darkblue;
+}*/
+
+.leftHand, .rightHand {
+	/*background: white;*/
+	position: absolute;
+	height: 100%;
+	width: 30%;
+}
+
+.leftHand {
+	left: 0;
+}
+
+.rightHand {
+	right: -1.4%;
+}
+
+.leftHand>div div, .rightHand>div div {
+	display: inline-block;
+}
+
+.top {
+	height: 75%;
+}
+
+.bottom {
+	height: 25%;
+}
+
+.thumbArea {
+	width: 17%;
+	height: 100%;
+	position: relative;
+	text-align: left;
+}
+
+.thumb {
+	position: absolute;
+	width: 100%;
+	height: 20%;
+	bottom: 0;
+	border-radius: 40px 40px 0px 0px;
+	margin-left: 31%;
+}
+
+.leftHand .thumb {
+	height: 60%;
+	bottom: -35%;
+	left: -15%;
+	border-radius: 40px 40px 0px 70px;
+}
+
+.rightHand .thumb {
+	height: 60%;
+	bottom: -35%;
+	right: -4%;
+	border-radius: 40px 40px 70px 0px;
+}
+
+.leftHand .bottom .thumbArea, .leftHand .thumb {
+	-webkit-transform: skew(-20deg);
+	-moz-transform: skew(-20deg);
+	-o-transform: skew(-20deg);
+	-ms-transform: skew(-20deg);	
+	transform: skew(-20deg);
+}
+
+.rightHand .bottom .thumbArea, .rightHand .thumb {
+	-webkit-transform: skew(20deg);
+	-moz-transform: skew(20deg);
+	-o-transform: skew(20deg);
+	-ms-transform: skew(20deg);	
+	transform: skew(20deg);
+}
+
+.palmArea, .fingersArea {
+	width: 75%;
+	height: 100%;
+}
+
+.palmArea, .fingersArea, .thumbArea {
+	float: left;
+}
+
+.rightHand .palmArea {
+	float: right;
+	margin-right: 8%;
+}
+
+.palmArea {
+	position: relative;
+}
+
+.palm {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 5%;
+	height: 220%;
+	/*z-index: -10;*/
+	opacity: 0.3;
+	border-radius: 0% 0% 55% 55%;
+}
+
+.fingersArea {
+	position: relative;
+	text-align: left;
+}
+
+.finger {
+	position: absolute;
+	bottom: 0;
+	width: 20%;
+	height: 80%;
+	border-radius: 30px 30px 0px 0px;
+}
+
+.leftPinky {
+	left: 5%;
+	height: 70%;
+	/*background: red;*/
+}
+
+.leftRing {
+	left: 30%;
+	height: 90%;
+}
+
+.leftMiddle {
+	left: 55%;
+	height: 100%
+}
+
+.leftIndex {
+	left: 80%;
+	height: 85%;
+}
+
+.rightIndex {
+	left: 5%;
+	height: 85%;
+	/*background: red;*/
+}
+
+.rightMiddle {
+	left: 30%;
+	height: 100%;
+}
+
+.rightRing {
+	left: 55%;
+	height: 90%
+}
+
+.rightPinky {
+	left: 80%;
+	height: 70%;
+}
+
+/*===============================
+keyboard
+===============================*/
+
+
+.keyboard {
+	height: 48%;
+	color: black;
+	/*background: rgba(0,0,0,0.3);*/
+	min-width: 1425px;
+	min-height: 350px;
+}
+
+.keyboard div {
+	height: 17%;
+	margin-bottom: 0.7%;
+	text-align: center;
+}
+
+.keyboard span {
+	display: inline-block;
+	height: 100%;
+	width: 6.3%;
+	text-align: center;
+	vertical-align: top;
+	padding: 0% 0.6%;
+	padding-top: 0.3%;
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 3px 5px;
+	position: relative;
+	/*background: aliceblue;*/
+}
+
+.keyboard span:first-child {
+	text-align: left;
+}
+
+.keyboard span:last-child {
+	text-align: right;
+}
+
+.row1 span:first-child {
+	text-align: center;
+}
+
+.row1 span:last-child {
+	width: 8.6%;
+}
+
+.row2 span:first-child {
+	width: 8.6%;
+}
+
+.row2 span:last-child {
+	text-align: center;
+}
+
+.row3 span:first-child, .row3 span:last-child {
+	width: 10.9%;
+}
+
+.row4 span:first-child, .row4 span:last-child {
+	width: 14.3%;
+}
+
+.row5 span:nth-child(4), .row5 span:nth-child(6) {
+	width: 7.5%;
+}
+
+.row5 span:nth-child(5) {
+	width: 34%;
+}
+
+.row5 span:last-child {
+	width: 19%;
+	visibility: hidden;
+}
+
+/*===============================
+Key Colors
+===============================*/
+
+.finger, .thumb, .keyboard span {
+	opacity: 0.5;
+}
+
+.palm {
+	background: rgb(253,125,104);
+}
+
+span.lpKey, .leftPinky {
+	background: rgb(251,183,53);
+}
+
+span.lrKey, .leftRing {
+	background: #EB403B;
+}
+
+span.lmKey, .leftMiddle {
+	background: #6C2A6A;
+}
+
+span.liKey, .leftIndex {
+	background: #7FD5F4;
+}
+
+span.riKey, .rightIndex {
+	background: rgb(231, 173, 230);
+}
+
+span.rmKey, .rightMiddle {
+	background: #FFD6B4;
+}
+
+span.rrKey, .rightRing {
+	background: rgb(46, 36, 187)
+}
+
+span.rpKey, .rightPinky {
+	background: #77181E;
+}
+
+.ltKey, .rtKey, .thumb {
+	background: #39C0B3;
+}
+
+span.lpLetter {
+	color: rgb(251,183,53);
+}
+
+span.lrLetter {
+	color: #EB403B;
+}
+
+span.lmLetter {
+	color: #6C2A6A;
+}
+
+span.liLetter {
+	color: #7FD5F4;
+}
+
+span.riLetter {
+	color: rgb(231, 173, 230);
+}
+
+span.rmLetter {
+	color: #FFD6B4;
+}
+
+span.rrLetter {
+	color: rgb(46, 36, 187)
+}
+
+span.rpLetter {
+	color: #77181E;
+}
+
+
+/*===============================
+State
+===============================*/
+
+.finger.current, .keyboard span.current, span.current, .thumb.current, .isSpace {
+	-webkit-animation: pulsate 0.5s linear alternate infinite;
+	animation: pulsate 0.5s linear alternate infinite;
+}
+
+.main-word .incorrect {
+	color: red;
+	-webkit-animation: pulsate 0.5s linear alternate infinite;
+	animation: pulsate 0.5s linear alternate infinite;	
+}
+
+.keyboard .incorrect, .rightHand .incorrect {
+	background: red;
+	-webkit-animation: pulsate 0.5s linear alternate infinite;
+	animation: pulsate 0.5s linear alternate infinite;	
+}
+
+@-webkit-keyframes pulsate {
+	from {
+		opacity: 0.5;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes pulsate {
+	from {
+		opacity: 0.5;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.keyboard span.active {
+	box-shadow: 1px 3px;
+	top: 2px;
+	left: 2px;
+	/*background: rgba(253,125,104, 1);*/
+	opacity: 1;
+/*	background: green if correct;
+	background: red if incorrect;*/
+}
+
+.finger.active, .thumb.active {
+	opacity: 1;
+	/*background: rgba(253,125,104, 1);*/
+}
+
+
+
+
+
+
+

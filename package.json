@@ -1,0 +1,23 @@
+{
+  "name": "music-types",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrianLoughnane/music-types.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrianLoughnane/music-types/issues"
+  },
+  "homepage": "https://github.com/BrianLoughnane/music-types",
+  "dependencies": {
+    "express": "^4.10.2",
+    "request": "^2.48.0"
+  }
+}
