@@ -45,6 +45,40 @@ myApp.controller('SearchCtrl', function($scope, $http) {
 	
 	});  // end search click handler
 
+	$('.resultContainer').on('click', '.result', function() {
+		console.log('result click');
+
+		var trackId = $(this)[0].attributes.trackid.value;
+
+		console.log(trackId);
+
+		$http.get('musicmatch/' + trackId)
+			.then(
+				function(response) {
+					console.log('trackGet response', response);
+				}, 
+				function(error) {
+					console.log(error);
+				}
+			);
+
+		$http.get('musicmatch/lyrics/' + trackId)
+		.then(
+			function(response) {
+				var lyricsObj = response.data.message.body.lyrics;
+				var lyrics = lyricsObj.lyrics_body;
+				var copyright = lyricsObj.lyrics_copyright;
+
+				console.log('trackLyricsGet lyricsObj', lyricsObj);
+				console.log('trackLyricsGet lyrics', lyrics);
+				console.log('trackLyricsGet copyright', copyright);
+			}, 
+			function(error) {
+				console.log(error);
+			}
+		);
+
+	});
 	// $scope.$watch('query', function() {
 	// 	console.log('query$watch');
 

@@ -16,6 +16,24 @@ app.get('/musicmatch/:band', function(req, res) {
     request(urlStr).pipe(res);
 })
 
+// my attempt below
+
+app.get('/musicmatch/:track', function(req, res) {
+    var apiUrl = "http://api.musixmatch.com/ws/1.1/track.get";
+    var track = req.params.track;
+
+    var urlStr = apiUrl + "?track_id=" + track + "&apikey=" + musicApiKey;
+    request(urlStr).pipe(res);
+})
+
+app.get('/musicmatch/lyrics/:lyrics', function(req, res) {
+    var apiUrl = "http://api.musixmatch.com/ws/1.1/track.lyrics.get";
+    var lyrics = req.params.lyrics;
+
+    var urlStr = apiUrl + "?track_id=" + lyrics + "&apikey=" + musicApiKey;
+    request(urlStr).pipe(res);
+})
+
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
