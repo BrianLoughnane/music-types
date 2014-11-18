@@ -135,7 +135,7 @@
 			</div>
 		</div>
 		<div class="main-word">
-			<span ng-repeat='letter in word' 
+			<span ng-repeat='letter in word track by $index' 
 				ng-class="{current: currentLetter == letter && !mistype
 		 			,incorrect: mistype && mistypedLetters.indexOf($index) > -1 
 					,lpLetter:

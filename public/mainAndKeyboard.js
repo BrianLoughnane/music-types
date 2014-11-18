@@ -49,16 +49,6 @@ myApp.controller('MainCtrl', function($scope, $http, currentLyrics) {
 
 			$scope.userInput = "";
 			updateProgress();
-				
-			// $http({
-			// 	url: 'http://tts-api.com/tts.mp3?q=hi',
-			// 	method: 'GET'
-			// 	// params: {
-			// 	// 	q: 'hello'
-			// 	// }
-			// }).then(function(r){
-			// 	console.log(r);
-			// });    // text to speech API
 
 		}
 		if(typeof $scope.word !== 'undefined') {
