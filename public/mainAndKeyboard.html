@@ -248,7 +248,8 @@
 			<span class="p rpKey" ng-class="{current: currentLetter == 'p' && !mistype || currentLetter == 'P' && !mistype }">P</span>
 			<span class="leftBracket rpKey"		ng-class="{current: currentLetter == '[' && !mistype || currentLetter == '{' && !mistype }">{ [</span>
 			<span class="rightBracket rpKey" 	ng-class="{current: currentLetter == ']' && !mistype || currentLetter == '}' && !mistype }">} ]</span>
-			<span class="backslash rpKey" 		ng-class="{current: currentLetter == '\' && !mistype || currentLetter == '|' && !mistype }">| \</span>
+			<span class="backslash rpKey">\ |</span>
+			<!-- <span class="backslash rpKey" 		ng-class="{current: currentLetter == '\' && !mistype || currentLetter == '|' && !mistype }">| \</span> -->       <!-- this was throwing an error -->
 		</div>
 		<div class="row3">
 			<span class="caps lpKey" ng-class="{current: false}">caps lock</span>
