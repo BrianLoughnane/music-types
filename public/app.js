@@ -1,9 +1,11 @@
 
 var myApp = angular.module('myApp', ['ngRoute']);
 
-myApp.factory('currentLyrics', function() {
+myApp.factory('nowPlaying', function() {
 	return {
-		currentLyrics: []
+		lyrics: [],
+		artist: undefined,
+		song: undefined
 	}
 });
 
@@ -22,7 +24,7 @@ myApp.factory('searchSong', function($http, $q) {
 	}
 });
 
-myApp.factory('getLyrics', function($http, $q, currentLyrics) {
+myApp.factory('getLyrics', function($http, $q) {
 
 	return function(trackId) {
 		var defer = $q.defer();

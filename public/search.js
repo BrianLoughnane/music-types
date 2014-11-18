@@ -1,4 +1,4 @@
-myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, getLyrics, currentLyrics) {
+myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, getLyrics, nowPlaying) {
 	$scope.query = '';
 	$scope.searchResults;
 
@@ -18,22 +18,30 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 
 	$('.resultContainer').on('click', '.result', function() {
 		var trId = $(this)[0].attributes.trackid.value;
+		var artist = $(this)[0].attributes.artist.value;
+		var song = $(this)[0].attributes.song.value;
+		var album =  $(this)[0].attributes.album.value;
+		var art =  $(this)[0].attributes.art.value;
+
 		console.log('trId', trId);
 	
 		getLyrics(trId)
 			.then(function(response) {
+				console.log('getL', response);
 				var lyrics = response.data.message.body.lyrics.lyrics_body;
 				lyrics = lyrics.replace(/\n/g, ' ').split(' ');
 				lyrics.splice(lyrics.length-11, 11);
 				
 				for (var i = 1; i < lyrics.length; i += 2) {
 					lyrics.splice(i, 0, ' ');
-					console.log(lyrics);
 				};
 				
 
-				currentLyrics.currentLyrics = lyrics;
-				console.log('currentLyricsPostSet', currentLyrics.currentLyrics);
+				nowPlaying.lyrics = lyrics;
+				nowPlaying.artist = artist;
+				nowPlaying.song = song;
+				nowPlaying.album = album;
+				nowPlaying.art = art;
 				$location.url('/#/');
 
 				// console.log()

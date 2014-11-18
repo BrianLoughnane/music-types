@@ -58,6 +58,12 @@ header span span span {
 	color: white;
 }
 
+.albumArtHeader {
+	width: 3%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
 .mainAndKeyboard {
 	position: relative;
 	height: 100%;
@@ -531,6 +537,8 @@ State
 	opacity: 1;
 	/*background: rgba(253,125,104, 1);*/
 }
+
+
 
 
 

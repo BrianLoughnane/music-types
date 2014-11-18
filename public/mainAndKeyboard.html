@@ -1,6 +1,10 @@
 <header>
 	<span class='statusBar'>
-		<span>NOW PLAYING: {{ song }} <span ng-if='artist.length !== 0 && artist !== undefined'>by</span> {{ artist }}</span> 
+		<img class='albumArtHeader' ng-src="{{ art }}">
+		<span>NOW PLAYING: {{ song }} 
+			<span ng-if='artist.length !== 0 && artist !== undefined'>by</span> {{ artist }}
+			<span ng-if='album.length !== 0 && album !== undefined'>on</span> {{ album }}
+		</span> 
 		<span>Score: {{ score }}</span> 
 		<span>Progress: <input type='range' ng-model="progress" min='0' max='100' ng-trim='false'></span>
 	
@@ -10,6 +14,28 @@
 
 </header>
 <div class="main">
+<!-- 		<div class="artContainer">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+			<img class='albumArt' ng-src="{{ art }}">
+		</div> -->
 		<div class="leftHand">
 			<div class='top'>
 				<div class='fingersArea'>
@@ -136,7 +162,7 @@
 		</div>
 		<div class="main-word">
 			<span ng-repeat='letter in word track by $index' 
-				ng-class="{current: currentLetter == letter && !mistype
+				ng-class="{current: $index == userInput.length && !mistype
 		 			,incorrect: mistype && mistypedLetters.indexOf($index) > -1 
 					,lpLetter:
 						letter == 'q' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 

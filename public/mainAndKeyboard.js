@@ -1,6 +1,10 @@
-myApp.controller('MainCtrl', function($scope, $http, currentLyrics) {
+myApp.controller('MainCtrl', function($scope, $http, nowPlaying) {
 	// $scope.lyrics = ['rtfgvb', ' ', 'I', ' ', 'went', ' ', 'down','to','the','asdf','to', 'pray'];
-	$scope.lyrics = currentLyrics.currentLyrics;
+	$scope.song = nowPlaying.song;
+	$scope.artist = nowPlaying.artist;
+	$scope.album = nowPlaying.album;
+	$scope.art = nowPlaying.art;
+	$scope.lyrics = nowPlaying.lyrics;
 	$scope.lyricIndex = 0;
 	$scope.word = $scope.lyrics[$scope.lyricIndex] || '';
 
@@ -8,8 +12,7 @@ myApp.controller('MainCtrl', function($scope, $http, currentLyrics) {
 	$scope.currentLetter = $scope.word[$scope.userInput.length];
 	$scope.progress = 0;
 	$scope.score = 0; 
-	$scope.song = 'songysong';
-	$scope.artist = 'artGarfunk';
+
 	
 	// $scope.searchResults;
 
