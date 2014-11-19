@@ -1,7 +1,7 @@
 myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, getSpotify) {
 	$('.main-input').focus();
 
-	$scope.lyrics = ['hey', ' ', 'you'];
+	// $scope.lyrics = ['hey', ' ', 'you'];
 	$scope.song = nowPlaying.song;
 	$scope.artist = nowPlaying.artist;
 	$scope.album = nowPlaying.album;
@@ -15,7 +15,7 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, getSpotif
 	// 	return $scope.listenView = false;
 	// }, 3000);
 
-	// $scope.lyrics = nowPlaying.lyrics;
+	$scope.lyrics = nowPlaying.lyrics;
 	$scope.lyricIndex = 0;
 	$scope.word = $scope.lyrics[$scope.lyricIndex] || '';
 

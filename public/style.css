@@ -17,8 +17,10 @@ body {
 }
 
 footer {
+	width: 100%;
 	height: 20%;
 	display: inline-block;
+	border-top: 2px solid #119ee0;
 }
 
 footer div {
@@ -28,7 +30,24 @@ footer div {
 	vertical-align: top;
 	padding: 40px;
 	font-size: 20px;
+	color: #119ee0;
 }
+
+.portfolio {
+	text-decoration: none;
+	color: darkred;
+}
+
+.portfolio strong {
+	color: darkslategray;
+}
+
+.copyright {
+	width: 40%;
+	float: right;
+	color: #fd7d68;	
+}
+
 
 iframe {
 	position: absolute;
@@ -68,7 +87,7 @@ header span span span {
 }
 
 .changeViews {
-	margin-left: 5%;
+	margin-left: 4%;
 	display: inline-block;
 }
 
@@ -162,9 +181,16 @@ input {
 	vertical-align: middle;
 }
 
+.search {
+	position: absolute;
+	z-index: -20;
+	visibility: hidden;
+}
+
 .searchResults {
 	text-align: center;
 	width: 101%;
+	min-height: 72%;
 }
 
 .query {
