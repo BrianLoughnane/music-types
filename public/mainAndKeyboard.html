@@ -10,10 +10,12 @@
 	
 	</span>
 
-	<a href="/#/search"><span class='button'>Search Song</span></a>
+	<a href="/#/search" class='changeViews'><span class='button'>Search Song</span></a>
 
 </header>
-<div class="main">
+<div class="mainAndKeyboard">
+	<div class="play" ng-if="listenView"><img class='albumArtPlay' ng-src="{{ art }}"></div>
+	<div class="main">
 		<div class="leftHand">
 			<div class='top'>
 				<div class='fingersArea'>
@@ -220,7 +222,7 @@
 			<input class="main-input" ng-model="userInput" type='text' ng-trim='false'>
 		</div>
 	</div>
-		
+			
 	<div class="keyboard">
 		<div class="row1">
 			<span class="tilde lpKey"	ng-class="{current: currentLetter == '`' && !mistype || currentLetter == '~' && !mistype }">~ `</span>
@@ -295,5 +297,10 @@
 			<span></span>
 		</div>
 	</div>
-<iframe class="iframe" ng-src="{{ trustSrc(url) }}"></iframe>
-<!-- <iframe class="iframe" src="https://p.scdn.co/mp3-preview/80eb23252d65c790877873093278760c6eb5ddce"></iframe> -->
+</div>	
+<footer>
+	<div>Music Types (c) built by <a href="http://www.brianloughnane.com" target="_blank">Brian Loughnane</a></div>
+	<div>Lyrics powered by www.musiXmatch.com. This Lyrics is NOT for Commercial use and only 30% of the lyrics are returned.</div>
+	<img ng-src="{{ tracking }}">
+</footer>
+<iframe class="iframe hidden" ng-src="{{ trustSrc(url) }}"></iframe>	

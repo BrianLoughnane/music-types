@@ -10,7 +10,15 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 				.then(function(response) {
 					console.log('ssResponse', response);
 					var tracks = response.message.body.track_list;
-					$scope.searchResults = tracks;
+					var goodTracks = [];
+
+					for (var i = 0; i < tracks.length; i++) {
+						if(tracks[i].track.track_spotify_id && tracks[i].track.has_lyrics) {
+							goodTracks.push(tracks[i]);
+						}
+					}
+					$scope.searchResults = goodTracks;;
+					// $scope.searchResults = tracks;;
 				});
 		}
 	
@@ -25,33 +33,33 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 		var spotifyId =  $(this)[0].attributes.spotifyid.value;
 
 
-
-		console.log('trId', trId);
+		nowPlaying.artist = artist;
+		nowPlaying.song = song;
+		nowPlaying.album = album;
+		nowPlaying.art = art;
+		nowPlaying.spotifyId = spotifyId;
 	
 		getLyrics(trId)
 			.then(function(response) {
 				console.log('getL', response);
+				var tracking = response.data.message.body.lyrics.pixel_tracking_url;
 				var lyrics = response.data.message.body.lyrics.lyrics_body;
+
+				lyrics = lyrics.replace(/’/g, "'");
 				lyrics = lyrics.replace(/\n/g, ' ').split(' ');
 				lyrics.splice(lyrics.length-11, 11);
 				
 				for (var i = 1; i < lyrics.length; i += 2) {
 					lyrics.splice(i, 0, ' ');
 				};
-				
-				nowPlaying.lyrics = lyrics;
-				nowPlaying.artist = artist;
-				nowPlaying.song = song;
-				nowPlaying.album = album;
-				nowPlaying.art = art;
-				nowPlaying.spotifyId = spotifyId;
-				
-				debugger;
+
+				nowPlaying.lyrics = lyrics;				
+				nowPlaying.tracking = tracking;
 				$location.url('/#/');
+			}); //end then()
 
-				// console.log()
-			});
-
-	});
+		
+	
+	}); // end result click handler
 
 }); //end SearchCtrl

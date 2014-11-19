@@ -16,6 +16,29 @@ body {
 	/*background: url of album art;*/
 }
 
+footer {
+	height: 20%;
+	display: inline-block;
+}
+
+footer div {
+	display: inline-block;
+	width: 30%;
+	height: 100%;
+	vertical-align: top;
+	padding: 40px;
+	font-size: 20px;
+}
+
+iframe {
+	position: absolute;
+	top: 0;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
 header {
 	height: 8%;
 	background: white;
@@ -44,10 +67,16 @@ header span span span {
 	font-size: 1em;
 }
 
+.changeViews {
+	margin-left: 5%;
+	display: inline-block;
+}
+
 .button {
 	display: inline-block;
 	border: 3px solid #fd7d68;
-	padding: 0.95% 4%;
+	margin: 0px;
+	padding: 13px 35px;
 	color: #fd7d68;
 	font-weight: bold;
 }
@@ -64,11 +93,28 @@ header span span span {
 	vertical-align: middle;
 }
 
-.mainAndKeyboard {
+.view {
 	position: relative;
 	height: 100%;
-	/*background: #119ee0;*/
-	/*border-top: 2px solid #119ee0;*/
+}
+
+.mainAndKeyboard {
+	position: relative;
+	height: 92%;
+}
+
+.play {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+	z-index: 10;
+}
+
+.albumArtPlay {
+	display: block;
+	margin: auto;
+	width: 46%;
 }
 
 .main {
@@ -421,6 +467,7 @@ span.lpKey, .leftPinky {
 
 span.lrKey, .leftRing {
 	background: #EB403B;
+	background: #1D6451;
 }
 
 span.lmKey, .leftMiddle {
@@ -457,6 +504,7 @@ span.lpLetter {
 
 span.lrLetter {
 	color: #EB403B;
+	color: #1D6451;
 }
 
 span.lmLetter {

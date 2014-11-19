@@ -1,4 +1,4 @@
-myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, play) {
+myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, getSpotify) {
 	$('.main-input').focus();
 
 	$scope.lyrics = ['hey', ' ', 'you'];
@@ -7,7 +7,13 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, play) {
 	$scope.album = nowPlaying.album;
 	$scope.art = nowPlaying.art;
 	$scope.spotifyId = nowPlaying.spotifyId;
-
+	$scope.tracking = nowPlaying.tracking;
+	$scope.listenView = false;
+	
+	// $scope.listenView = true;
+	// setTimeout(function() {
+	// 	return $scope.listenView = false;
+	// }, 3000);
 
 	// $scope.lyrics = nowPlaying.lyrics;
 	$scope.lyricIndex = 0;
@@ -78,20 +84,15 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, play) {
 		
 		if($scope.lyricIndex == $scope.lyrics.length) {
 			$scope.currentLetter = '';
+			// $scope.word = undefined;	
 			// debugger;
 			var spotifyId = nowPlaying.spotifyId;
-			play(spotifyId)
+			getSpotify(spotifyId)
 				.then(function(r) {
+					$scope.listenView = true;
 					$scope.url = r.data.preview_url;
-					// $scope.url = 'https://p.scdn.co/mp3-preview/80eb23252d65c790877873093278760c6eb5ddce';
-					console.log('url', $scope.url);
-					// playAudio();
-
+					// $scope.url = r.data.external_urls.spotify; // X-Frame-Options: DENY ...boo...
 				});
-			// debugger;	
-				// .then(function() {
-
-				// })
 		}
 
 	} // end completedWord();
@@ -107,6 +108,7 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, play) {
 	function nextLetter() {
 		if(typeof $scope.word !== 'undefined') {
 			$scope.currentLetter = $scope.word[$scope.userInput.length];	
+			console.log($scope.currentLetter);
 		}
 	} //end nextLetter();
 
@@ -118,10 +120,5 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, play) {
 		}
 	} // end isSpace()
 
-	// function playAudio() {
-	// 	$("#audio")[0].volume = 0.5;
-	// 	$("#audio")[0].load();
-	// 	$("#audio")[0].play();
-	// }
 
 });  //end MainCtrl
