@@ -22,6 +22,7 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 		var song = $(this)[0].attributes.song.value;
 		var album =  $(this)[0].attributes.album.value;
 		var art =  $(this)[0].attributes.art.value;
+		var spotifyId =  $(this)[0].attributes.spotifyid.value;
 
 		console.log('trId', trId);
 	
@@ -36,12 +37,13 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 					lyrics.splice(i, 0, ' ');
 				};
 				
-
 				nowPlaying.lyrics = lyrics;
 				nowPlaying.artist = artist;
 				nowPlaying.song = song;
 				nowPlaying.album = album;
 				nowPlaying.art = art;
+				nowPlaying.spotifyId = spotifyId;
+				
 				$location.url('/#/');
 
 				// console.log()

@@ -7,7 +7,7 @@
 		<span class='search button'><input type="submit" class="queryButton" value="search"></span>
 	</form>
 	<div class='resultContainer'>
-		<div class='result' ng-repeat='result in searchResults' ng-attr-trackId="{{ result.track.track_id }}" ng-attr-artist="{{ result.track.artist_name }}" ng-attr-song="{{ result.track.track_name }}" ng-attr-album="{{ result.track.album_name }}" ng-attr-art="{{ result.track.album_coverart_500x500 }}">
+		<div class='result' ng-repeat='result in searchResults' ng-attr-trackId="{{ result.track.track_id }}" ng-attr-artist="{{ result.track.artist_name }}" ng-attr-song="{{ result.track.track_name }}" ng-attr-album="{{ result.track.album_name }}" ng-attr-art="{{ result.track.album_coverart_500x500 }}" ng-attr-spotifyId="{{ result.track.track_spotify_id }}">
 			<span class='resultArtist'>{{ result.track.artist_name }},</span>
 			<span class='resultSong'>{{ result.track.track_name }},</span>
 			<span class='resultAlbum'>{{  result.track.album_name }}</span>
