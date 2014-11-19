@@ -24,6 +24,8 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 		var art =  $(this)[0].attributes.art.value;
 		var spotifyId =  $(this)[0].attributes.spotifyid.value;
 
+
+
 		console.log('trId', trId);
 	
 		getLyrics(trId)
@@ -44,6 +46,7 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 				nowPlaying.art = art;
 				nowPlaying.spotifyId = spotifyId;
 				
+				debugger;
 				$location.url('/#/');
 
 				// console.log()

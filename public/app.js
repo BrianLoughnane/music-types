@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngSanitize']);
 
 myApp.factory('nowPlaying', function() {
 	return {
@@ -41,12 +41,10 @@ myApp.factory('getLyrics', function($http, $q) {
 
 myApp.factory('play', function($http, $q) {
 
-	// return function(spotifyId) {
-	return function() {	
+	return function(spotifyId) {	
 		var defer = $q.defer();
-
-		// $http.get('https://api.spotify.com/v1/tracks/' + spotifyId)
-		$http.get('https://api.spotify.com/v1/tracks/72GEN9Pc72Uf2i7qK2aRp7')
+		// debugger;
+		$http.get('https://api.spotify.com/v1/tracks/' + spotifyId)
 			.then(function(response) {
 				console.log('play', response);
 				defer.resolve(response);

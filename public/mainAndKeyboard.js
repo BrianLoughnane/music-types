@@ -1,4 +1,4 @@
-myApp.controller('MainCtrl', function($scope, $http, nowPlaying, play) {
+myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, play) {
 	$('.main-input').focus();
 
 	$scope.lyrics = ['hey', ' ', 'you'];
@@ -6,6 +6,7 @@ myApp.controller('MainCtrl', function($scope, $http, nowPlaying, play) {
 	$scope.artist = nowPlaying.artist;
 	$scope.album = nowPlaying.album;
 	$scope.art = nowPlaying.art;
+	$scope.spotifyId = nowPlaying.spotifyId;
 
 
 	// $scope.lyrics = nowPlaying.lyrics;
@@ -17,7 +18,9 @@ myApp.controller('MainCtrl', function($scope, $http, nowPlaying, play) {
 	$scope.progress = 0;
 	$scope.score = 0; 
 
-	
+	$scope.trustSrc = function(src) {
+		return $sce.trustAsResourceUrl(src);
+	}
 	// $scope.searchResults;
 
 	$scope.$watch('userInput', function() {
@@ -75,17 +78,17 @@ myApp.controller('MainCtrl', function($scope, $http, nowPlaying, play) {
 		
 		if($scope.lyricIndex == $scope.lyrics.length) {
 			$scope.currentLetter = '';
-			debugger;
+			// debugger;
 			var spotifyId = nowPlaying.spotifyId;
-			// play(spotifyId);
-			play()
+			play(spotifyId)
 				.then(function(r) {
-					// $scope.url = r.data.preview_url;
-					$scope.url = 'bagel';
+					$scope.url = r.data.preview_url;
+					// $scope.url = 'https://p.scdn.co/mp3-preview/80eb23252d65c790877873093278760c6eb5ddce';
 					console.log('url', $scope.url);
 					// playAudio();
 
 				});
+			// debugger;	
 				// .then(function() {
 
 				// })

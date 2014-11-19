@@ -1,0 +1,21 @@
+{
+  "name": "music-types",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/BrianLoughnane/music-types",
+  "authors": [
+    "BrianLoughnane <BrianJLoughnane@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-sanitize": "~1.3.3",
+    "angular-route": "~1.3.3"
+  }
+}
