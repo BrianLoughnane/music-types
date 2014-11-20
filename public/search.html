@@ -8,9 +8,12 @@
 	</form>
 	<div class='resultContainer'>
 		<div class='result' ng-repeat='result in searchResults' ng-attr-trackId="{{ result.track.track_id }}" ng-attr-artist="{{ result.track.artist_name }}" ng-attr-song="{{ result.track.track_name }}" ng-attr-album="{{ result.track.album_name }}" ng-attr-art="{{ result.track.album_coverart_500x500 }}" ng-attr-spotifyId="{{ result.track.track_spotify_id }}">
-			<span class='resultArtist'>{{ result.track.artist_name }},</span>
-			<span class='resultSong'>{{ result.track.track_name }},</span>
-			<span class='resultAlbum'>{{  result.track.album_name }}</span>
+			<img class='resultArt' ng-src="{{ result.track.album_coverart_500x500 }}">
+			<span class='resultDetails'>
+				<div class='resultSong'>{{ result.track.track_name }}</div>
+				<div class='resultArtist'><span class='resultSpan'>by </span>{{ result.track.artist_name }}</div>
+				<div class='resultAlbum'><span class='resultSpan'>on </span>{{  result.track.album_name }}</div>
+			</span>
 		</div>
 	</div>	
 </div>

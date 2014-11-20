@@ -132,15 +132,22 @@ header span span span {
 .welcomeContainer h1 {
 	display: inline-block;
 	color: #fd7d68;
+	padding-left: 0.8em;
 }
 
 .welcomeContainer p {
 	color: #119ee0;
 	margin-top: 0px;
+	margin-bottom: 6%;
 }
 
 .welcomeContainer p, .welcomeContainer div {
 	text-align: center;
+}
+
+.welcomeContainer .button {
+	position: relative;
+	left: 14%;
 }
 
 .mainAndKeyboard {
@@ -240,7 +247,11 @@ input {
 }
 
 .result {
-	margin: 2% 0%;
+	text-align: left;
+	width: 70%;
+	margin: auto;
+	border-bottom: 1px solid #119ee0;
+	padding: 1% 0%;
 }
 
 .result:hover {
@@ -248,12 +259,32 @@ input {
 	color: #fd7d68;
 }
 
-.resultArtist {
+.resultArt {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.resultDetails {
+	display: inline-block;
+	vertical-align: middle;
+	width: 50%;
+}
+
+.resultDetails div {
+	padding: 2% 15%;
+}
+
+.resultSong {
 	font-weight: bold;
 }
 
 .resultAlbum {
 	font-style: italic;
+}
+
+.resultSpan {
+	font-style: normal;
+	font-size: 0.7em;
 }
 
 /*===============================
