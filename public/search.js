@@ -2,6 +2,9 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 	$scope.query = '';
 	$scope.searchResults;
 
+	// var location = $location;
+	// debugger;
+
 	$('.search').on('click', function() {	
 		var value = $('.query').val().trim();
 

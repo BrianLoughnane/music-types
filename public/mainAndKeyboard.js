@@ -1,7 +1,7 @@
-myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, getSpotify) {
+myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, nowPlaying, getSpotify) {
 	$('.main-input').focus();
 
-	// $scope.lyrics = ['hey', ' ', 'you'];
+	
 	$scope.song = nowPlaying.song;
 	$scope.artist = nowPlaying.artist;
 	$scope.album = nowPlaying.album;
@@ -10,11 +10,12 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, getSpotif
 	$scope.tracking = nowPlaying.tracking;
 	$scope.listenView = false;
 	
-	// $scope.listenView = true;
-	// setTimeout(function() {
-	// 	return $scope.listenView = false;
-	// }, 3000);
-
+	$scope.listenView = true;
+	$timeout(function() {
+		return $scope.listenView = false;
+	}, 3000);
+	
+	// $scope.lyrics = ['hey', ' ', 'you'];
 	$scope.lyrics = nowPlaying.lyrics;
 	$scope.lyricIndex = 0;
 	$scope.word = $scope.lyrics[$scope.lyricIndex] || '';
@@ -23,6 +24,12 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, getSpotif
 	$scope.currentLetter = $scope.word[$scope.userInput.length];
 	$scope.progress = 0;
 	$scope.score = 0; 
+
+	$scope.changeViews = function() {
+		if(confirm("Are you sure you want to leave this song?")) {
+			$location.path('/search');
+		}
+	}
 
 	$scope.trustSrc = function(src) {
 		return $sce.trustAsResourceUrl(src);
@@ -91,6 +98,9 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, nowPlaying, getSpotif
 				.then(function(r) {
 					$scope.listenView = true;
 					$scope.url = r.data.preview_url;
+					$timeout(function() {
+						$location.path('/search');
+					}, 32000);
 					// $scope.url = r.data.external_urls.spotify; // X-Frame-Options: DENY ...boo...
 				});
 		}
