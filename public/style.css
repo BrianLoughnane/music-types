@@ -119,6 +119,30 @@ header span span span {
 	height: 100%;
 }
 
+.welcome {
+	width: 101%;
+	min-height: 72%;
+}
+
+.welcomeContainer {
+	width: 70%;
+	margin: auto;
+}
+
+.welcomeContainer h1 {
+	display: inline-block;
+	color: #fd7d68;
+}
+
+.welcomeContainer p {
+	color: #119ee0;
+	margin-top: 0px;
+}
+
+.welcomeContainer p, .welcomeContainer div {
+	text-align: center;
+}
+
 .mainAndKeyboard {
 	position: relative;
 	height: 92%;

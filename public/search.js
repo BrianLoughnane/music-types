@@ -58,7 +58,7 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 
 				nowPlaying.lyrics = lyrics;				
 				nowPlaying.tracking = tracking;
-				$location.path('/');
+				$location.path('/play');
 			}); //end then()
 
 		
