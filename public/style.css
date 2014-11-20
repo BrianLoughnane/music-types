@@ -44,7 +44,7 @@ footer div {
 }
 
 .copyright {
-	width: 40%;
+	width: 44%;
 	float: right;
 	color: #fd7d68;	
 }
@@ -408,7 +408,7 @@ keyboard
 	color: black;
 	/*background: rgba(0,0,0,0.3);*/
 	min-width: 1425px;
-	min-height: 350px;
+	min-height: 310px;
 }
 
 .keyboard div {
