@@ -480,11 +480,12 @@ keyboard
 	vertical-align: top;
 	padding: 0% 0.6%;
 	padding-top: 0.3%;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	border-radius: 5px;
-	box-shadow: 3px 5px;
+	/*box-shadow: 3px 5px;*/
 	position: relative;
-	/*background: aliceblue;*/
+	border: none;
+	box-shadow: 0px 5px 7px -4px;
 }
 
 .keyboard span:first-child {
@@ -655,13 +656,13 @@ State
 }
 
 .keyboard span.active {
-	box-shadow: 1px 3px;
+	/*box-shadow: 1px 3px;
 	top: 2px;
 	left: 2px;
-	/*background: rgba(253,125,104, 1);*/
-	opacity: 1;
-/*	background: green if correct;
-	background: red if incorrect;*/
+	opacity: 1;*/
+	box-shadow: none;
+	top: 2px;
+	box-shadow: 0px 1px 10px 0px inset;
 }
 
 .finger.active, .thumb.active {
