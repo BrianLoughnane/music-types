@@ -16,7 +16,12 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 	}, 3000);
 	
 	// $scope.lyrics = ['hi', ' ', 'you', ' ', 'Brian'];
-	$scope.lyrics = nowPlaying.lyrics;
+	$scope.lyrics = ['~!@#$', '!', '@', '$', '%', '^', '&', '*', '(', ')', '_', '+', '`', '-', '=', ']', ':', '"', ';', '>', '?', ',', '.', '/', 'a', 'b'];
+	// $scope.lyrics = ['#', '{', '}', '[', '<', '('];
+	// $scope.lyrics = ['-', '=', ']', ':', 'a', 'b'];
+	// $scope.lyrics = ['\'', '"', '\\', '|'];
+	// $scope.lyrics = ['/'];
+	// $scope.lyrics = nowPlaying.lyrics;
 	$scope.lyricIndex = 0;
 
 
@@ -141,10 +146,23 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 		if(typeof $scope.word !== 'undefined') {
 			$scope.currentLetter = $scope.word[$scope.userInput.length];	
 		}
+
+		if(($scope.currentLetter == "'" || $scope.currentLetter == '"') && !$scope.mistype) {
+			$('.quote').addClass('current');
+		} else {
+			$('.quote').removeClass('current');
+		}
+
+		if(($scope.currentLetter == "|" || $scope.currentLetter == "\\") && !$scope.mistype) {
+			$('.backslash').addClass('current');
+		} else {
+			$('.backslash').removeClass('current');
+		}
 	} //end nextLetter();
 
 	function isSpace() {
-		if($scope.currentLetter === ' ') {
+		//if($scope.currentLetter === ' ') { // if the user mistypes a space, should it say (space) or not?  This option will hide (space)     
+		if($scope.word === ' ') {
 			$scope.isSpace = true;
 		} else {
 			$scope.isSpace = false;
