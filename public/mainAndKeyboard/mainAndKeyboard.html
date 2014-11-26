@@ -1,17 +1,15 @@
 <header>
 	<span class='statusBar'>
 		<img class='albumArtHeader' ng-src="{{ art }}">
-		<span>NOW PLAYING: {{ song }} 
+		<span>{{ song }} 
 			<span ng-if='artist.length !== 0 && artist !== undefined'>by</span> {{ artist }}
 			<span ng-if='album.length !== 0 && album !== undefined'>on</span> {{ album }}
 		</span> 
-		<span>Score: {{ score }}</span> 
-		<span>Progress: <input type='range' ng-model="progress" min='0' max='100' ng-trim='false'></span>
+		<span>Score: {{ score }}</span>
+		<span>Errors: {{ numberOfErrors }}</span>  
+		<span>Progress: <input type='range' ng-model="progress" min='0' max='100' ng-trim='false'> {{ progress | number:0 }}%</span>
 	
 	</span>
-
-	<span class='button' ng-click="changeViews()">Search Song</span>
-
 </header>
 <div class="mainAndKeyboard">
 	<div class="play" ng-if="listenView"><img class='albumArtPlay' ng-src="{{ art }}"></div>
@@ -19,57 +17,6 @@
 		<div class="leftHand">
 			<div class='top'>
 				<div class='fingersArea'>
-					<!-- <div class="finger leftPinky" 
-						ng-class="{current: 
-							currentLetter == 'q' && !mistype || 
-							currentLetter == 'a' && !mistype || 
-							currentLetter == 'z' && !mistype || 
-							currentLetter == 'Q' && !mistype || 
-							currentLetter == 'A' && !mistype || 
-							currentLetter == 'Z' && !mistype ||
-							currentLetter == '1' && !mistype
-						}">
-					</div>
-					<div class="finger leftRing" 
-						ng-class="{current: 
-							currentLetter == 'w' && !mistype || 
-							currentLetter == 's' && !mistype || 
-							currentLetter == 'x' && !mistype || 
-							currentLetter == 'W' && !mistype || 
-							currentLetter == 'S' && !mistype || 
-							currentLetter == 'X' && !mistype ||
-							currentLetter == '2' && !mistype
-						}">
-					</div>
-					<div class="finger leftMiddle" 
-						ng-class="{current:
-							currentLetter == 'e' && !mistype || 
-							currentLetter == 'd' && !mistype || 
-							currentLetter == 'c' && !mistype || 
-							currentLetter == 'E' && !mistype || 
-							currentLetter == 'D' && !mistype || 
-							currentLetter == 'C' && !mistype ||
-							currentLetter == '3' && !mistype
-						}">
-					</div>
-					<div class="finger leftIndex" 
-						ng-class="{current:
-							currentLetter == 'r' && !mistype || 
-							currentLetter == 't' && !mistype || 
-							currentLetter == 'f' && !mistype || 
-							currentLetter == 'g' && !mistype || 
-							currentLetter == 'v' && !mistype || 
-							currentLetter == 'b' && !mistype || 
-							currentLetter == 'R' && !mistype || 
-							currentLetter == 'T' && !mistype || 
-							currentLetter == 'F' && !mistype || 
-							currentLetter == 'G' && !mistype || 
-							currentLetter == 'V' && !mistype || 
-							currentLetter == 'B' && !mistype ||
-							currentLetter == '4' && !mistype ||
-							currentLetter == '5' && !mistype
-						}">
-					</div> -->
 					<div class="finger leftPinky" 
 						ng-class="{current: (
 							currentLetter == 'q' || 
@@ -81,7 +28,31 @@
 							currentLetter == '`' ||
 							currentLetter == '~' ||
 							currentLetter == '1' ||
-							currentLetter == '!' ) && !mistype
+							currentLetter == '!' ||
+							currentLetter == '^' || 
+							currentLetter == '&' || 
+							currentLetter == '*' || 
+							currentLetter == '(' || 
+							currentLetter == ')' || 
+							currentLetter == '_' || 
+							currentLetter == '+' || 
+							currentLetter == '{' || 
+							currentLetter == '}' || 
+							currentLetter == ':' || 
+							currentLetter == '?' || 
+							currentLetter == 'H' || 
+							currentLetter == 'J' || 
+							currentLetter == 'K' || 
+							currentLetter == 'L' || 
+							currentLetter == 'N' || 
+							currentLetter == 'M' || 
+							currentLetter == '<' || 
+							currentLetter == '>' || 
+							currentLetter == 'Y' || 
+							currentLetter == 'U' || 
+							currentLetter == 'I' || 
+							currentLetter == 'O' || 
+							currentLetter == 'P') && !mistype
 						}">
 					</div>
 					<div class="finger leftRing" 
@@ -190,8 +161,10 @@
 						}">
 					</div>
 					<!--	currentLetter == '\' || -->  <!-- this is breaking the pinky key (it doesn't become 'current' when this code is present) -->
-					<div class="finger rightPinky" 
+					<!-- current: currentLetter == "\"" -->  <!-- this is closing the ng-class quotation --> 
+					<div class="finger rightPinky"  
 						ng-class="{current: (
+							currentLetter == '\'' ||
 							currentLetter == 'p' || 
 							currentLetter == 'P' ||
 							currentLetter == '0' ||
@@ -208,7 +181,28 @@
 							currentLetter == '{' ||
 							currentLetter == '}' ||
 							currentLetter == '|' ||
-							currentLetter == '?' ) && !mistype
+							currentLetter == '?' ||
+							currentLetter == '!' || 
+							currentLetter == '@' || 
+							currentLetter == '#' || 
+							currentLetter == '$' || 
+							currentLetter == '%' || 
+							currentLetter == 'Q' || 
+							currentLetter == 'W' || 
+							currentLetter == 'E' || 
+							currentLetter == 'R' || 
+							currentLetter == 'T' || 
+							currentLetter == 'A' || 
+							currentLetter == 'S' || 
+							currentLetter == 'D' || 
+							currentLetter == 'F' || 
+							currentLetter == 'G' || 
+							currentLetter == 'Z' || 
+							currentLetter == 'X' || 
+							currentLetter == 'C' || 
+							currentLetter == 'V' || 
+							currentLetter == 'B' || 
+							currentLetter == '~' ) && !mistype
 						,incorrect:	
 							mistype
 						}">
@@ -329,83 +323,7 @@
 						letter == '?' ) && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
 				}"
 			>{{ letter }}</span>
-			<!-- <span ng-repeat='letter in word track by $index' 
-				ng-class="{current: $index == userInput.length && !mistype
-		 			,incorrect: mistype && mistypedLetters.indexOf($index) > -1 
-					,lpLetter:
-						letter == 'q' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'a' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'z' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'Q' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'A' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'Z' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == '1' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
-					,lrLetter:
-						letter == 'w' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 's' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'x' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'W' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'S' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'X' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == '2' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
-					,lmLetter:
-						letter == 'e' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'd' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'c' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'E' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'D' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'C' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == '3' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
-					,liLetter:
-						letter == 'r' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 't' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'f' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'g' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'v' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'b' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'R' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'T' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'F' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'G' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'V' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'B' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == '4' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == '5' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
-					,riLetter:
-						letter == 'y' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'u' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'h' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'j' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'n' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'm' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'Y' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'U' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'H' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'J' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'N' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'M' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == '6' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == '7' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
-					,rmLetter:
-						letter == 'i' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'k' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'I' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'K' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == '8' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
-					,rrLetter:
-						letter == 'o' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == 'l' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == 'O' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'L' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == '9' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
-					,rpLetter:
-						letter == 'p' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) || 
-						letter == 'P' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype) ||
-						letter == '0' && ($index <= userInput.length && !mistype || $index < userInput.length && mistype)
-				}"
-			>{{ letter }}</span> -->
 			</span>
-			<!-- <span class="word" ng-class="{adjustRight: !isSpace}">{{ nextWord }}</span>  -->
 			<span class="word">{{ wordPlusOne }}</span> 
 			<span class="word">{{ wordPlusTwo }}</span> 
 			<span ng-if='isSpace' class='isSpace'>(space)</span>
@@ -460,11 +378,35 @@
 			<span class="k rmKey" ng-class="{current: (currentLetter == 'k' || currentLetter == 'K') && !mistype }">k</span>
 			<span class="l rrKey" ng-class="{current: (currentLetter == 'l' || currentLetter == 'L') && !mistype }">l</span>
 			<span class="semicolon rpKey" 	ng-class="{current: (currentLetter == ';' || currentLetter == ':') && !mistype}">: ;</span>
-			<span class="quote rpKey">" '</span>
-			<span class="enter rpKey" 		ng-class="{current: false && !mistype }">enter</span>
+			<span class="quote rpKey"		ng-class="{current: currentLetter == '\'' && !mistype }">" '</span>
+			<span class="enter rpKey">enter</span>
 		</div>
 		<div class="row4">
-			<span class="shift lpKey" ng-class="{current: false}">shift</span>
+			<span class="leftShift lpKey" ng-class="{current: (
+				currentLetter == '^' || 
+				currentLetter == '&' || 
+				currentLetter == '*' || 
+				currentLetter == '(' || 
+				currentLetter == ')' || 
+				currentLetter == '_' || 
+				currentLetter == '+' || 
+				currentLetter == '{' || 
+				currentLetter == '}' || 
+				currentLetter == ':' || 
+				currentLetter == '?' || 
+				currentLetter == 'H' || 
+				currentLetter == 'J' || 
+				currentLetter == 'K' || 
+				currentLetter == 'L' || 
+				currentLetter == 'N' || 
+				currentLetter == 'M' || 
+				currentLetter == '<' || 
+				currentLetter == '>' || 
+				currentLetter == 'Y' || 
+				currentLetter == 'U' || 
+				currentLetter == 'I' || 
+				currentLetter == 'O' || 
+				currentLetter == 'P') && !mistype }">shift</span>
 			<span class="z lpKey" ng-class="{current: (currentLetter == 'z' || currentLetter == 'Z') && !mistype }">z</span>
 			<span class="x lrKey" ng-class="{current: (currentLetter == 'x' || currentLetter == 'X') && !mistype }">x</span>
 			<span class="c lmKey" ng-class="{current: (currentLetter == 'c' || currentLetter == 'C') && !mistype }">c</span>
@@ -475,7 +417,28 @@
 			<span class="comma rmKey"	ng-class="{current: (currentLetter == ',' || currentLetter == '<') && !mistype }">< ,</span>
 			<span class="period rrKey" 	ng-class="{current: (currentLetter == '.' || currentLetter == '>') && !mistype }">> .</span>
 			<span class="slash rpKey" 	ng-class="{current: (currentLetter == '/' || currentLetter == '?') && !mistype }">? /</span>
-			<span class="shift rpKey" 	ng-class="{current: false && !mistype}">shift</span>
+			<span class="rightShift rpKey" 	ng-class="{current: (
+				currentLetter == '!' || 
+				currentLetter == '@' || 
+				currentLetter == '#' || 
+				currentLetter == '$' || 
+				currentLetter == '%' || 
+				currentLetter == 'Q' || 
+				currentLetter == 'W' || 
+				currentLetter == 'E' || 
+				currentLetter == 'R' || 
+				currentLetter == 'T' || 
+				currentLetter == 'A' || 
+				currentLetter == 'S' || 
+				currentLetter == 'D' || 
+				currentLetter == 'F' || 
+				currentLetter == 'G' || 
+				currentLetter == 'Z' || 
+				currentLetter == 'X' || 
+				currentLetter == 'C' || 
+				currentLetter == 'V' || 
+				currentLetter == 'B' || 
+				currentLetter == '~') && !mistype }">shift</span>
 		</div>
 		<div class="row5">
 			<span class="fn lpKey"	ng-class="{current: false && !mistype }">fn</span>
@@ -485,7 +448,7 @@
 			<span class="space ltKey rtKey" ng-class="{current: currentLetter == ' ' && !mistype}"></span>
 			<span class="cmd rtKey" ng-class="{current: false && !mistype}">cmd</span>
 			<span class="alt rrKey" ng-class="{current: false && !mistype}">alt</span>
-			<span></span>
+			<span class='button' ng-click="changeViews()">Search Song</span>
 		</div>
 	</div>
 </div>	

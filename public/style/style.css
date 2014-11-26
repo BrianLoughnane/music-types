@@ -66,6 +66,7 @@ header {
 	min-width: 1425px;
 	min-height: 56px;
 	border-bottom: 2px solid #119ee0;
+	padding: 0% 3%;
 }
 
 header span {
@@ -90,22 +91,6 @@ header span span span {
 .changeViews {
 	margin-left: 4%;
 	display: inline-block;
-}
-
-.button {
-	display: inline-block;
-	border: 3px solid #fd7d68;
-	margin: 0px;
-	margin-left: 4%;
-	padding: 13px 35px;
-	color: #fd7d68;
-	font-weight: bold;
-}
-
-.button:hover {
-	cursor: pointer;
-	background: #fd7d68;
-	color: white;
 }
 
 .albumArtHeader {
@@ -555,7 +540,19 @@ keyboard
 
 .row5 span:last-child {
 	width: 19%;
-	visibility: hidden;
+	text-align: center;
+	display: inline-block;
+	border: 3px solid #fd7d68;
+	margin: 0px;
+	color: #fd7d68;
+	font-weight: bold;
+	opacity: 1;
+}
+
+.row5 span:last-child:hover {
+	cursor: pointer;
+	background: #fd7d68;
+	color: white;
 }
 
 /*===============================
