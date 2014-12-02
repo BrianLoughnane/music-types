@@ -538,7 +538,7 @@ keyboard
 	width: 34%;
 }
 
-.row5 span:last-child {
+.row5 span:last-child, .button {
 	width: 19%;
 	text-align: center;
 	display: inline-block;
@@ -549,7 +549,7 @@ keyboard
 	opacity: 1;
 }
 
-.row5 span:last-child:hover {
+.row5 span:last-child:hover, .button:hover {
 	cursor: pointer;
 	background: #fd7d68;
 	color: white;

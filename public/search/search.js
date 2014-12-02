@@ -52,7 +52,11 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 				lyrics = lyrics.replace(/’/g, "'");
 				lyrics = lyrics.replace(/‘/g, "'");
 				lyrics = lyrics.replace(/'/g, "\'");
+				lyrics = lyrics.replace(/ \n\n\n/g, ' ');
+				lyrics = lyrics.replace(/\n\n\n/g, ' ');
+				lyrics = lyrics.replace(/ \n\n/g, ' ');
 				lyrics = lyrics.replace(/\n\n/g, ' ');
+				lyrics = lyrics.replace(/ \n/g, ' ');
 				lyrics = lyrics.replace(/\n/g, ' ').split(' ');
 				lyrics.splice(lyrics.length-11, 11);
 				
