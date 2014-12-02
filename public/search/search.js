@@ -3,12 +3,8 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 	$scope.query = '';
 	$scope.searchResults;
 
-	// var location = $location;
-	// debugger;
-
-	$('.search').on('click', function() {	
-		var value = $('.query').val().trim();
-
+	$scope.searchSong = function(q) {
+		var value = q.trim();
 		if(value.length) {
 			searchSong(value)
 				.then(function(response) {
@@ -24,25 +20,16 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 					$scope.searchResults = goodTracks;;
 					// $scope.searchResults = tracks;;
 				});
-		}
-	
-	});  // end search click handler
+		}	
+	} // end searchSong()
 
-	$('.resultContainer').on('click', '.result', function() {
-		var trId = $(this)[0].attributes.trackid.value;
-		var artist = $(this)[0].attributes.artist.value;
-		var song = $(this)[0].attributes.song.value;
-		var album =  $(this)[0].attributes.album.value;
-		var art =  $(this)[0].attributes.art.value;
-		var spotifyId =  $(this)[0].attributes.spotifyid.value;
-
-
+	$scope.getSong = function(trId, artist, song, album, art, spotifyId) {
 		nowPlaying.artist = artist;
 		nowPlaying.song = song;
 		nowPlaying.album = album;
 		nowPlaying.art = art;
 		nowPlaying.spotifyId = spotifyId;
-	
+
 		getLyrics(trId)
 			.then(function(response) {
 				console.log('getL', response);
@@ -68,10 +55,7 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 				nowPlaying.tracking = tracking;
 				$location.path('/play');
 			}); //end then()
-
-		
-	
-	}); // end result click handler
+	} // end getSong()
 
 	$('.query').focus();
 }); //end SearchCtrl
