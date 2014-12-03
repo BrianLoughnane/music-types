@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 
 	<meta charset="UTF-8">
-	<title>MusicTypes</title>
+	<title>MusicalTypes</title>
 	
 	<script src="bower_components/jquery/dist/jquery.js"></script>	
 	<script src="bower_components/angular/angular.js"></script>
@@ -29,6 +29,20 @@
 	  ga('create', 'UA-57265136-1', 'auto');
 	  ga('send', 'pageview');
 
+	</script>
+	<!-- confirm close -->
+	<script>
+		window.onbeforeunload = function (e) {
+		    e = e || window.event;
+
+		    // For IE and Firefox prior to version 4
+		    if (e) {
+		        e.returnValue = 'Sure?';
+		    }
+
+		    // For Safari
+		    return 'Sure?';
+		};
 	</script>
 </head>
 <body>

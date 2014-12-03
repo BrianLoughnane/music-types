@@ -7,7 +7,8 @@ myApp.run(function() {
 
 
 $(document).on('keydown', function(event) {
-
+	$('input').focus();
+	
 	switch (event.which) {
 		case 192:
 			$('.tilde').addClass('active');

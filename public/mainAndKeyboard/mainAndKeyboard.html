@@ -1,18 +1,19 @@
 <header>
 	<span class='statusBar'>
-		<img class='albumArtHeader' ng-src="{{ art }}">
-		<span>{{ song }} 
-			<span ng-if='artist.length !== 0 && artist !== undefined'>by</span> {{ artist }}
-			<span ng-if='album.length !== 0 && album !== undefined'>on</span> {{ album }}
+		<img class='albumArtHeader' ng-src="{{ nowPlaying.art }}">
+		<span>{{ nowPlaying.song }} 
+			<span ng-if='nowPlaying.artist.length !== 0 && nowPlaying.artist !== undefined'>by</span> {{ nowPlaying.artist }}
+			<span ng-if='nowPlaying.album.length !== 0 && nowPlaying.album !== undefined'>on</span> {{ nowPlaying.album }}
 		</span> 
 		<span>Score: {{ score }}</span>
-		<span>Errors: {{ numberOfErrors }}</span>  
+		<span>Errors: {{ numberOfErrors }}</span>
+		<span>{{ timer.tensOfMinutes }}{{ timer.minutes }}:{{ timer.tensOfSeconds }}{{ timer.seconds }}</span>  
 		<span>Progress: <input type='range' ng-model="progress" min='0' max='100' ng-trim='false'> {{ progress | number:0 }}%</span>
 	
 	</span>
 </header>
 <div class="mainAndKeyboard">
-	<div class="play" ng-if="listenView"><img class='albumArtPlay' ng-src="{{ art }}"></div>
+	<div class="play" ng-if="listenView"><img class='albumArtPlay' ng-src="{{ nowPlaying.art }}"></div>
 	<div class="main">
 		<div class="leftHand">
 			<div class='top'>
@@ -453,8 +454,8 @@
 	</div>
 </div>	
 <footer>
-	<div>MusicTypes™ built by <a class="portfolio" href="http://www.brianloughnane.com" target="_blank">BRIAN<strong>LOUGHNANE</strong></a></div>
+	<div>MusicalTypes™ built by <a class="portfolio" href="http://www.brianloughnane.com" target="_blank">BRIAN<strong>LOUGHNANE</strong></a></div>
 	<div class="copyright">Lyrics powered by www.musiXmatch.com. This Lyrics is NOT for Commercial use and only 30% of the lyrics are returned.</div>
-	<img ng-src="{{ tracking }}">
+	<img ng-src="{{ nowPlaying.tracking }}">
 </footer>
 <iframe class="iframe hidden" ng-src="{{ trustSrc(url) }}"></iframe>	

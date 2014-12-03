@@ -1,20 +1,28 @@
-myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, nowPlaying, getSpotify) {
+myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, timer, nowPlaying, getSpotify) {
 	$('.main-input').focus();
 
 	
-	$scope.song = nowPlaying.song;
-	$scope.artist = nowPlaying.artist;
-	$scope.album = nowPlaying.album;
-	$scope.art = nowPlaying.art;
-	$scope.spotifyId = nowPlaying.spotifyId;
-	$scope.tracking = nowPlaying.tracking;
-	$scope.listenView = false;
-	
+	// $scope.song = nowPlaying.song;
+	// $scope.artist = nowPlaying.artist;
+	// $scope.album = nowPlaying.album;
+	// $scope.art = nowPlaying.art;
+	// $scope.spotifyId = nowPlaying.spotifyId;
+	// $scope.tracking = nowPlaying.tracking;
+
+	$scope.nowPlaying = nowPlaying;
+	$scope.timer = timer;
+	debugger;
 	$scope.listenView = true;
+
 	$timeout(function() {
-		return $scope.listenView = false;
+		$scope.listenView = false;
+		$scope.timer.startTimer();
+		return;
 	}, 3000);
-	
+
+
+
+
 	// $scope.lyrics = ['hi', ' ', 'you', ' ', 'Brian'];
 	// $scope.lyrics = ['~!@#$', '!', '@', '$', '%', '^', '&', '*', '(', ')', '_', '+', '`', '-', '=', ']', ':', '"', ';', '>', '?', ',', '.', '/', 'a', 'b'];
 	// $scope.lyrics = ['#', '{', '}', '[', '<', '('];
@@ -72,7 +80,7 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 				lastLength--;
 			}
 		}
-		if($scope.userInput == '' && $scope.isSpace) {
+		if($scope.userInput == '' && ($scope.isSpace || lastLength == 1)) {
 			if($scope.userInput.length < lastLength) {
 				lastLength--;
 			}
@@ -86,20 +94,15 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 		var word = $scope.word;
 		var mistypedLetters = [];
 
-		if(typeof input == 'undefined' || input == '') {
-			$scope.mistype = false;
-		} 
-		// else if(lastLetterTyped != currentLetter) {
-		// 	$scope.numberOfErrors++;
-		// }
-
 		for(var i = 0; i < input.length; i++) {
 			if(input[i] != word[i]) {
 				$scope.mistype = true;
 				mistypedLetters.push(i);
-			} else if (!mistypedLetters.length){
-				$scope.mistype = false;
-			}
+			} 
+		}
+
+		if (!mistypedLetters.length){
+			$scope.mistype = false;
 		}
 
 		$scope.mistypedLetters = mistypedLetters;
@@ -130,17 +133,13 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 			$scope.wordMinusTwo = $scope.lyrics[$scope.lyricIndex -2] || '';
 			$scope.wordPlusOne = $scope.lyrics[$scope.lyricIndex +1] || '';
 			$scope.wordPlusTwo = $scope.lyrics[$scope.lyricIndex +2] || '';
-			// debugger;
 			
-			console.log($scope.lastWord, $scope.word, $scope.nextWord);
 			$scope.userInput = "";
 			updateProgress();
 			lastLength = 0;
 
 			if($scope.lyricIndex == $scope.lyrics.length) {
 				$scope.currentLetter = '';
-				// $scope.word = undefined;	
-				// debugger;
 				var spotifyId = nowPlaying.spotifyId;
 				getSpotify(spotifyId)
 					.then(function(r) {
@@ -150,7 +149,6 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 						$timeout(function() {
 							$location.path('/search');
 						}, 32000);
-						// $scope.url = r.data.external_urls.spotify; // X-Frame-Options: DENY ...boo...
 					});
 			}
 		}
@@ -164,30 +162,9 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 	} //end updateProgress()
 
 	function nextLetter() {
-		if(typeof $scope.word !== 'undefined') {
-			// $scope.currentLetter = $scope.word[$scope.userInput.length];	
-			$scope.currentLetter = $scope.word[lastLength];	
-		}
-
-		// if(($scope.currentLetter == "'" || $scope.currentLetter == '"') && !$scope.mistype) {
-		// 	$('.quote').addClass('current');
-		// 	$('.rightPinky').addClass('current');
-		// } else {
-		// 	$('.quote').removeClass('current');
-		// 	$('.rightPinky').removeClass('current');
-		// }
-
-		// if ($scope.currentLetter == '"' && !$scope.mistype) {
-		// 	$('.quote').addClass('current');
-		// 	$('.rightPinky').addClass('current');	
-		// 	$('.leftPinky').addClass('current');	
-		// }
-
-		// if(($scope.currentLetter == "|" || $scope.currentLetter == "\\") && !$scope.mistype) {
-		// 	$('.backslash').addClass('current');
-		// } else {
-		// 	$('.backslash').removeClass('current');
-		// }
+		if(typeof $scope.word !== 'undefined'  && !$scope.mistype) {	
+			$scope.currentLetter = $scope.word[lastLength];
+		}	
 	} //end nextLetter();
 
 	function isSpace() {
