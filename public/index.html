@@ -19,7 +19,23 @@
 	<script src="mainAndKeyboard/mainAndKeyboard.js"></script>
 	<script src="search/search.js"></script>
 	<script src="welcome/welcome.js"></script>
-	<!--Google Analytics-->
+<!-- 
+	confirm close 
+		-->
+	<script>
+		window.onbeforeunload = function (e) {
+		    e = e || window.event;
+		    // For IE and Firefox prior to version 4
+		    if (e) {
+		        e.returnValue = 'Sure?';
+		    }
+		    // For Safari
+		    return 'Sure?';
+		};
+	</script>
+<!--
+	Google Analytics
+		-->
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -29,20 +45,6 @@
 	  ga('create', 'UA-57265136-1', 'auto');
 	  ga('send', 'pageview');
 
-	</script>
-	<!-- confirm close -->
-	<script>
-		window.onbeforeunload = function (e) {
-		    e = e || window.event;
-
-		    // For IE and Firefox prior to version 4
-		    if (e) {
-		        e.returnValue = 'Sure?';
-		    }
-
-		    // For Safari
-		    return 'Sure?';
-		};
 	</script>
 </head>
 <body>

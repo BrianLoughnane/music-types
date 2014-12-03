@@ -1,19 +1,10 @@
 myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, timer, nowPlaying, getSpotify) {
 	$('.main-input').focus();
 
-	
-	// $scope.song = nowPlaying.song;
-	// $scope.artist = nowPlaying.artist;
-	// $scope.album = nowPlaying.album;
-	// $scope.art = nowPlaying.art;
-	// $scope.spotifyId = nowPlaying.spotifyId;
-	// $scope.tracking = nowPlaying.tracking;
-
 	$scope.nowPlaying = nowPlaying;
 	$scope.timer = timer;
-	debugger;
-	$scope.listenView = true;
 
+	$scope.listenView = true;
 	$timeout(function() {
 		$scope.listenView = false;
 		$scope.timer.startTimer();
