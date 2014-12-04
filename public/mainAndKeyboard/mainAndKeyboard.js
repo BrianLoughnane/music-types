@@ -1,8 +1,34 @@
-myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, timer, nowPlaying, getSpotify) {
+myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, $interval, nowPlaying, getSpotify) {
 	$('.main-input').focus();
+	var interval;
 
 	$scope.nowPlaying = nowPlaying;
-	$scope.timer = timer;
+	// $scope.timer = timer;
+
+	$scope.timer = {
+		minutes: 0,
+		tensOfMinutes: 0,
+		seconds: 0,
+		tensOfSeconds: 0,
+		totalSeconds: 0,
+		startTimer: function() {
+			var timer = this;
+			interval = $interval(function() {
+				timer.seconds++;
+				timer.totalSeconds++;
+				if(timer.seconds == 10) {
+					timer.seconds = 0;
+					timer.tensOfSeconds++;
+				}
+				if(timer.tensOfSeconds == 6) {
+					timer.tensOfSeconds = 0;
+					timer.minutes++;
+				}
+			}, 1000);	
+		}
+	}
+
+
 
 	$scope.listenView = true;
 	$timeout(function() {
@@ -135,6 +161,7 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 				getSpotify(spotifyId)
 					.then(function(r) {
 						console.log('spotifyCall', r);
+						$interval.cancel(interval);
 						$scope.listenView = true;
 						$scope.url = r.data.preview_url;
 						$timeout(function() {
