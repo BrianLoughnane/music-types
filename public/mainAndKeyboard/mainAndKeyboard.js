@@ -3,7 +3,6 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 	var interval;
 
 	$scope.nowPlaying = nowPlaying;
-	// $scope.timer = timer;
 
 	$scope.timer = {
 		minutes: 0,

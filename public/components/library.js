@@ -44,27 +44,3 @@ myApp.factory('getSpotify', function($http, $q) {
 	} // end return function
 }); //end getLyrics
 
-// myApp.factory('timer', function($interval) {
-// 	return {
-// 		minutes: 0,
-// 		tensOfMinutes: 0,
-// 		seconds: 0,
-// 		tensOfSeconds: 0,
-// 		totalSeconds: 0,
-// 		startTimer: function() {
-// 			var timer = this;
-// 			$interval(function() {
-// 				timer.seconds++;
-// 				timer.totalSeconds++;
-// 				if(timer.seconds == 10) {
-// 					timer.seconds = 0;
-// 					timer.tensOfSeconds++;
-// 				}
-// 				if(timer.tensOfSeconds == 6) {
-// 					timer.tensOfSeconds = 0;
-// 					timer.minutes++;
-// 				}
-// 			}, 1000);	
-// 		}
-// 	}
-// });
