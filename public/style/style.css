@@ -257,11 +257,15 @@ input {
 }
 
 .result {
-	text-align: left;
+	text-align: center;
 	width: 70%;
 	margin: auto;
 	border-bottom: 1px solid #119ee0;
 	padding: 1% 0%;
+}
+
+.evenResult {
+	border-bottom: 1px solid #fd7d68;
 }
 
 .result:hover {
@@ -272,16 +276,18 @@ input {
 .resultArt {
 	display: inline-block;
 	vertical-align: middle;
+	width: 170px;
 }
 
 .resultDetails {
 	display: inline-block;
 	vertical-align: middle;
-	width: 50%;
+	width: 70%;
 }
 
 .resultDetails div {
-	padding: 2% 15%;
+	padding: 1% 10%;
+	text-align: left;
 }
 
 .resultSong {

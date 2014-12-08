@@ -7,7 +7,7 @@
 		<span class='search button'><input type="submit" class="queryButton" value="search"></span>
 	</form>
 	<div class='resultContainer'>
-		<div class='result' ng-repeat='result in searchResults' ng-click="getSong(result.track.track_id, result.track.artist_name, result.track.track_name, result.track.album_name, result.track.album_coverart_500x500, result.track.track_spotify_id)">
+		<div class='result' ng-repeat='result in searchResults' ng-class-even="'evenResult'" ng-click="getSong(result.track.track_id, result.track.artist_name, result.track.track_name, result.track.album_name, result.track.album_coverart_500x500, result.track.track_spotify_id)">
 			<img class='resultArt' ng-src="{{ result.track.album_coverart_500x500 }}">
 			<span class='resultDetails'>
 				<div class='resultSong'>{{ result.track.track_name }}</div>

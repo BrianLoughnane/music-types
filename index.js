@@ -5,7 +5,7 @@ var app = express();
 
 app.set('port', (process.env.PORT || 5000))
 // app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/build'))
+app.use(express.static(__dirname + '/build'));
 
 var musicApiKey = '83c1f43d33f5abacda9ae5f1f1106dca';
 
