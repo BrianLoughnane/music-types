@@ -2,12 +2,16 @@
 <html lang="en" ng-app="myApp">
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+
+	<!-- build:css ./assets/combined.css -->
 	<link rel="stylesheet" type="text/css" href="style/normalize.css">
 	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<!-- endbuild -->
 
 	<meta charset="UTF-8">
 	<title>MusicalTypes</title>
 	
+	<!-- build:js ./assets/combined.js -->
 	<script src="bower_components/jquery/dist/jquery.js"></script>	
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/angular-route/angular-route.js"></script>
@@ -19,6 +23,8 @@
 	<script src="mainAndKeyboard/mainAndKeyboard.js"></script>
 	<script src="search/search.js"></script>
 	<script src="welcome/welcome.js"></script>
+	<script src="analytics.js"></script>
+	<!-- endbuild -->
 <!-- 
 	confirm close 
 		-->
@@ -36,7 +42,6 @@
 <!--
 	Google Analytics
 		-->
-	<script src="analytics.js"></script>
 </head>
 <body>
 
