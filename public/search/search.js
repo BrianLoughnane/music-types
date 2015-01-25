@@ -8,7 +8,7 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 		if(value.length) {
 			searchSong(value)
 				.then(function(response) {
-					console.log('ssResponse', response);
+					// console.log('ssResponse', response);
 					var tracks = response.message.body.track_list;
 					var goodTracks = [];
 
@@ -17,6 +17,7 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 							goodTracks.push(tracks[i]);
 						}
 					}
+
 					$scope.searchResults = goodTracks;;
 					// $scope.searchResults = tracks;;
 				});
@@ -24,6 +25,7 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 	} // end searchSong()
 
 	$scope.getSong = function(trId, artist, song, album, art, spotifyId) {
+
 		nowPlaying.artist = artist;
 		nowPlaying.song = song;
 		nowPlaying.album = album;
@@ -32,9 +34,11 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 
 		getLyrics(trId)
 			.then(function(response) {
-				console.log('getL', response);
+				// console.log('getL', response);
 				var tracking = response.data.message.body.lyrics.pixel_tracking_url;
 				var lyrics = response.data.message.body.lyrics.lyrics_body;
+
+				console.log('lyrics_body', lyrics);
 
 				lyrics = lyrics.replace(/’/g, "'");
 				lyrics = lyrics.replace(/‘/g, "'");

@@ -28,8 +28,10 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 	}
 
 
+	// show the artwork before starting the song/timer
 
 	$scope.listenView = true;
+	
 	$timeout(function() {
 		$scope.listenView = false;
 		$scope.timer.startTimer();
@@ -159,7 +161,7 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 				var spotifyId = nowPlaying.spotifyId;
 				getSpotify(spotifyId)
 					.then(function(r) {
-						console.log('spotifyCall', r);
+						// console.log('spotifyCall', r);
 						$interval.cancel(interval);
 						$scope.listenView = true;
 						$scope.url = r.data.preview_url;

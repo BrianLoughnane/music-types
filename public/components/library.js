@@ -26,7 +26,7 @@ myApp.factory('getLyrics', function($http, $q) {
 	return function(trackId) {
 		var defer = $q.defer();
 		$http.get('musicmatch/lyrics/' + trackId)
-			.then(function(response) {
+			.success(function(response) {
 				defer.resolve(response);
 			});
 		return defer.promise;
@@ -37,10 +37,35 @@ myApp.factory('getSpotify', function($http, $q) {
 	return function(spotifyId) {	
 		var defer = $q.defer();
 		$http.get('https://api.spotify.com/v1/tracks/' + spotifyId)
-			.then(function(response) {
+			.success(function(response) {
 				defer.resolve(response);
 			});
 		return defer.promise;
 	} // end return function
 }); //end getLyrics
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
