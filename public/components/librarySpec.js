@@ -130,7 +130,7 @@ describe('getSpotify', function() {
 	it('upon success, the server query resolves the promise with it\'s response', 
 	inject(function(getSpotify, $httpBackend, $q) {
 		var spotifyId = 'test'
-		var response = {'test': 'response'};
+		var response = {'git ctest': 'response'};
 		var returned;
 
 		$httpBackend.whenGET('https://api.spotify.com/v1/tracks/' + spotifyId).respond(response);
