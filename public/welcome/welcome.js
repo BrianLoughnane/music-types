@@ -1,5 +1,7 @@
-myApp.controller('WelcomeCtrl', function($location, $scope) {
-	$scope.toSearch = function() {
+myApp.controller('WelcomeCtrl', function($location) {
+	var ctrl = this;
+	
+	ctrl.toSearch = function() {
 		$location.path('/search');
 	}
 });

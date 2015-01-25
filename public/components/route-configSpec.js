@@ -18,7 +18,7 @@ describe('root config', function() {
 		$httpBackend.whenGET('welcome/welcome.html').respond(200);		
 		$location.path('/');
 		$httpBackend.flush();
-		expect($route.current.controller).toBe('WelcomeCtrl');
+		expect($route.current.controller).toBe('WelcomeCtrl as ctrl');
 	}));
 });
 
@@ -42,7 +42,7 @@ describe('search config', function() {
 		$httpBackend.whenGET('search/search.html').respond(200);		
 		$location.path('/search');
 		$httpBackend.flush();
-		expect($route.current.controller).toBe('SearchCtrl');
+		expect($route.current.controller).toBe('SearchCtrl as searchctrl');
 	}));
 });
 
@@ -67,7 +67,7 @@ describe('play config', function() {
 		$location.path('/play');
 		$httpBackend.flush();
 		// debugger
-		expect($route.current.controller).toBe('MainCtrl');
+		expect($route.current.controller).toBe('MainCtrl as mainctrl');
 	}));
 });
 

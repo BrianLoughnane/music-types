@@ -162,9 +162,13 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 				getSpotify(spotifyId)
 					.then(function(r) {
 						// console.log('spotifyCall', r);
+						// debugger
 						$interval.cancel(interval);
 						$scope.listenView = true;
-						$scope.url = r.data.preview_url;
+						
+						// data structure changed to remove 'data' property:
+						// $scope.url = r.data.preview_url;
+						$scope.url = r.preview_url;						
 						$timeout(function() {
 							$location.path('/search');
 						}, 32000);

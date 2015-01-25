@@ -1,9 +1,10 @@
-myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, getLyrics, nowPlaying) {
+myApp.controller('SearchCtrl', function ($http, $location, searchSong, getLyrics, nowPlaying) {
+	var searchctrl = this;
 
-	$scope.query = '';
-	$scope.searchResults;
+	searchctrl.query = '';
+	searchctrl.searchResults;
 
-	$scope.searchSong = function(q) {
+	searchctrl.searchSong = function(q) {
 		var value = q.trim();
 		if(value.length) {
 			searchSong(value)
@@ -18,25 +19,27 @@ myApp.controller('SearchCtrl', function($scope, $http, $location, searchSong, ge
 						}
 					}
 
-					$scope.searchResults = goodTracks;;
-					// $scope.searchResults = tracks;;
+					searchctrl.searchResults = goodTracks;;
+					// searchctrl.searchResults = tracks;;
 				});
 		}	
 	} // end searchSong()
 
-	$scope.getSong = function(trId, artist, song, album, art, spotifyId) {
+	searchctrl.getSong = function(track) {
+		nowPlaying.artist = track.artist_name;
+		nowPlaying.song = track.track_name;
+		nowPlaying.album = track.album_name;
+		nowPlaying.art = track.album_coverart_500x500;
+		nowPlaying.spotifyId = track.track_spotify_id;
 
-		nowPlaying.artist = artist;
-		nowPlaying.song = song;
-		nowPlaying.album = album;
-		nowPlaying.art = art;
-		nowPlaying.spotifyId = spotifyId;
-
-		getLyrics(trId)
+		getLyrics(track.track_id)
 			.then(function(response) {
-				// console.log('getL', response);
-				var tracking = response.data.message.body.lyrics.pixel_tracking_url;
-				var lyrics = response.data.message.body.lyrics.lyrics_body;
+
+				// oddly, this had to change from response.data.message..... to response.message....
+				// var tracking = response.data.message.body.lyrics.pixel_tracking_url;
+				// var lyrics = response.data.message.body.lyrics.lyrics_body;
+				var tracking = response.message.body.lyrics.pixel_tracking_url;
+				var lyrics = response.message.body.lyrics.lyrics_body;
 
 				console.log('lyrics_body', lyrics);
 
