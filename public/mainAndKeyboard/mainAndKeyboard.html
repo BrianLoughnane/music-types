@@ -18,7 +18,7 @@
 		<div class="leftHand">
 			<div class='top'>
 				<div class='fingersArea'>
-					<div class="finger leftPinky" 
+					<!-- <div class="finger leftPinky" 
 						ng-class="{current: (
 							currentLetter == 'q' || 
 							currentLetter == 'a' || 
@@ -55,8 +55,8 @@
 							currentLetter == 'O' || 
 							currentLetter == 'P') && !mistype
 						}">
-					</div>
-					<div class="finger leftRing" 
+					</div> -->
+<!-- 					<div left-ring class="finger leftRing" 
 						ng-class="{current: (
 							currentLetter == 'w' || 
 							currentLetter == 's' || 
@@ -67,8 +67,8 @@
 							currentLetter == '2' ||
 							currentLetter == '@' ) && !mistype
 						}">
-					</div>
-					<div class="finger leftMiddle" 
+					</div> -->
+					<!-- <div class="finger leftMiddle" 
 						ng-class="{current: (
 							currentLetter == 'e' || 
 							currentLetter == 'd' || 
@@ -79,8 +79,8 @@
 							currentLetter == '3' ||
 							currentLetter == '#' ) && !mistype
 						}">
-					</div>
-					<div class="finger leftIndex" 
+					</div> -->
+					<!-- <div class="finger leftIndex" 
 						ng-class="{current: (
 							currentLetter == 'r' || 
 							currentLetter == 't' || 
@@ -99,10 +99,17 @@
 							currentLetter == '$' ||
 							currentLetter == '%' ) && !mistype
 						}">
-					</div>
+					</div> -->
+					<div finger="leftPinky" class="finger leftPinky"></div>
+					<div finger="leftRing" class="finger leftRing"></div>
+					<div finger="leftMiddle" class="finger leftMiddle"></div>
+					<div finger="leftIndex" class="finger leftIndex"></div>
+					
+					
 				</div>
 				<div class="thumbArea">
-					<div class="thumb" ng-class="{current: currentLetter == ' '}"></div>
+					<!-- <div class="thumb" ng-class="{current: currentLetter == ' '}"></div> -->
+					<div finger="thumb" class="thumb"></div>
 				</div>
 			</div>
 			<div class='bottom'>
@@ -114,10 +121,15 @@
 		<div class="rightHand">
 			<div class='top'>
 				<div class="thumbArea">
-					<div class="thumb" ng-class="{current: currentLetter == ' '}"></div>
+					<!-- <div class="thumb" ng-class="{current: currentLetter == ' '}"></div> -->
+					<div finger="thumb" class="thumb"></div>
 				</div>
 				<div class='fingersArea'>
-					<div class="finger rightIndex" 
+					<div finger="rightIndex" class="finger rightIndex"></div>
+					<div finger="rightMiddle" class="finger rightMiddle"></div>
+					<div finger="rightRing" class="finger rightRing"></div>
+					<div finger="rightPinky" class="finger leftIndex" ng-class="{incorrect: mistype}"></div>
+					<!-- <div class="finger rightIndex" 
 						ng-class="{current: (
 							currentLetter == 'y' || 
 							currentLetter == 'u' || 
@@ -160,10 +172,19 @@
 							currentLetter == '>' ||
 							currentLetter == '(' ) && !mistype
 						}">
-					</div>
+					</div> -->
 					<!--	currentLetter == '\' || -->  <!-- this is breaking the pinky key (it doesn't become 'current' when this code is present) -->
 					<!-- current: currentLetter == "\"" -->  <!-- this is closing the ng-class quotation --> 
-					<div class="finger rightPinky"  
+
+<!--  -->
+	<!--  -->
+		<!--  -->
+			<!--  -->
+				<!--  -->
+					<!-- leave ng-class below! -->
+					
+
+					<!-- <div class="finger rightPinky"  
 						ng-class="{current: (
 							currentLetter == '\'' ||
 							currentLetter == 'p' || 
@@ -207,7 +228,7 @@
 						,incorrect:	
 							mistype
 						}">
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<div class='bottom'>
