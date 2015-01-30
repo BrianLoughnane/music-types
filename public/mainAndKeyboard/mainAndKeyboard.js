@@ -38,10 +38,7 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 		return;
 	}, 3000);
 
-
-
-
-	// $scope.lyrics = ['hi', ' ', 'you', ' ', 'Brian'];
+	// $scope.lyrics = ['q', 'q','q', 'q'];
 	// $scope.lyrics = ['~!@#$', '!', '@', '$', '%', '^', '&', '*', '(', ')', '_', '+', '`', '-', '=', ']', ':', '"', ';', '>', '?', ',', '.', '/', 'a', 'b'];
 	// $scope.lyrics = ['#', '{', '}', '[', '<', '('];
 	// $scope.lyrics = ['-', '=', ']', ':', 'a', 'b'];
@@ -202,84 +199,7 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 
 });  //end MainCtrl
 
-myApp
-	// .directive('LP', function() {
-	// 	var letters = 
-	// 	return {
-	// 		restrict: 'A',
-	// 		link: function(s,e,a) {
 
-	// 		}	
-	// 	}
-	// })
-
-
-
-// fingerDirectives.js
-
-// set data on the element
-// this directive watches for letters,
-// generates a listener
-
-
-	.directive('finger', function() {
-		var dictionary = {
-			leftPinky : 'qazQAZ`~1!^&*()_+{}:?HJKLNM<>YUIOP',
-			leftRing : 'wsxWSX2@',
-			leftMiddle : 'edcEDC3#',
-			leftIndex : 'rtfgvbRTFGVB45$%',
-			thumb : ' ',
-			rightIndex : 'yuhjnmYUHJNM67^&',
-			rightMiddle : 'ikIK8,<*',
-			rightRing : 'olOL9.>(',
-			rightPinky : '\'pP0)-_;:/=]+[{}|?!@#$%QWERTASDFGZXCVB~'
-		}
-		// var letters = 'wsxWSX2@'.split('');
-		return {
-			restrict: 'A',
-			link: function(s,e,a) {
-				function generateLetterListener (letters, e) {
-					return function (newGroupArray) {
-						var currentLetter = newGroupArray[0];
-						var mistype = newGroupArray[1];
-						
-						if(letters.indexOf(currentLetter) != -1 && !mistype) {
-							e.addClass('current');
-						} else {
-							e.removeClass('current');
-						}
-					}
-				}
-				var letters = dictionary[a.finger].split('');
-				s.$watchGroup(
-					['currentLetter', 'mistype'], 
-					generateLetterListener(letters, e)
-				);
-			}
-		}
-	})
-
-
-
-
-
-// HelperFunctions.js
-
-// var HelperFunction = {
-// 	generateLetterListener: function (letters, e) {
-// 		return function (newGroupArray) {
-// 			var currentLetter = newGroupArray[0];
-// 			var mistype = newGroupArray[1];
-			
-// 			if(letters.indexOf(currentLetter) != -1 && !mistype) {
-// 				e.addClass('current');
-// 			} else {
-// 				e.removeClass('current');
-// 			}
-// 		}
-// 	},
-
-// }
 
 
 

@@ -63,7 +63,7 @@ header {
 	height: 8%;
 	background: white;
 	text-align: right;
-	min-width: 1425px;
+	/*min-width: 1425px;*/
 	min-height: 56px;
 	border-bottom: 2px solid #119ee0;
 	padding: 0% 3%;
@@ -159,14 +159,14 @@ header span span span {
 	text-align: center;
 	position: relative;
 	color: white;
-	min-width: 1425px;
+	/*min-width: 1425px;*/
 	min-height: 308px;
 }
 
 .main-word {
 	padding-top: 2%;
 	font-size: 3.2em;
-	min-width: 1425px;
+	/*min-width: 1425px;*/
 	min-height: 152px;
 	color: #119ee0;
 }
@@ -478,7 +478,7 @@ keyboard
 	height: 48%;
 	color: black;
 	/*background: rgba(0,0,0,0.3);*/
-	min-width: 1425px;
+	/*min-width: 1425px;*/
 	min-height: 310px;
 }
 
@@ -492,13 +492,11 @@ keyboard
 	display: inline-block;
 	height: 100%;
 	width: 6.3%;
-	text-align: center;
+	margin: 0.2%;
 	vertical-align: top;
 	padding: 0% 0.6%;
 	padding-top: 0.3%;
-	/*border: 1px solid black;*/
 	border-radius: 5px;
-	/*box-shadow: 3px 5px;*/
 	position: relative;
 	border: none;
 	box-shadow: 0px 5px 7px -4px;

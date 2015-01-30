@@ -21,9 +21,10 @@ module.exports = function(config) {
       'public/bower_components/angular-sanitize/angular-sanitize.js',
       'public/bower_components/jquery/dist/jquery.js',
       'public/components/*.js',
-      'public/mainAndKeyboard/*.js',
+      'public/mainAndKeyboard/**/*.js',
       'public/search/*.js',
-      'public/welcome/*.js'
+      'public/welcome/*.js',
+      'public/mainAndKeyboard/keyboard/keyboard.html'
     ],
 
 
@@ -35,6 +36,11 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'public/mainAndKeyboard/keyboard/keyboard.html' : 'html2js'
+    },
+
+    ngHtml2JsPreprocessor : {
+      stripPrefix: 'public/'
     },
 
 
