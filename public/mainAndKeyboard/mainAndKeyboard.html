@@ -5,15 +5,15 @@
 			<span ng-if='mainctrl.nowPlaying.artist.length !== 0 && mainctrl.nowPlaying.artist !== undefined'>by</span> {{ mainctrl.nowPlaying.artist }}
 			<span ng-if='mainctrl.nowPlaying.album.length !== 0 && mainctrl.nowPlaying.album !== undefined'>on</span> {{ mainctrl.nowPlaying.album }}
 		</span> 
-		<span>Score: {{ score }}</span>
-		<span>Errors: {{ numberOfErrors }}</span>
+		<span>Score: {{ mainctrl.score }}</span>
+		<span>Errors: {{ mainctrl.numberOfErrors }}</span>
 		<span>{{ mainctrl.timer.tensOfMinutes }}{{ mainctrl.timer.minutes }}:{{ mainctrl.timer.tensOfSeconds }}{{ mainctrl.timer.seconds }}</span>  
-		<span>Progress: <input type='range' ng-model="progress" min='0' max='100' ng-trim='false'> {{ progress | number:0 }}%</span>
+		<span>Progress: <input type='range' ng-model="mainctrl.progress" min='0' max='100' ng-trim='false'> {{ mainctrl.progress | number:0 }}%</span>
 	
 	</span>
 </header>
 <div class="mainAndKeyboard">
-	<div class="play" ng-if="listenView"><img class='albumArtPlay' ng-src="{{ mainctrl.nowPlaying.art }}"></div>
+	<div class="play" ng-if="mainctrl.listenView"><img class='albumArtPlay' ng-src="{{ mainctrl.nowPlaying.art }}"></div>
 	<div class="main">
 		<div class="leftHand">
 			<div class='top'>
@@ -52,17 +52,18 @@
 			</div>
 		</div>
 		<div class="main-word">
-			<span class="word">{{ wordMinusTwo }}</span>
-			<span class="word">{{ wordMinusOne }}</span>
-			<span class="word" ng-class="{lessSpace: isSpace}">
-				<span ng-repeat='letter in word track by $index' letter-directive>{{ letter }}</span>
+			<span class="word">{{ mainctrl.wordMinusTwo }}</span>
+			<span class="word">{{ mainctrl.wordMinusOne }}</span>
+			<span class="word" ng-class="{lessSpace: mainctrl.isSpace}">
+				<span ng-repeat='letter in mainctrl.word track by $index' letter-directive>{{ letter }}</span>
 			</span>
-			<span class="word">{{ wordPlusOne }}</span> 
-			<span class="word">{{ wordPlusTwo }}</span> 
-			<span ng-if='isSpace' class='isSpace'>(space)</span>
+			<span class="word">{{ mainctrl.wordPlusOne }}</span> 
+			<span class="word">{{ mainctrl.wordPlusTwo }}</span> 
+			<span ng-if='mainctrl.isSpace' class='isSpace'>(space)</span>
 		</div> 
 		<div>
-			<input class="main-input" ng-model="userInput" type='text' ng-trim='false'>
+			<!-- <input class="main-input" ng-model="userInput" type='text' ng-trim='false'> -->
+			<input class="main-input" ng-model="userInput" ng-change="mainctrl.evaluate()" type='text' ng-trim='false'>
 		</div>
 	</div>
 			
@@ -73,4 +74,4 @@
 	<div class="copyright">Lyrics powered by www.musiXmatch.com. This Lyrics is NOT for Commercial use and only 30% of the lyrics are returned.</div>
 	<img ng-src="{{ mainctrl.nowPlaying.tracking }}">
 </footer>
-<iframe class="iframe hidden" ng-src="{{ trustSrc(url) }}"></iframe>	
+<iframe class="iframe hidden" ng-src="{{ mainctrl.trustSrc(mainctrl.url) }}"></iframe>	

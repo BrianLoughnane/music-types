@@ -19,6 +19,8 @@ myApp.directive('letterDirective', function() {
 					}
 				}
 			}
+
+
 			s.$watchGroup(
 				['letter', '$index', 'userInput', 'mistype', 'mistypedLetters'],
 				function(newGroupArray) {
