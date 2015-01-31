@@ -24,7 +24,6 @@ myApp.directive('key', function() {
 							case 'leftShift':
 								if ('^&*()_+{}:?HJKLNM<>YUIOP'.indexOf(s.currentLetter) !== -1 && !s.mistype) {
 									e.addClass('current');
-									debugger
 								} else {
 									e.removeClass('current');
 								}

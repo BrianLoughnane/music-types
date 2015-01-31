@@ -1,10 +1,11 @@
 myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, $interval, nowPlaying, getSpotify) {
 	$('.main-input').focus();
 	var interval;
+	var ctrl = this;
 
-	$scope.nowPlaying = nowPlaying;
+	ctrl.nowPlaying = nowPlaying;
 
-	$scope.timer = {
+	ctrl.timer = {
 		minutes: 0,
 		tensOfMinutes: 0,
 		seconds: 0,
@@ -34,7 +35,7 @@ myApp.controller('MainCtrl', function($scope, $http, $sce, $location, $timeout, 
 	
 	$timeout(function() {
 		$scope.listenView = false;
-		$scope.timer.startTimer();
+		ctrl.timer.startTimer();
 		return;
 	}, 3000);
 
