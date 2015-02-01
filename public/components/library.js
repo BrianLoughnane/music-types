@@ -11,6 +11,74 @@ myApp.factory('nowPlaying', function() {
 	}
 });
 
+myApp.factory('infoSetup', function() {
+	return function(lyrics) {
+		return {
+			lyricIndex: 0,
+			word: lyrics[0] || '',
+			wordMinusOne: '',
+			wordMinusTwo: '',
+			wordPlusOne: lyrics[this.lyricIndex +1] || '',
+			wordPlusTwo: lyrics[this.lyricIndex +2] || ''
+		}
+	}
+});
+
+myApp.factory('trustSrc', function($sce) {
+	return function(src) {
+		return $sce.trustAsResourceUrl(src);
+	}
+})
+
+myApp.factory('header', function ($interval) {
+	var interval;
+	return {
+		progress: 0,
+		score: 0,
+		numberOfErrors: 0,
+		timer: {
+			minutes: 0,
+			tensOfMinutes: 0,
+			seconds: 0,
+			tensOfSeconds: 0,
+			totalSeconds: 0,
+			startTimer: function() {
+				var timer = this;
+				interval = $interval(function() {
+					timer.seconds++;
+					timer.totalSeconds++;
+					if(timer.seconds == 10) {
+						timer.seconds = 0;
+						timer.tensOfSeconds++;
+					}
+					if(timer.tensOfSeconds == 6) {
+						timer.tensOfSeconds = 0;
+						timer.minutes++;
+					}
+				}, 1000);	
+			},
+			stopTimer: function() {
+				$interval.cancel(interval);
+			},
+			resetTimer: function() {
+				var timer = this;
+				timer.minutes = 0;
+				timer.tensOfMinutes = 0;
+				timer.seconds = 0;
+				timer.tensOfSeconds = 0;
+				timer.totalSeconds = 0;
+			}
+		},
+		resetHeader: function() {
+			var header = this;
+			header.progress = 0;
+			header.score = 0;
+			header.numberOfErrors = 0;
+			header.timer.resetTimer();
+		}
+	}
+});
+
 myApp.factory('searchSong', function ($http, $q) {
 	return function (val) {
 		var defer = $q.defer();
@@ -105,30 +173,4 @@ myApp.factory('getSpotify', function($http, $q) {
 			});
 		return defer.promise;
 	} // end return function
-}); //end getLyrics
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}); //end getSpotify

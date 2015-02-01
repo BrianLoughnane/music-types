@@ -5,13 +5,13 @@
 			<span ng-if='mainctrl.nowPlaying.artist.length !== 0 && mainctrl.nowPlaying.artist !== undefined'>by</span> {{ mainctrl.nowPlaying.artist }}
 			<span ng-if='mainctrl.nowPlaying.album.length !== 0 && mainctrl.nowPlaying.album !== undefined'>on</span> {{ mainctrl.nowPlaying.album }}
 		</span> 
-		<span>Score: {{ mainctrl.score }}</span>
-		<span>Errors: {{ mainctrl.numberOfErrors }}</span>
-		<span>{{ mainctrl.timer.tensOfMinutes }}{{ mainctrl.timer.minutes }}:{{ mainctrl.timer.tensOfSeconds }}{{ mainctrl.timer.seconds }}</span>  
-		<span>Progress: <input type='range' ng-model="mainctrl.progress" min='0' max='100' ng-trim='false'> {{ mainctrl.progress | number:0 }}%</span>
-	
+		<span>Score: {{ mainctrl.header.score }}</span>
+		<span>Errors: {{ mainctrl.header.numberOfErrors }}</span>
+		<span>{{ mainctrl.header.timer.tensOfMinutes }}{{ mainctrl.header.timer.minutes }}:{{ mainctrl.header.timer.tensOfSeconds }}{{ mainctrl.header.timer.seconds }}</span>  
+		<span>Progress: <input type='range' ng-model="mainctrl.header.progress" min='0' max='100' ng-trim='false'> {{ mainctrl.header.progress | number:0 }}%</span>
 	</span>
 </header>
+
 <div class="mainAndKeyboard">
 	<div class="play" ng-if="mainctrl.listenView"><img class='albumArtPlay' ng-src="{{ mainctrl.nowPlaying.art }}"></div>
 	<div class="main">
@@ -52,13 +52,13 @@
 			</div>
 		</div>
 		<div class="main-word">
-			<span class="word">{{ mainctrl.wordMinusTwo }}</span>
-			<span class="word">{{ mainctrl.wordMinusOne }}</span>
+			<span class="word">{{ mainctrl.current.wordMinusTwo }}</span>
+			<span class="word">{{ mainctrl.current.wordMinusOne }}</span>
 			<span class="word" ng-class="{lessSpace: mainctrl.isSpace}">
-				<span ng-repeat='letter in mainctrl.word track by $index' letter-directive>{{ letter }}</span>
+				<span ng-repeat='letter in mainctrl.current.word track by $index' letter-directive>{{ letter }}</span>
 			</span>
-			<span class="word">{{ mainctrl.wordPlusOne }}</span> 
-			<span class="word">{{ mainctrl.wordPlusTwo }}</span> 
+			<span class="word">{{ mainctrl.current.wordPlusOne }}</span> 
+			<span class="word">{{ mainctrl.current.wordPlusTwo }}</span> 
 			<span ng-if='mainctrl.isSpace' class='isSpace'>(space)</span>
 		</div> 
 		<div>

@@ -1,41 +1,36 @@
 var HelperFunctions = {
 	mainAndKeyboard: {
-		updateProgress: function (control) {
-			var currentWord = control.lyricIndex;
-			var totalWords = control.lyrics.length;
+		updateProgress: function (control, lyrics) {
+			var currentWord = control.current.lyricIndex;
+			var totalWords = lyrics.length;
 			var percentComplete = (currentWord/totalWords)*100;
-			control.progress = percentComplete;
+			control.header.progress = percentComplete;
 		},
-		completedWord: function (scope, control, nowPlaying, getSpotify, $interval, interval, $timeout, $location) {
+		completedWord: function (scope, control, nowPlaying, getSpotify, $timeout, $location, lyrics) {
 
 			var input = scope.userInput;
 
-			if(input === control.word) {
-				control.lyricIndex += 1;
-				control.word = control.lyrics[control.lyricIndex];
-				control.word = control.lyrics[control.lyricIndex] || '';
-				control.wordMinusOne = control.lyrics[control.lyricIndex -1] || '';
-				control.wordMinusTwo = control.lyrics[control.lyricIndex -2] || '';
-				control.wordPlusOne = control.lyrics[control.lyricIndex +1] || '';
-				control.wordPlusTwo = control.lyrics[control.lyricIndex +2] || '';
+			if(input === control.current.word) {
+				control.current.lyricIndex += 1;
+				control.current.word = lyrics[control.current.lyricIndex];
+				control.current.word = lyrics[control.current.lyricIndex] || '';
+				control.current.wordMinusOne = lyrics[control.current.lyricIndex -1] || '';
+				control.current.wordMinusTwo = lyrics[control.current.lyricIndex -2] || '';
+				control.current.wordPlusOne = lyrics[control.current.lyricIndex +1] || '';
+				control.current.wordPlusTwo = lyrics[control.current.lyricIndex +2] || '';
 				
 				scope.userInput = "";
-				HelperFunctions.mainAndKeyboard.updateProgress(control);
+				HelperFunctions.mainAndKeyboard.updateProgress(control, lyrics);
 				control.lastLength = 0;
 
-				if(control.lyricIndex == control.lyrics.length) {
+				if(control.current.lyricIndex == lyrics.length) {
 					scope.currentLetter = '';
 					var spotifyId = nowPlaying.spotifyId;
 					getSpotify(spotifyId)
-						.then(function(r) {
-							// console.log('spotifyCall', r);
-							// debugger
-							$interval.cancel(interval);
+						.then(function(response) {
+							control.header.timer.stopTimer();
 							control.listenView = true;
-							
-							// data structure changed to remove 'data' property:
-							// control.url = r.data.preview_url;
-							control.url = r.preview_url;						
+							control.url = response.preview_url;						
 							$timeout(function() {
 								$location.path('/search');
 							}, 32000);
@@ -50,18 +45,18 @@ var HelperFunctions = {
 			scope.lastLetterTyped = lastLetterTyped;
 
 			if((lastLetterTyped === scope.currentLetter) && (input.length !== 0) && !scope.mistype) {
-				control.score++;
+				control.header.score++;
 			} else if ((lastLetterTyped !== scope.currentLetter) && (input.length !== 0)) {
-				control.score--;
+				control.header.score--;
 			}
 		},
 		nextLetter: function (scope, control) {
-			if(typeof control.word !== 'undefined'  && !scope.mistype) {	
-				scope.currentLetter = control.word[control.lastLength];
+			if(typeof control.current.word !== 'undefined'  && !scope.mistype) {	
+				scope.currentLetter = control.current.word[control.lastLength];
 			}	
 		},
 		isSpace: function (control) {
-			if(control.word === ' ') {
+			if(control.current.word === ' ') {
 				control.isSpace = true;
 			} else {
 				control.isSpace = false;
@@ -69,7 +64,7 @@ var HelperFunctions = {
 		},
 		checkMistypes: function (scope, control) {
 			var input = scope.userInput;
-			var word = control.word;
+			var word = control.current.word;
 			var lastLetterTyped = input[input.length-1];
 			var mistypes = [];
 
@@ -87,15 +82,15 @@ var HelperFunctions = {
 			scope.mistypedLetters = mistypes;
 			// debugger
 		},
-		lengthCheck: function (scope, control, nowPlaying, getSpotify, $interval, interval, $timeout, $location) {
+		lengthCheck: function (scope, control, nowPlaying, getSpotify, $interval, header, $timeout, $location, lyrics) {
 			if(typeof scope.userInput != 'undefined' && scope.userInput != '') {	
 				if(scope.userInput.length > control.lastLength) {
 						control.lastLength++;
 						if(scope.userInput[scope.userInput.length-1] != scope.currentLetter) {
-							control.numberOfErrors++;
+							control.header.numberOfErrors++;
 						}
 						HelperFunctions.mainAndKeyboard.score(scope, control);
-						HelperFunctions.mainAndKeyboard.completedWord(scope, control, nowPlaying, getSpotify, $interval, interval, $timeout, $location);
+						HelperFunctions.mainAndKeyboard.completedWord(scope, control, nowPlaying, getSpotify, $timeout, $location, lyrics);
 				} else {
 					control.lastLength--;
 				}
