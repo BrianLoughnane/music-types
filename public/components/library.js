@@ -175,9 +175,6 @@ myApp.factory('getSpotify', function ($http, $q) {
 	} // end return function
 }); //end getSpotify
 
-
-// START PROSPECTIVE
-
 myApp.factory('updateProgress', function () {
 	return function (control, lyrics) {
 		var currentWord = control.current.lyricIndex;

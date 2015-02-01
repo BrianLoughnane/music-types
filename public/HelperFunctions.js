@@ -1,107 +1,4 @@
 var HelperFunctions = {
-	mainAndKeyboard: {
-		updateProgress: function (control, lyrics) {
-			var currentWord = control.current.lyricIndex;
-			var totalWords = lyrics.length;
-			var percentComplete = (currentWord/totalWords)*100;
-			control.header.progress = percentComplete;
-		},
-		completedWord: function (scope, control, nowPlaying, getSpotify, $timeout, $location, lyrics) {
-
-			var input = scope.userInput;
-
-			if(input === control.current.word) {
-				control.current.lyricIndex += 1;
-				control.current.word = lyrics[control.current.lyricIndex];
-				control.current.word = lyrics[control.current.lyricIndex] || '';
-				control.current.wordMinusOne = lyrics[control.current.lyricIndex -1] || '';
-				control.current.wordMinusTwo = lyrics[control.current.lyricIndex -2] || '';
-				control.current.wordPlusOne = lyrics[control.current.lyricIndex +1] || '';
-				control.current.wordPlusTwo = lyrics[control.current.lyricIndex +2] || '';
-				
-				scope.userInput = "";
-				HelperFunctions.mainAndKeyboard.updateProgress(control, lyrics);
-				control.lastLength = 0;
-
-				if(control.current.lyricIndex == lyrics.length) {
-					scope.currentLetter = '';
-					var spotifyId = nowPlaying.spotifyId;
-					getSpotify(spotifyId)
-						.then(function(response) {
-							control.header.timer.stopTimer();
-							control.listenView = true;
-							control.url = response.preview_url;						
-							$timeout(function() {
-								$location.path('/search');
-							}, 32000);
-						});
-				}
-			}
-		},
-		score: function (scope, control) {
-			var input = scope.userInput;
-			var lastLetterTyped = input[input.length-1];
-
-			scope.lastLetterTyped = lastLetterTyped;
-
-			if((lastLetterTyped === scope.currentLetter) && (input.length !== 0) && !scope.mistype) {
-				control.header.score++;
-			} else if ((lastLetterTyped !== scope.currentLetter) && (input.length !== 0)) {
-				control.header.score--;
-			}
-		},
-		nextLetter: function (scope, control) {
-			if(typeof control.current.word !== 'undefined'  && !scope.mistype) {	
-				scope.currentLetter = control.current.word[control.lastLength];
-			}	
-		},
-		isSpace: function (control) {
-			if(control.current.word === ' ') {
-				control.isSpace = true;
-			} else {
-				control.isSpace = false;
-			}
-		},
-		checkMistypes: function (scope, control) {
-			var input = scope.userInput;
-			var word = control.current.word;
-			var lastLetterTyped = input[input.length-1];
-			var mistypes = [];
-
-			for(var i = 0; i < input.length; i++) {
-				if(input[i] != word[i]) {
-					scope.mistype = true;
-					mistypes.push(i);
-				} 
-			}
-
-			if (!mistypes.length){
-				scope.mistype = false;
-			}
-
-			scope.mistypedLetters = mistypes;
-			// debugger
-		},
-		lengthCheck: function (scope, control, nowPlaying, getSpotify, $interval, header, $timeout, $location, lyrics) {
-			if(typeof scope.userInput != 'undefined' && scope.userInput != '') {	
-				if(scope.userInput.length > control.lastLength) {
-						control.lastLength++;
-						if(scope.userInput[scope.userInput.length-1] != scope.currentLetter) {
-							control.header.numberOfErrors++;
-						}
-						HelperFunctions.mainAndKeyboard.score(scope, control);
-						HelperFunctions.mainAndKeyboard.completedWord(scope, control, nowPlaying, getSpotify, $timeout, $location, lyrics);
-				} else {
-					control.lastLength--;
-				}
-			}
-			if(scope.userInput == '' && (control.isSpace || control.lastLength == 1)) {
-				if(scope.userInput.length < control.lastLength) {
-					control.lastLength--;
-				}
-			} 
-		}
-	},
 	letterDirective: {
 		dictionary: {
 			lpLetter: 'qazQAZ`~1!',
@@ -127,7 +24,7 @@ var HelperFunctions = {
 				}
 			}
 		},
-		addLetterClasses: function(element) {
+		addLetterClasses: function (element) {
 			return function (newGroupArray) {
 				var letter = newGroupArray[0];
 				var index = newGroupArray[1];
@@ -158,5 +55,31 @@ var HelperFunctions = {
 				}
 			}
 		}	
+	}, // End letterDirective object
+	fingerDirective: {
+		dictionary: {
+			leftPinky : 'qazQAZ`~1!^&*()_+{}:?HJKLNM<>YUIOP',
+			leftRing : 'wsxWSX2@',
+			leftMiddle : 'edcEDC3#',
+			leftIndex : 'rtfgvbRTFGVB45$%',
+			thumb : ' ',
+			rightIndex : 'yuhjnmYUHJNM67^&',
+			rightMiddle : 'ikIK8,<*',
+			rightRing : 'olOL9.>(',
+			rightPinky : '\'pP0)-_;:/=]+[{}|?!@#$%QWERTASDFGZXCVB~'
+		},
+		generateLetterListener: function (element, attributes) {
+			var letters = this.dictionary[attributes.finger].split('');
+			return function (newGroupArray) {
+				var currentLetter = newGroupArray[0];
+				var mistype = newGroupArray[1];
+
+				if(letters.indexOf(currentLetter) != -1 && !mistype) {
+					element.addClass('current');
+				} else {
+					element.removeClass('current');
+				}
+			}
+		}
 	}
-}
+} // End HelperFunctions object
