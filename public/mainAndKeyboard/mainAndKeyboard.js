@@ -1,4 +1,4 @@
-myApp.controller('MainCtrl', function (header, infoSetup, trustSrc, $scope, $location, $interval, $timeout, nowPlaying, getSpotify) {
+myApp.controller('MainCtrl', function (header, checkMistypes, isSpace, nextLetter, lengthCheck, infoSetup, trustSrc, $scope, $location, $interval, $timeout, nowPlaying, getSpotify) {
 	$('.main-input').focus();
 	var ctrl = this;
 	
@@ -28,15 +28,31 @@ myApp.controller('MainCtrl', function (header, infoSetup, trustSrc, $scope, $loc
 	// trust URL src:
 	ctrl.trustSrc = trustSrc;
 
-	// Main Functionality:
+	// PROSPECTIVE FUNC:
 	ctrl.lastLength = 0;
 	$scope.$watch('userInput', function() {
-		var directory = HelperFunctions.mainAndKeyboard; 
-		directory.checkMistypes($scope, ctrl);
-		directory.isSpace(ctrl);
-		directory.lengthCheck($scope, ctrl, nowPlaying, getSpotify, $interval, header, $timeout, $location, lyrics);
-		directory.nextLetter($scope, ctrl);
+		checkMistypes($scope, ctrl);
+		isSpace(ctrl);
+		lengthCheck($scope, ctrl, lyrics);
+		nextLetter($scope, ctrl);
 	});
+
+	// END PROSPECTIVE FUNC
+
+
+	// WORKING FUNC:
+
+	// Main Functionality: 
+	// ctrl.lastLength = 0;
+	// $scope.$watch('userInput', function() {
+	// 	var directory = HelperFunctions.mainAndKeyboard; 
+	// 	directory.checkMistypes($scope, ctrl);
+	// 	directory.isSpace(ctrl);
+	// 	directory.lengthCheck($scope, ctrl, nowPlaying, getSpotify, $interval, header, $timeout, $location, lyrics);
+	// 	directory.nextLetter($scope, ctrl);
+	// });
+
+	// END WORKING FUNC
 
 });  //end MainCtrl
 

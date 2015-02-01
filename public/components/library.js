@@ -1,7 +1,7 @@
 
 var myApp = angular.module('myApp', ['ngRoute', 'ngSanitize']);
 
-myApp.factory('nowPlaying', function() {
+myApp.factory('nowPlaying', function () {
 	return {
 		lyrics: [],
 		artist: undefined,
@@ -11,7 +11,7 @@ myApp.factory('nowPlaying', function() {
 	}
 });
 
-myApp.factory('infoSetup', function() {
+myApp.factory('infoSetup', function () {
 	return function(lyrics) {
 		return {
 			lyricIndex: 0,
@@ -24,7 +24,7 @@ myApp.factory('infoSetup', function() {
 	}
 });
 
-myApp.factory('trustSrc', function($sce) {
+myApp.factory('trustSrc', function ($sce) {
 	return function(src) {
 		return $sce.trustAsResourceUrl(src);
 	}
@@ -127,7 +127,7 @@ myApp.factory('getSong', function (nowPlaying, getLyrics, $location) {
 				// var tracking = response.data.message.body.lyrics.pixel_tracking_url;
 				// var lyrics = response.data.message.body.lyrics.lyrics_body;
 				var tracking = response.message.body.lyrics.pixel_tracking_url;
-				var lyrics = response.message.body.lyrics.lyrics_body;
+				var lyrics = response.message.body.lyrics.lyrics_body.trim();
 
 				console.log('lyrics_body', lyrics);
 
@@ -153,8 +153,8 @@ myApp.factory('getSong', function (nowPlaying, getLyrics, $location) {
 	}
 })
 
-myApp.factory('getLyrics', function($http, $q) {
-	return function(trackId) {
+myApp.factory('getLyrics', function ($http, $q) {
+	return function (trackId) {
 		var defer = $q.defer();
 		$http.get('musicmatch/lyrics/' + trackId)
 			.success(function(response) {
@@ -164,7 +164,7 @@ myApp.factory('getLyrics', function($http, $q) {
 	} // end return function
 }); //end getLyrics
 
-myApp.factory('getSpotify', function($http, $q) {
+myApp.factory('getSpotify', function ($http, $q) {
 	return function(spotifyId) {	
 		var defer = $q.defer();
 		$http.get('https://api.spotify.com/v1/tracks/' + spotifyId)
@@ -174,3 +174,165 @@ myApp.factory('getSpotify', function($http, $q) {
 		return defer.promise;
 	} // end return function
 }); //end getSpotify
+
+
+// START PROSPECTIVE
+
+myApp.factory('updateProgress', function () {
+	return function (control, lyrics) {
+		var currentWord = control.current.lyricIndex;
+		var totalWords = lyrics.length;
+		var percentComplete = (currentWord/totalWords)*100;
+		control.header.progress = percentComplete;
+	}
+});
+
+myApp.factory('completedWord', function (nowPlaying, getSpotify, updateProgress) {
+	return function (scope, control, lyrics) {
+		var input = scope.userInput;
+
+		if(input === control.current.word) {
+			control.current.lyricIndex += 1;
+			control.current.word = lyrics[control.current.lyricIndex];
+			control.current.word = lyrics[control.current.lyricIndex] || '';
+			control.current.wordMinusOne = lyrics[control.current.lyricIndex -1] || '';
+			control.current.wordMinusTwo = lyrics[control.current.lyricIndex -2] || '';
+			control.current.wordPlusOne = lyrics[control.current.lyricIndex +1] || '';
+			control.current.wordPlusTwo = lyrics[control.current.lyricIndex +2] || '';
+			
+			scope.userInput = "";
+			updateProgress(control, lyrics);
+			control.lastLength = 0;
+
+			if(control.current.lyricIndex == lyrics.length) {
+				scope.currentLetter = '';
+				var spotifyId = nowPlaying.spotifyId;
+				getSpotify(spotifyId)
+					.then(function(response) {
+						control.header.timer.stopTimer();
+						control.listenView = true;
+						control.url = response.preview_url;						
+						$timeout(function() {
+							$location.path('/search');
+						}, 32000);
+					});
+			}
+		}
+	}
+});
+
+myApp.factory('score', function() {
+	return function (scope, control) {
+		var input = scope.userInput;
+		var lastLetterTyped = input[input.length-1];
+
+		scope.lastLetterTyped = lastLetterTyped;
+
+		if((lastLetterTyped === scope.currentLetter) && (input.length !== 0) && !scope.mistype) {
+			control.header.score++;
+		} else if ((lastLetterTyped !== scope.currentLetter) && (input.length !== 0)) {
+			control.header.score--;
+		}
+	}
+});
+
+myApp.factory('nextLetter', function () {
+	return function (scope, control) {
+		if(typeof control.current.word !== 'undefined'  && !scope.mistype) {	
+			scope.currentLetter = control.current.word[control.lastLength];
+		}	
+	} 
+});
+
+myApp.factory('isSpace', function () {
+	return function (control) {
+		if(control.current.word === ' ') {
+			control.isSpace = true;
+		} else {
+			control.isSpace = false;
+		}
+	}
+});
+
+myApp.factory('checkMistypes', function () {
+	return function (scope, control) {
+		var input = scope.userInput;
+		var word = control.current.word;
+		var lastLetterTyped = input[input.length-1];
+		var mistypes = [];
+
+		for(var i = 0; i < input.length; i++) {
+			if(input[i] != word[i]) {
+				scope.mistype = true;
+				mistypes.push(i);
+			} 
+		}
+
+		if (!mistypes.length){
+			scope.mistype = false;
+		}
+
+		scope.mistypedLetters = mistypes;
+		// debugger
+	}
+});
+
+myApp.factory('lengthCheck', function (score, completedWord, isSpace) {
+	return function (scope, control, lyrics) {
+		if(typeof scope.userInput != 'undefined' && scope.userInput != '') {	
+			if(scope.userInput.length > control.lastLength) {
+					control.lastLength++;
+					if(scope.userInput[scope.userInput.length-1] != scope.currentLetter) {
+						control.header.numberOfErrors++;
+					}
+					score(scope, control);
+					completedWord(scope, control, lyrics);
+			} else {
+				control.lastLength--;
+			}
+		}
+		if(scope.userInput == '' && (isSpace || control.lastLength == 1)) {
+			if(scope.userInput.length < control.lastLength) {
+				control.lastLength--;
+			}
+		} 
+	}	
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
