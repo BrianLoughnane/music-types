@@ -81,5 +81,59 @@ var HelperFunctions = {
 				}
 			}
 		}
-	}
+	}, // End fingerDirective object
+	keyDirective: {
+		generateLetterListener: function (scope, element) {
+			element.addClass(scope.key.class1);
+			element.addClass(scope.key.class2);	
+			return function (newGroupArray) {
+				var currentLetter = newGroupArray[0];
+				var mistype = newGroupArray[1];
+
+				if (scope.key.special === true) {
+					switch (scope.key.key) {
+						case 'delete':
+							if(scope.mistype) {
+								element.addClass('incorrect');
+							} else {
+								element.removeClass('incorrect');
+							}
+							break;
+						case 'leftShift':
+							if ('^&*()_+{}:?HJKLNM<>YUIOP'.indexOf(scope.currentLetter) !== -1 && !scope.mistype) {
+								element.addClass('current');
+							} else {
+								element.removeClass('current');
+							}
+							break;
+						case 'rightShift':
+							if ('!@#$%QWERTASDFGZXCVB~'.indexOf(scope.currentLetter) !== -1 && !scope.mistype) {
+								element.addClass('current');
+							} else {
+								element.removeClass('current');
+							} 
+							break;
+						case 'space':
+							element.addClass('space');
+							element.addClass('ltKey');
+							element.addClass('rtKey');
+							if(scope.currentLetter === ' ' && !scope.mistype) {
+								element.addClass('current');
+							} else {
+								element.removeClass('current');
+							}
+							break;
+						case 'button':
+							element.addClass('button');
+							element.on('click', scope.changeViews); 
+							break;
+					}
+				} else if (currentLetter === scope.key.conditional1 || currentLetter === scope.key.conditional2 && !mistype) {
+					element.addClass('current');
+				} else {
+					element.removeClass('current');
+				}
+			}
+		} // End generateLetterListener fn
+	} // End keyDirective object
 } // End HelperFunctions object
