@@ -1,20 +1,19 @@
 myApp.directive('keyboard', function() {
 	return {
-		// restrict: 'E',
-		// transclude: true,
 		restrict: 'A',
 		templateUrl: './mainAndKeyboard/keyboard/keyboard.html',
-		controller: function ($scope, $location, keyboardData) {
+		controller: function ($scope, $location, keyboardData, header) {
 			$scope.rows = keyboardData;
 
-			//
-			// The confirm cycles infinitely, so I had to remove it:
-			//
 			$scope.changeViews = function() {
-				// if(confirm("Are you sure you want to leave this song?")) {
-					$location.path('/search');
-				// }
+				header.timer.stopTimer();
+				$location.path('/search');
 			}
+
+			// The confirm cycles infinitely, so I had to remove it:
+				// if(confirm("Are you sure you want to leave this song?")) {
+					// functionality goes here
+				// }
 		}
 	}
 });
