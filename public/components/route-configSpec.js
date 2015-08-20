@@ -70,28 +70,3 @@ describe('play config', function() {
 		expect($route.current.controller).toBe('MainCtrl as mainctrl');
 	}));
 });
-
-// describe('otherwise config', function() {
-// 	beforeEach(module('myApp'));
-
-// 	it('should load the "otherwise" template',
-// 	inject(function ($location, $route, $httpBackend) {
-// 		var initLocation = $location.$$absUrl;
-// 		$httpBackend.expectGET(initLocation + '#/bogus').respond(200);
-// 		$location.path('/bogus');
-// 		$httpBackend.flush();
-// 		debugger
-// 		expect($route.current.locals.$template).toEqual('Page Not Found');
-		
-// 		$httpBackend.verifyNoOutstandingRequest();
-// 		$httpBackend.verifyNoOutstandingExpectation();
-// 	}));
-
-// 	it('should not use a controller',
-// 	inject(function ($location, $httpBackend, $route) {
-// 		$httpBackend.whenGET('mainAndKeyboard/mainAndKeyboard.html').respond(200);		
-// 		$location.path('/play');
-// 		$httpBackend.flush();
-// 		expect($route.current.controller).toBe('MainCtrl');
-// 	}));
-// });

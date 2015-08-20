@@ -9,11 +9,6 @@ myApp.directive('keyboard', function() {
 				header.timer.stopTimer();
 				$location.path('/search');
 			}
-
-			// The confirm cycles infinitely, so I had to remove it:
-				// if(confirm("Are you sure you want to leave this song?")) {
-					// functionality goes here
-				// }
 		}
 	}
 });

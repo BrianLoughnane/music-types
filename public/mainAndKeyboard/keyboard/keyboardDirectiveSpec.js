@@ -12,14 +12,7 @@ describe('keyboard directive', function() {
 		scope.$digest();
 	}));
 
-	// it('should load the keyboard.html template', function () {
-	// 	// this isn't working because it can't find ng-repeated elements
-	// 	// expect(element.find('span').length).toEqual(60);
-	// });
-
 	it('should expose a controller', function () {
-		// debugger
-		// I cant' figure out why ctrl is undefined:
 		ctrl = element.data('$keyboardController');
 		expect(ctrl).toBeDefined();
 	});
